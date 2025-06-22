@@ -11,7 +11,6 @@ import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
 import mindustry.type.ammo.*;
-import mindustry.world.blocks.units.*;
 import overflown.gen.*;
 import overflown.type.*;
 
@@ -37,7 +36,8 @@ public class OBUnitTypes{
                 top = false;
                 shootY = 2f;
                 reload = 36f;
-                x = 4.5f;
+                x = 4f;
+                y = 0.5f;
                 alternate = false;
                 ejectEffect = Fx.none;
                 recoil = 2f;
@@ -70,7 +70,7 @@ public class OBUnitTypes{
                 shootSound = Sounds.bolt;
                 shootY = 2f;
                 reload = 18f;
-                x = 7f;
+                x = 6f;
                 recoil = 1f;
                 rotate = true;
                 rotationLimit = 50;
@@ -143,10 +143,10 @@ public class OBUnitTypes{
             weapons.add(new Weapon(name + "-weapon"){{
                 top = false;
                 y = 1f;
-                x = 9f;
+                x = 8f;
                 reload = 20f;
                 inaccuracy = 15;
-                recoil = 4f;
+                recoil = 2f;
                 shake = 2f;
                 ejectEffect = Fx.none;
                 shootSound = Sounds.spark;

@@ -44,6 +44,14 @@ public class OBFx{
         });
     }),
 
+    hellburnt = new Effect(35f, e -> {
+        color(OBPal.lightHell, OBPal.darkHell, e.fin());
+
+        randLenVectors(e.id, 3, 2f + e.fin() * 7f, (x, y) -> {
+            Fill.circle(e.x + x, e.y + y, 0.1f + e.fout() * 1.5f);
+        });
+    }),
+
     dreadShoot = new Effect(12f, e -> {
         color(Color.white, OBPal.dreadRust, e.fin());
         stroke(e.fout() * 1.2f + 0.5f);
