@@ -69,7 +69,7 @@ public class OBUnitTypes{
                 top = false;
                 shootSound = Sounds.bolt;
                 shootY = 2f;
-                reload = 18f;
+                reload = 36f;
                 x = 6f;
                 recoil = 1f;
                 rotate = true;
@@ -143,7 +143,7 @@ public class OBUnitTypes{
             weapons.add(new Weapon(name + "-weapon"){{
                 top = false;
                 y = 1f;
-                x = 8f;
+                x = 9f;
                 reload = 20f;
                 inaccuracy = 15;
                 recoil = 2f;
