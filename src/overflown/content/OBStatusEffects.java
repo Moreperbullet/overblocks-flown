@@ -3,13 +3,14 @@ package overflown.content;
 import arc.graphics.*;
 import arc.math.*;
 import mindustry.content.*;
+import mindustry.game.*;
 import mindustry.type.*;
 import overflown.graphics.*;
 import overflown.type.*;
 
 public class OBStatusEffects{
 
-    public static StatusEffect dreadRust, hellburnt;
+    public static StatusEffect dreadRust, hellburnt, giga;
 
     public static void load(){
 
@@ -36,6 +37,13 @@ public class OBStatusEffects{
                 Fx.burning.at(unit.x + Mathf.range(unit.bounds() / 2f), unit.y + Mathf.range(unit.bounds() / 2f));
                 result.set(hellburnt, Math.min(time + result.time, 300f));
             }));
+        }};
+
+        giga = new OBStatusEffect("giga"){{
+            color = Team.crux.color;
+            permanent = true;
+            damageMultiplier = 2f;
+            healthMultiplier = 2f;
         }};
     }
 }
