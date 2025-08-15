@@ -20,9 +20,16 @@ import static arc.graphics.g2d.Lines.*;
 @SuppressWarnings("unused")
 public class OBUnitTypes{
 
-    public static UnitType relayer, announcer, agent, spy, undercover;
+    public static UnitType testUnit,
+
+    relayer, announcer, agent, spy, undercover;
 
     public static void load(){
+
+        if(true) relayer = new OBUnitType("test-unit", UnitEntity.class){{
+            health = 100;
+            hidden = true;
+        }};
 
         //region spook
         relayer = new OBUnitType("relayer", DodgeMechUnit.class){{
