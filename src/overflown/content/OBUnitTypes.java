@@ -26,7 +26,7 @@ public class OBUnitTypes{
 
     public static void load(){
 
-        if(true) relayer = new OBUnitType("test-unit", UnitEntity.class){{
+        if(true) testUnit = new OBUnitType("test-unit", PhoenixUnit.class){{
             health = 100;
             hidden = true;
         }};
