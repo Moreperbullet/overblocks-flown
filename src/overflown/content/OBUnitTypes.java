@@ -29,6 +29,7 @@ public class OBUnitTypes{
         if(true) testUnit = new OBUnitType("test-unit", PhoenixUnit.class){{
             health = 100;
             hidden = true;
+            flying = true;
         }};
 
         //region spook
