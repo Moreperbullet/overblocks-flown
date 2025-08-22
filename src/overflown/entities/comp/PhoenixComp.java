@@ -30,7 +30,8 @@ abstract class PhoenixComp implements Shieldc, Unitc{
             revived = true;
             dead = false;
             if(health < 0) health = 1;
-            elevation = 1; //this is not a wreck
+            if(type.flying) elevation = 1; //this is not a wreck
+            return;
         }
         if(dead || net.client() || !type.killable || iframes > 0) return;
 
