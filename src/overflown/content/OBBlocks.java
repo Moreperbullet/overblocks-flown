@@ -262,7 +262,7 @@ public class OBBlocks{
             range = 70f;
             reload = 21f;
             recoil = 2f;
-            shootSound = Sounds.sap;
+            shootSound = Sounds.shootSap;
             shootY = 9f;
             coolant = consumeCoolant(0.1f);
         }};
@@ -277,8 +277,8 @@ public class OBBlocks{
             shoot = new ShootSpread(3, 7.5f);
             shoot.firstShotDelay = OBFx.orangeLaserCharge.lifetime;
 
-            shootSound = Sounds.laserblast;
-            chargeSound = Sounds.lasercharge;
+            shootSound = Sounds.shootCorvus;
+            chargeSound = Sounds.chargeCorvus;
             scaledHealth = 200;
             size = 4;
             moveWhileCharging = false;

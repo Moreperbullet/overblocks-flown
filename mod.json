@@ -1,9 +1,9 @@
 {
-    "displayName": "Overblocks Redux",
-    "description": "A java mod reimagining my old Overblocks mod",
+    "displayName": "Overflown Mod",
+    "description": "A java mod",
     "version": "0.0.1",
-    "minGameVersion": "149",
-    "author": "Moreperbullet (formerly BlueTheCube)",
+    "minGameVersion": "157.4",
+    "author": "Moreperbullet",
     "java": true,
-    "main": "overflown.OverblocksRedux"
+    "main": "overflown.OverflownMod"
 }

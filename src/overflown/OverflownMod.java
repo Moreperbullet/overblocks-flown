@@ -20,7 +20,7 @@ import overflown.graphics.*;
 import static mindustry.type.ItemStack.with;
 
 @SuppressWarnings("unused")
-public class OverblocksRedux extends Mod{
+public class OverflownMod extends Mod{
 
     public OverblocksRedux(){
         Events.on(ClientLoadEvent.class, e -> Time.runTask(10f, () -> {
