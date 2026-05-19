@@ -38,7 +38,6 @@ public class OBUnitTypes{
             speed = 0.5f;
             hitSize = 8f;
             health = 100;
-            ammoType = new PowerAmmoType(1000);
 
             weapons.add(new Weapon(name + "-weapon"){{
                 top = false;
@@ -69,7 +68,6 @@ public class OBUnitTypes{
             health = 350;
             armor = 4f;
             dodge = 2f / 3;
-            ammoType = new ItemAmmoType(Items.graphite);
 
             immunities.add(StatusEffects.shocked);
 
@@ -146,7 +144,6 @@ public class OBUnitTypes{
             health = 560;
             armor = 9f;
             mechFrontSway = 0.55f;
-            ammoType = new PowerAmmoType(1500);
 
             weapons.add(new Weapon(name + "-weapon"){{
                 top = false;
