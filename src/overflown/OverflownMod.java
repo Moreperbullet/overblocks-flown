@@ -22,7 +22,7 @@ import static mindustry.type.ItemStack.with;
 @SuppressWarnings("unused")
 public class OverflownMod extends Mod{
 
-    public OverblocksRedux(){
+    public OverflownMod(){
         Events.on(ClientLoadEvent.class, e -> Time.runTask(10f, () -> {
             assignColor(OBBlocks.hotCarbonStone, Color.valueOf("5f433d"));
             assignColor(OBBlocks.magmaCarbonStone, Color.valueOf("855443"));
