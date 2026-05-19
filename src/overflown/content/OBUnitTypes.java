@@ -10,7 +10,6 @@ import mindustry.entities.bullet.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
-import mindustry.type.ammo.*;
 import overflown.gen.*;
 import overflown.type.*;
 
