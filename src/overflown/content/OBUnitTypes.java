@@ -49,7 +49,7 @@ public class OBUnitTypes{
                 alternate = false;
                 ejectEffect = Fx.none;
                 recoil = 2f;
-                shootSound = Sounds.lasershoot;
+                shootSound = Sounds.shootLaser;
 
                 bullet = new LaserBoltBulletType(2.5f, 12){{
                     smokeEffect = Fx.hitLaserColor;
@@ -75,7 +75,7 @@ public class OBUnitTypes{
 
             weapons.add(new Weapon(name + "-weapon"){{
                 top = false;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootLocus;
                 shootY = 2f;
                 reload = 36f;
                 x = 6f;
@@ -157,7 +157,7 @@ public class OBUnitTypes{
                 recoil = 2f;
                 shake = 2f;
                 ejectEffect = Fx.none;
-                shootSound = Sounds.spark;
+                shootSound = Sounds.shootPulsar;
                 shoot.shots = 4;
                 shoot.shotDelay = 0.5f;
 
