@@ -1,6 +1,7 @@
 package overflown.type;
 
 import arc.graphics.*;
+import mindustry.entities.units.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
