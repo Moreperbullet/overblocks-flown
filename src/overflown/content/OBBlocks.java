@@ -224,47 +224,52 @@ public class OBBlocks{
                 Items.lead, new SapBulletType(){{
                     sapStrength = 0.3f;
                     length = 70f;
-                    damage = 23;
+                    damage = 20;
                     shootEffect = Fx.shootSmall;
                     hitColor = color = Color.valueOf("bf92f9");
                     despawnEffect = Fx.none;
                     width = 0.54f;
                     lifetime = 35f;
-                    knockback = -1.24f;
+                    knockback = -1.2f;
+                    ammoMultiplier = 2;
                 }},
                 Items.graphite, new SapBulletType(){{
                     sapStrength = 0.6f;
                     length = 70f;
-                    damage = 60;
+                    damage = 45;
                     shootEffect = Fx.shootSmall;
                     hitColor = color = OBPal.graphitic;
                     despawnEffect = Fx.none;
                     width = 1f;
                     lifetime = 35f;
-                    knockback = -1.24f;
-                    reloadMultiplier = 0.6f;
+                    knockback = -1.3f;
+                    reloadMultiplier = 0.7f;
+                    ammoMultiplier = 2;
                 }},
                 Items.thorium, new SapBulletType(){{
-                    sapStrength = 0.8f;
+                    sapStrength = 0.6f;
                     length = 120f;
-                    damage = 120;
+                    damage = 32;
                     rangeChange = 50f;
                     shootEffect = Fx.shootSmall;
                     hitColor = color = Items.thorium.color;
                     despawnEffect = Fx.none;
                     width = 1f;
-                    lifetime = 35f;
-                    knockback = -2f;
-                    reloadMultiplier = 0.1f;
+                
+                lifetime = 35f;
+                
+                knockback = -2f;
+               ammoMultiplier = 4;
                  }}
             );
+            scaleHealth = 270;
             size = 2;
             range = 70f;
-            reload = 21f;
+            reload = 25f;
             recoil = 2f;
             shootSound = Sounds.shootSap;
             shootY = 9f;
-            coolant = consumeCoolant(0.1f);
+            coolant = consumeCoolant(0.2f);
         }};
 
         devastation = new PowerTurret("devastation"){{
@@ -273,6 +278,8 @@ public class OBBlocks{
             reload = 420f;
             shake = 7f;
             range = 380f;
+            
+            cooldownTime = reload;
 
             shoot = new ShootSpread(3, 7.5f);
             shoot.firstShotDelay = OBFx.orangeLaserCharge.lifetime;
