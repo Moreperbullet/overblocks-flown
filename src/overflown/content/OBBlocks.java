@@ -262,7 +262,7 @@ public class OBBlocks{
                ammoMultiplier = 4;
                  }}
             );
-            scaleHealth = 270;
+            scaledHealth = 270;
             size = 2;
             range = 70f;
             reload = 25f;
