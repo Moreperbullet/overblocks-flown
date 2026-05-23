@@ -13,9 +13,8 @@ public class ReflectionWall extends Wall{
 
     @Override
     public void setStats(){
-        //TODO stats?
-        //i need that string stat bro
         super.setStats();
+        stats.add(OBStats.special, Core.bundle.get("special-reflection"));
     }
 
     public class ReflectionWallBuild extends WallBuild{
