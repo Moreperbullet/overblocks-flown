@@ -43,7 +43,6 @@ public class OverflownMod extends Mod{
     }
 
     public void loadOther(){
-        Blocks.sporeMoss.asFloor().blendGroup = Blocks.moss;
         Blocks.crystallineStoneWall.attributes.set(Attribute.sand, 0.7f);
         Blocks.arkyicWall.attributes.set(Attribute.sand, 1.1f);
         Blocks.redStone.asFloor().attributes.set(Attribute.water, -0.1f);

@@ -26,7 +26,7 @@ public class OBBlocks{
     hotCarbonStone, magmaCarbonStone, graphiticFloor, ceriseStone, redIceStone, shallowSlag, sunkenCoreZone, carbonPebbles, beryllicVent,
     redIceVent, ceriseVent, ceriseStoneWall, redGraphiticWall, ceriseBoulder,
     //other
-    diseaseMines, payloadPropulsionTower, plastaniumCrusher, diseaseMixer, plastaniumDeflectWall,
+    diseaseExtractor, payloadPropulsionTower, plastaniumCrusher, diseaseMixer, plastaniumDeflectWall,
     //turrets
     vampirism, devastation;
 
@@ -145,10 +145,13 @@ public class OBBlocks{
             ceriseStone.asFloor().decoration = this;
         }};
 
-        diseaseMines = new GenericCrafter("disease-mines"){{
+        diseaseExtractor = new Separator("disease-extractor"){{
             requirements(Category.production, with(Items.copper, 25, Items.lead, 25, Items.silicon, 10));
-            outputItem = new ItemStack(OBItems.diseaseFragments, 1);
-            craftTime = 120;
+            results = with(
+                Items.sand, 9,
+                OBItems.diseaseFragments, 1
+            )
+            craftTime = 45f;
             size = 2;
             drawer = new DrawMulti(new DrawDefault(), new DrawRegion("-rotator"){{
                 spinSprite = true;
@@ -160,10 +163,9 @@ public class OBBlocks{
             hasLiquids = true;
             hasPower = true;
             hasItems = true;
-            craftEffect = Fx.none;
 
             consumePower(130f / 60f);
-            consumeLiquid(Liquids.water, 6f / 60f);
+            consumeLiquid(Liquids.slag, 6f / 60f);
         }};
 
         payloadPropulsionTower = new PayloadMassDriver("payload-propulsion-tower"){{
@@ -206,16 +208,15 @@ public class OBBlocks{
             craftTime = 45f;
 
             consumePower(0.3f);
-            consumeItems(with(OBItems.diseaseFragments, 5, Items.sporePod, 2));
+            consumeItem(OBItems.diseaseFragments, 8);
         }};
 
         plastaniumDeflectWall = new ReflectionWall("plastanium-deflect-wall"){{
             requirements(Category.defense, ItemStack.with(Items.phaseFabric, 24, Items.plastanium, 16, Items.metaglass, 8));
-            health = 200 * 16;
+            health = 220 * 16;
             size = 2;
             insulated = true;
             absorbLasers = true;
-            envDisabled |= Env.scorching;
         }};
 
         vampirism = new ItemTurret("vampirism"){{
@@ -242,7 +243,7 @@ public class OBBlocks{
                     despawnEffect = Fx.none;
                     width = 1f;
                     lifetime = 35f;
-                    knockback = -1.3f;
+                    knockback = -2f;
                     reloadMultiplier = 0.7f;
                     ammoMultiplier = 2;
                 }},
@@ -258,11 +259,11 @@ public class OBBlocks{
                 
                 lifetime = 35f;
                 
-                knockback = -2f;
+                knockback = -3f;
                ammoMultiplier = 4;
                  }}
             );
-            scaledHealth = 270;
+            scaledHealth = 280;
             size = 2;
             range = 70f;
             reload = 25f;

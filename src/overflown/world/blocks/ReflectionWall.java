@@ -2,6 +2,7 @@ package overflown.world.blocks;
 
 import mindustry.gen.*;
 import mindustry.world.blocks.defense.*;
+import overflown.world.meta.*;
 
 public class ReflectionWall extends Wall{
     public float damageMultiplier = 0.2f;
@@ -13,6 +14,7 @@ public class ReflectionWall extends Wall{
     @Override
     public void setStats(){
         //TODO stats?
+        //i need that string stat bro
         super.setStats();
     }
 

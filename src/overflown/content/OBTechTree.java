@@ -30,13 +30,13 @@ public class OBTechTree{
         });
 
         vanillaNode(pyratiteMixer, () -> {
-            node(diseaseMines, () -> {
+            node(diseaseExtractor, () -> {
                 node(diseaseMixer);
             });
         });
 
         vanillaNode(phaseWall, () -> {
-            node(plastaniumDeflectWall, Seq.with(new Research(plastaniumWallLarge)));
+            node(plastaniumDeflectWall, Seq.with(new Research(plastaniumWallLarge), new Research(segment));
         });
 
         vanillaNode(meltdown, () -> {
