@@ -150,7 +150,7 @@ public class OBBlocks{
             results = with(
                 Items.sand, 9,
                 OBItems.diseaseFragments, 1
-            )
+            );
             craftTime = 45f;
             size = 2;
             drawer = new DrawMulti(new DrawDefault(), new DrawRegion("-rotator"){{

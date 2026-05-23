@@ -36,7 +36,10 @@ public class OBTechTree{
         });
 
         vanillaNode(phaseWall, () -> {
-            node(plastaniumDeflectWall, Seq.with(new Research(plastaniumWallLarge), new Research(segment));
+            node(plastaniumDeflectWall, Seq.with(
+                new Research(plastaniumWallLarge), 
+                new Research(segment)
+            ));
         });
 
         vanillaNode(meltdown, () -> {
