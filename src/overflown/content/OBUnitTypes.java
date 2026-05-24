@@ -178,10 +178,10 @@ public class OBUnitTypes{
         attorney = new OBUnitType("attorney", InvisibleMechUnit.class){{
             speed = 0.4f;
             hitsize = 21f;
-            rotateSpeed = 2.1f
+            rotateSpeed = 2.1f;
             health = 7900f;
             armor = 11f;
-            mechFrontSway = 1f
+            mechFrontSway = 1f;
             mechStepParticles = true;
             stepShake = 0.15f;
             drownTimeMultiplier = 1.4f;
