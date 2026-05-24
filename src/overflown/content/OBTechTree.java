@@ -53,7 +53,11 @@ public class OBTechTree{
         vanillaNode(nova, () -> {
             node(relayer, () -> {
                 node(announcer, () -> {
-                    node(agent);
+                    node(agent, ()
+                    -> {
+                        node(attorney);
+                    }
+                    );
                 });
             });
         });

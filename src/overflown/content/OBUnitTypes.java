@@ -193,14 +193,14 @@ public class OBUnitTypes{
             stepSoundPitch = 0.9f;
             stepSoundVolume = 0.25f;
             
-            immunities = ObjectSet.with(StatusEffects.shocked);
+            immunities = ObjectSet.with(StatusEffects.shocked, StatusEffects.electrified);
             
             weapons.add(new Weapon(name + "-weapon"){{
                 top = false;
                 y = 1f;
                 x = 16f;
                 shootY = 8f;
-                reload = 30f;
+                reload = 45f;
                 recoil = 3f;
                 shake = 2f;
                 ejectEffect = Fx.casing3;
@@ -211,8 +211,9 @@ public class OBUnitTypes{
                 shoot = new ShootSpread(13, 4f);
                 velocityRnd = 0.17f;
 
-                bullet = new BasicBulletType(8f, 67){{
-                  knockback = 4f;
+                bullet = new BasicBulletType(8f, 71){{
+                    lifetime = 15f;
+                    knockback = 2f;
                 width = 25f;
                 hitSize = 7f;
                 height = 20f;
