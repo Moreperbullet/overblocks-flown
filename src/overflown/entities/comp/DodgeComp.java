@@ -4,6 +4,7 @@ import arc.math.*;
 import arc.util.*;
 import mindustry.*;
 import mindustry.entities.*;
+import mindustry.game.*;
 import mindustry.gen.*;
 import mindustry.type.*;
 import overflown.type.*;
