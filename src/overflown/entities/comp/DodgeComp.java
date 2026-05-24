@@ -13,7 +13,7 @@ import static ent.anno.Annotations.*;
 
 @EntityComponent
 abstract class DodgeComp implements Shieldc{
-    @Import float armor, healthMultiplier, hitTime;
+    @Import float armor, healthMultiplier, hitTime, armorOverride;
     @Import static float hitDuration;
     @Import UnitType type;
     @Import Team team;
