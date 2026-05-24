@@ -22,7 +22,7 @@ abstract class DodgeComp implements Shieldc{
     }
 
     public void damageNoDodge(float amount){
-        rawDamage(Damage.applyArmor(amount, armorOverride => 0f ? armorOverride : armor) / healthMultiplier / Vars.state.rules.unitHealth(team));
+        rawDamage(Damage.applyArmor(amount, armorOverride >= 0f ? armorOverride : armor) / healthMultiplier / Vars.state.rules.unitHealth(team));
     }
 
     public void damagePierceNoDodge(float amount, boolean withEffect){
@@ -35,10 +35,20 @@ abstract class DodgeComp implements Shieldc{
         }
     }
 
+    public void damageArmorMultNoDodge(float amount, float armorMult, boolean withEffect){
+        float pre = hitTime;
+
+        rawDamage(Damage.applyArmor(amount, armorOverride >= 0f ? armorOverride * armorMult : armor * armorMult) / healthMultiplier / Vars.state.rules.unitHealth(team));
+
+        if(!withEffect){
+            hitTime = pre;
+        }
+    }
+
     @Override
     @Replace(100)
     public void damage(float amount){
-        rawDamage(damageDodge(Damage.applyArmor(amount, armorOverride => 0f ? armorOverride : armor)) / healthMultiplier / Vars.state.rules.unitHealth(team));
+        rawDamage(damageDodge(Damage.applyArmor(amount, armorOverride >= 0f ? armorOverride : armor)) / healthMultiplier / Vars.state.rules.unitHealth(team));
     }
 
     @Override
@@ -55,6 +65,18 @@ abstract class DodgeComp implements Shieldc{
 
     @Override
     @Replace(100)
+    public void damageArmorMult(float amount, float armorMult, boolean withEffect){
+        float pre = hitTime;
+
+        rawDamage(damageDodge(Damage.applyArmor(amount, armorOverride >= 0f ? armorOverride * armorMult : armor * armorMult)) / healthMultiplier / Vars.state.rules.unitHealth(team));
+
+        if(!withEffect){
+            hitTime = pre;
+        }
+    }
+
+    @Override
+    @Replace(100)
     public void damageContinuous(float amount){
         damageNoDodge(amount * Time.delta, hitTime <= -10 + hitDuration);
     }
@@ -63,5 +85,11 @@ abstract class DodgeComp implements Shieldc{
     @Replace(100)
     public void damageContinuousPierce(float amount) {
         damagePierceNoDodge(amount * Time.delta, hitTime <= -10 + hitDuration);
+    }
+    
+    @Override
+    @Replace(100)
+    public void damageContinuousArmorMult(float amount, armorMult) {
+        damageArmorMultNoDodge(amount * Time.delta, armorMult, hitTime <= -10 + hitDuration);
     }
 }
