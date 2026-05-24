@@ -4,9 +4,11 @@ import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
 import arc.math.geom.*;
+import arc.struct.*;
 import mindustry.content.*;
 import mindustry.entities.*;
 import mindustry.entities.bullet.*;
+import mindustry.entities.pattern.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
@@ -177,7 +179,7 @@ public class OBUnitTypes{
         
         attorney = new OBUnitType("attorney", InvisibleMechUnit.class){{
             speed = 0.4f;
-            hitsize = 21f;
+            hitSize = 21f;
             rotateSpeed = 2.1f;
             health = 7900f;
             armor = 11f;
