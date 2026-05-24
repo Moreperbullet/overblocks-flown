@@ -89,7 +89,7 @@ abstract class DodgeComp implements Shieldc{
     
     @Override
     @Replace(100)
-    public void damageContinuousArmorMult(float amount, armorMult) {
+    public void damageContinuousArmorMult(float amount, float armorMult) {
         damageArmorMultNoDodge(amount * Time.delta, armorMult, hitTime <= -10 + hitDuration);
     }
 }
