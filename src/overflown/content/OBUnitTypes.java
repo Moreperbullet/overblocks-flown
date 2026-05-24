@@ -21,7 +21,7 @@ public class OBUnitTypes{
 
     public static UnitType testUnit,
 
-    relayer, announcer, agent, spy, undercover;
+    relayer, announcer, agent, attorney, undercover;
 
     public static void load(){
 
@@ -171,6 +171,60 @@ public class OBUnitTypes{
                         hittable = false;
                         statusDuration = 10f;
                     }};
+                }};
+            }});
+        }};
+        
+        attorney = new OBUnitType("attorney", InvisibleMechUnit.class){{
+            speed = 0.4f;
+            hitsize = 21f;
+            rotateSpeed = 2.1f
+            health = 7900f;
+            armor = 11f;
+            mechFrontSway = 1f
+            mechStepParticles = true;
+            stepShake = 0.15f;
+            drownTimeMultiplier = 1.4f;
+            
+            singleTarget = true;
+            stepSound = Sounds.mechStep;
+            stepSoundPitch = 0.9f;
+            stepSoundVolume = 0.25f;
+            
+            immunities = ObjectSet.with(StatusEffects.shocked);
+            
+            weapons.add(new Weapon(name + "-weapon"){{
+                top = false;
+                y = 1f;
+                x = 16f;
+                shootY = 8f;
+                reload = 30f;
+                recoil = 3f;
+                shake = 2f;
+                ejectEffect = Fx.casing3;
+                shootSound = Sounds.shootDiffuse;
+                shootCone = 20f;
+                inaccuracy = 0.2f;
+
+                shoot = new ShootSpread(13, 4f);
+                velocityRnd = 0.17f;
+
+                bullet = new BasicBulletType(8f, 67){{
+                  knockback = 4f;
+                width = 25f;
+                hitSize = 7f;
+                height = 20f;
+                shootEffect = Fx.shootBigColor;
+                smokeEffect = Fx.shootSmokeSquareSparse;
+                ammoMultiplier = 1;
+                hitColor = backColor = trailColor = Pal.techBlue;
+                frontColor = Pal.lancerLaser;
+                trailWidth = 6f;
+                trailLength = 3;
+                hitEffect = despawnEffect = Fx.hitSquaresColor;
+
+                status = StatusEffects.shocked;
+                    statusDuration = 10f;
                 }};
             }});
         }};
