@@ -161,7 +161,7 @@ public class OBUnitTypes{
 
                 bullet = new LightningBulletType(){{
                     lightningColor = hitColor = Pal.lancerLaser;
-                    damage = 14f;
+                    damage = 20f;
                     lightningLength = 8;
                     lightningLengthRand = 7;
 
@@ -214,19 +214,18 @@ public class OBUnitTypes{
                 bullet = new BasicBulletType(8f, 71){{
                     lifetime = 15f;
                     knockback = 2f;
-                width = 25f;
-                hitSize = 7f;
-                height = 20f;
-                shootEffect = Fx.shootBigColor;
-                smokeEffect = Fx.shootSmokeSquareSparse;
-                ammoMultiplier = 1;
-                hitColor = backColor = trailColor = Pal.techBlue;
-                frontColor = Pal.lancerLaser;
-                trailWidth = 6f;
-                trailLength = 3;
-                hitEffect = despawnEffect = Fx.hitSquaresColor;
+                    width = 25f;
+                    hitSize = 7f;
+                    height = 20f;
+                    shootEffect = Fx.shootBigColor;
+                    smokeEffect = Fx.shootSmokeSquareSparse;
+                    hitColor = backColor = trailColor = Pal.techBlue;
+                    frontColor = Pal.lancerLaser;
+                    trailWidth = 6f;
+                    trailLength = 3;
+                    hitEffect = despawnEffect = Fx.hitSquaresColor;
 
-                status = StatusEffects.shocked;
+                    status = StatusEffects.shocked;
                     statusDuration = 10f;
                     lightning = 2;
                     lightningLength = 5;
