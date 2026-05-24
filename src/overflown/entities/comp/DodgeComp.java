@@ -26,6 +26,16 @@ abstract class DodgeComp implements Shieldc{
         rawDamage(Damage.applyArmor(amount, armorOverride >= 0f ? armorOverride : armor) / healthMultiplier / Vars.state.rules.unitHealth(team));
     }
 
+    public void damageNoDodge(float amount, boolean withEffect){
+        float pre = hitTime;
+
+        damageNoDodge(amount);
+
+        if(!withEffect){
+            hitTime = pre;
+        }
+    }
+
     public void damagePierceNoDodge(float amount, boolean withEffect){
         float pre = hitTime;
 
@@ -85,12 +95,12 @@ abstract class DodgeComp implements Shieldc{
     @Override
     @Replace(100)
     public void damageContinuousPierce(float amount) {
-        damagePierceNoDodge(amount * Time.delta, hitTime <= -10 + hitDuration);
+        damagePierceNoDodge(amount * Time.delta, hitTime <= -20 + hitDuration);
     }
     
     @Override
     @Replace(100)
     public void damageContinuousArmorMult(float amount, float armorMult) {
-        damageArmorMultNoDodge(amount * Time.delta, armorMult, hitTime <= -10 + hitDuration);
+        damageArmorMultNoDodge(amount * Time.delta, armorMult, hitTime <= -20 + hitDuration);
     }
 }
