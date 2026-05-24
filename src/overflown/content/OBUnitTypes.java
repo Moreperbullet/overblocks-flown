@@ -228,6 +228,11 @@ public class OBUnitTypes{
 
                 status = StatusEffects.shocked;
                     statusDuration = 10f;
+                    lightning = 2;
+                    lightningLength = 5;
+                    lightningColor = Pal.lancerLaser;
+                    lightningDamage = 15;
+                    despawnSound = Sounds.shockBullet;
                 }};
             }});
         }};
