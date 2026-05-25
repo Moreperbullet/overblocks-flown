@@ -41,6 +41,12 @@ public class OBTechTree{
                 new Research(segment)
             ));
         });
+    
+        vanillaNode(massDriver, () -> {
+            node(payloadPropulsionTower, Seq.with(
+                new Research(payloadConveyor)
+            ));
+        });
 
         vanillaNode(meltdown, () -> {
             node(devastation, Seq.with(new SectorComplete(SectorPresets.overgrowth), new Research(plastaniumCrusher)));
