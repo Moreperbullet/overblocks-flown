@@ -249,9 +249,8 @@ public class OBUnitTypes{
             health = 210;
             engineOffset = 5.75f;
             targetFlags = new BlockFlag[]{BlockFlag.generator, BlockFlag.battery, null};
-            hitSize = 9;
+            hitSize = 10;
             itemCapacity = 15;
-            omniMovement = false;
             rotateSpeed = 5f;
             wreckSoundVolume = 0.7f;
 
@@ -269,17 +268,16 @@ public class OBUnitTypes{
 
                 shootCone = 30f;
 
-                shoot = new ShootSpread(2, 11f);
+                shoot = new ShootSpread(3, 11f);
 
-                bullet = new BasicBulletType(10f, 9){{
-                    homingPower = 0.19f;
-                    homingDelay = 4f;
+                bullet = new BasicBulletType(7f, 9){{
+                    homingPower = 0.2f;
                     width = 7f;
                     height = 12f;
-                    lifetime = 30f;
+                    lifetime = 20f;
                     shootEffect = Fx.sparkShoot;
                     smokeEffect = Fx.shootBigSmoke;
-                    hitColor = backColor = trailColor = Pal.suppress;
+                    hitColor = backColor = trailColor = Pal.sap;
                     frontColor = Color.white;
                     trailWidth = 1.5f;
                     trailLength = 5;
