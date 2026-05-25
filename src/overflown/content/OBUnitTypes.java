@@ -31,7 +31,7 @@ public class OBUnitTypes{
     public static void load(){
 
         if(true) testUnit = new OBUnitType("test-unit", PhoenixUnit.class){{
-            health = 100;
+            health = 500;
             hidden = true;
             flying = true;
         }};
@@ -246,7 +246,7 @@ public class OBUnitTypes{
             accel = 0.06f;
             drag = 0.04f;
             flying = true;
-            health = 210;
+            health = 120;
             engineOffset = 5.75f;
             targetFlags = new BlockFlag[]{BlockFlag.generator, BlockFlag.battery, null};
             hitSize = 10;
@@ -261,7 +261,7 @@ public class OBUnitTypes{
 
             weapons.add(new Weapon(){{
                 shootSound = Sounds.shootElude;
-                y = 2f;
+                y = 1.5f;
                 x = 0f;
                 mirror = false;
                 reload = 50f;

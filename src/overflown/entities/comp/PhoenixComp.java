@@ -26,25 +26,30 @@ abstract class PhoenixComp implements Shieldc, Unitc{
     @Replace(10)
     public void kill(){
         if(!revived){
+            health = type.health;
             iframes = 210;
             revived = true;
             dead = false;
-            if(health < 0) health = 1;
             if(type.flying) elevation = 1; //this is not a wreck
             return;
         }
-        if(dead || net.client() || !type.killable || iframes > 0) return;
+        if(dead || net.client() || !type.killable() || iframes > 0) return;
 
         Call.unitDeath(id);
     }
 
     @Wrap("damage(float)")
     public boolean canBeDamaged(){
-        return iframes < 1;
+        return iframes < 0.0001f;
     }
 
     @Wrap("damagePierce(float, boolean)")
     public boolean canBeDamagePierced(){
-        return iframes < 1;
+        return iframes < 0.0001f;
+    }
+
+    @Wrap("damageArmorMult(float, float, boolean)")
+    public boolean canBeDamageArmorMulted(){
+        return iframes < 0.0001f;
     }
 }

@@ -79,7 +79,9 @@ public class OverflownMod extends Mod{
 
         ((ItemTurret)Blocks.fuse).ammoTypes.put(OBItems.diseaseVector, diseaseFuseBullet);
 
-        ((UnitFactory)Blocks.groundFactory).plans.add(new UnitPlan(OBUnitTypes.relayer, 60f * 30, with(Items.silicon, 20, Items.copper, 30)));
+        ((UnitFactory)Blocks.groundFactory).plans.add(
+            new UnitPlan(OBUnitTypes.relayer, 60f * 30, with(Items.silicon, 20, Items.copper, 30))
+        );
 
         ((Reconstructor)Blocks.additiveReconstructor).upgrades.add(new UnitType[]{OBUnitTypes.relayer, OBUnitTypes.announcer});
 
@@ -87,7 +89,9 @@ public class OverflownMod extends Mod{
     
         ((Reconstructor)Blocks.exponentialReconstructor).upgrades.add(new UnitType[]{OBUnitTypes.agent, OBUnitTypes.attorney});
 
-        ((UnitFactory)Blocks.airFactory).plans.add(new UnitPlan(OBUnitTypes.aphid, 60f * 30, with(Items.silicon, 30, Items.metaglass, 15)));
+        ((UnitFactory)Blocks.airFactory).plans.add(new UnitPlan(
+            OBUnitTypes.aphid, 60f * 30, with(Items.silicon, 30, Items.metaglass, 30))
+        );
     }
 
     public static void assignColor(Block block, Color color){
