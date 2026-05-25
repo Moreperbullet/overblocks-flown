@@ -19,6 +19,7 @@ abstract class PhoenixComp implements Shieldc, Unitc{
 
     @Override
     public void update(){
+        if(revived && iframes < 0) kill();
         iframes -= Time.delta;
     }
 
@@ -33,7 +34,7 @@ abstract class PhoenixComp implements Shieldc, Unitc{
             if(type.flying) elevation = 1; //this is not a wreck
             return;
         }
-        if(dead || net.client() || !type.killable() || iframes > 0) return;
+        if(dead || net.client() || !type.killable || iframes > 0) return;
 
         Call.unitDeath(id);
     }
