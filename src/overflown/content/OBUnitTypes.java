@@ -12,6 +12,7 @@ import mindustry.entities.pattern.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
+import mindustry.world.meta.*;
 import overflown.gen.*;
 import overflown.type.*;
 
@@ -247,7 +248,7 @@ public class OBUnitTypes{
             flying = true;
             health = 210;
             engineOffset = 5.75f;
-            targetFlags = new BlockFlag[]{BlockFlag.generator, null};
+            targetFlags = new BlockFlag[]{BlockFlag.generator, BlockFlag.battery, null};
             hitSize = 9;
             itemCapacity = 15;
             omniMovement = false;
