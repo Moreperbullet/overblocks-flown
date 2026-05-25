@@ -86,6 +86,8 @@ public class OverflownMod extends Mod{
         ((Reconstructor)Blocks.multiplicativeReconstructor).upgrades.add(new UnitType[]{OBUnitTypes.announcer, OBUnitTypes.agent});
     
         ((Reconstructor)Blocks.exponentialReconstructor).upgrades.add(new UnitType[]{OBUnitTypes.agent, OBUnitTypes.attorney});
+
+        ((UnitFactory)Blocks.airFactory).plans.add(new UnitPlan(OBUnitTypes.aphid, 60f * 30, with(Items.silicon, 30, Items.metaglass, 15)));
     }
 
     public static void assignColor(Block block, Color color){

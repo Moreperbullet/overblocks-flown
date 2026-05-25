@@ -23,7 +23,9 @@ public class OBUnitTypes{
 
     public static UnitType testUnit,
 
-    relayer, announcer, agent, attorney, undercover;
+    relayer, announcer, agent, attorney, undercover,
+
+    aphid, acyrtho, mindarus, rhophalo, toxoptera;
 
     public static void load(){
 
@@ -33,7 +35,7 @@ public class OBUnitTypes{
             flying = true;
         }};
 
-        //region spook
+        //region ground spook
         relayer = new OBUnitType("relayer", DodgeMechUnit.class){{
             dodge = 0.5f;
             speed = 0.5f;
@@ -232,6 +234,55 @@ public class OBUnitTypes{
                     lightningColor = Pal.lancerLaser;
                     lightningDamage = 15;
                     despawnSound = Sounds.shockBullet;
+                }};
+            }});
+        }};
+        //endregion
+        
+        //region insectoid air
+        aphid = new OBUnitType("aphid", UnitEntity.class){{
+            speed = 2.6f;
+            accel = 0.06f;
+            drag = 0.04f;
+            flying = true;
+            health = 210;
+            engineOffset = 5.75f;
+            targetFlags = new BlockFlag[]{BlockFlag.generator, null};
+            hitSize = 9;
+            itemCapacity = 15;
+            omniMovement = false;
+            rotateSpeed = 5f;
+            wreckSoundVolume = 0.7f;
+
+            moveSound = Sounds.loopThruster;
+            moveSoundPitchMin = 0.3f;
+            moveSoundPitchMax = 1.5f;
+            moveSoundVolume = 0.2f;
+
+            weapons.add(new Weapon(){{
+                shootSound = Sounds.shootElude;
+                y = 2f;
+                x = 0f;
+                mirror = false;
+                reload = 50f;
+
+                shootCone = 30f;
+
+                shoot = new ShootSpread(2, 11f);
+
+                bullet = new BasicBulletType(10f, 9){{
+                    homingPower = 0.19f;
+                    homingDelay = 4f;
+                    width = 7f;
+                    height = 12f;
+                    lifetime = 30f;
+                    shootEffect = Fx.sparkShoot;
+                    smokeEffect = Fx.shootBigSmoke;
+                    hitColor = backColor = trailColor = Pal.suppress;
+                    frontColor = Color.white;
+                    trailWidth = 1.5f;
+                    trailLength = 5;
+                    hitEffect = despawnEffect = Fx.hitBulletColor;
                 }};
             }});
         }};
