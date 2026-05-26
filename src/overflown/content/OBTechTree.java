@@ -12,6 +12,7 @@ import static mindustry.content.Items.*;
 import static mindustry.content.Blocks.*;
 import static mindustry.content.SectorPresets.*;
 import static mindustry.content.UnitTypes.*;
+import static overflown.content.OBItems.*;
 import static overflown.content.OBSectorPresets.*;
 import static overflown.content.OBBlocks.*;
 import static overflown.content.OBUnitTypes.*;
@@ -26,14 +27,20 @@ public class OBTechTree{
             node(plastaniumCrusher);
         });
 
-        vanillaNode(Items.pyratite, () -> {
-            node(OBItems.diseaseFragments, () -> {
-                node(OBItems.diseaseVector);
+        vanillaNode(pyratite, () -> {
+            node(diseaseFragments, Seq.with(
+                new Produce(diseaseFragments)
+            ), () -> {
+                node(diseaseVector, Seq.with(
+                    new Produce(diseaseVector)
+                ));
             });
         });
 
         vanillaNode(pyratiteMixer, () -> {
-            node(diseaseExtractor, () -> {
+            node(diseaseExtractor, Seq.with(
+                new SectorComplete(lifelessCanyon)
+            ), () -> {
                 node(diseaseMixer);
             });
         });
@@ -91,7 +98,7 @@ public class OBTechTree{
 
         vanillaNode(biomassFacility, () -> {
             node(lifelessCanyon, Seq.with(
-                new Produce(titanium),
+                new Research(titanium),
                 new SectorComplete(biomassFacility)
             ));
         });

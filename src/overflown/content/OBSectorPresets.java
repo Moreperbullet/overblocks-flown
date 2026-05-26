@@ -13,5 +13,9 @@ public class OBSectorPresets{
          captureWave = 30;
          difficulty = 3;
       }};
+
+      //disease vector fallout site
+
+      //aquamarine meteorites
    }
 }

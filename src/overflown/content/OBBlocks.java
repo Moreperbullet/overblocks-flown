@@ -263,7 +263,7 @@ public class OBBlocks{
             ammo(
                 Items.lead, new SapBulletType(){{
                     sapStrength = 0.3f;
-                    length = 80f;
+                    length = 95f;
                     damage = 20;
                     shootEffect = Fx.shootSmall;
                     hitColor = color = Color.valueOf("bf92f9");
@@ -275,7 +275,7 @@ public class OBBlocks{
                 }},
                 Items.graphite, new SapBulletType(){{
                     sapStrength = 0.6f;
-                    length = 80f;
+                    length = 95f;
                     damage = 48;
                     shootEffect = Fx.shootSmall;
                     hitColor = color = OBPal.graphitic;
@@ -288,7 +288,7 @@ public class OBBlocks{
                 }},
                 Items.thorium, new SapBulletType(){{
                     sapStrength = 0.6f;
-                    length = 120f;
+                    length = 155f;
                     damage = 32;
                     rangeChange = 60f;
                     shootEffect = Fx.shootSmall;
@@ -304,12 +304,12 @@ public class OBBlocks{
             );
             scaledHealth = 280;
             size = 2;
-            range = 80f;
+            range = 95f;
             reload = 25f;
             recoil = 2f;
             shootSound = Sounds.shootSap;
             shootY = 9f;
-            researchCostMultiplier = 0.1f;
+            researchCostMultiplier = 0.05f;
             coolant = consumeCoolant(0.2f);
         }};
 
