@@ -12,6 +12,6 @@ public class OBSectorPresets{
       lifelessCanyon = new SectorPreset("lifelessCanyon", serpulo, 256){{
          captureWave = 30;
          difficulty = 3;
-      }}
+      }};
    }
 }
