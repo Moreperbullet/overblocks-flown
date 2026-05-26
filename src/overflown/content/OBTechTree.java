@@ -12,6 +12,7 @@ import static mindustry.content.Blocks.*;
 import static mindustry.content.SectorPresets.*;
 import static mindustry.content.UnitTypes.*;
 import static overflown.content.OBSectorPresets.*;
+import static overflown.content.OBBlocks.*;
 import static overflown.content.OBUnitTypes.*;
 
 @SuppressWarnings({"unused", "CodeBlock2Expr"})
