@@ -25,8 +25,10 @@ public class OBBlocks{
     //enviroment
     hotCarbonStone, magmaCarbonStone, graphiticFloor, ceriseStone, redIceStone, shallowSlag, sunkenCoreZone, carbonPebbles, beryllicVent,
     redIceVent, ceriseVent, ceriseStoneWall, redGraphiticWall, ceriseBoulder,
+    //payloads
+    largePayloadConveyor, payloadBuilder, payloadBreaker, payloadPropulsionTower,
     //other
-    diseaseExtractor, payloadPropulsionTower, plastaniumCrusher, diseaseMixer, plastaniumDeflectWall,
+    plastaniumCrusher, diseaseExtractor, diseaseMixer, plastaniumDeflectWall,
     //turrets
     vampirism, devastation;
 
@@ -145,27 +147,39 @@ public class OBBlocks{
             ceriseStone.asFloor().decoration = this;
         }};
 
-        diseaseExtractor = new Separator("disease-extractor"){{
-            requirements(Category.production, with(Items.copper, 25, Items.lead, 25, Items.silicon, 10));
-            results = with(
-                Items.sand, 9,
-                OBItems.diseaseFragments, 1
-            );
-            craftTime = 45f;
-            size = 2;
-            drawer = new DrawMulti(new DrawDefault(), new DrawRegion("-rotator"){{
-                spinSprite = true;
-                rotateSpeed = 6;
-                layer = Layer.block + 0.2f;
-            }}, new DrawRegion("-top"){{
-                layer = Layer.block + 0.3f;
-            }});
-            hasLiquids = true;
-            hasPower = true;
-            hasItems = true;
+        largePayloadConveyor = new PayloadConveyor("large-payload-conveyor"){{
+            requirements(Category.units, with(Items.graphite, 30, Items.copper, 30));
+            canOverdrive = false;
+        }};
 
-            consumePower(130f / 60f);
-            consumeLiquid(Liquids.slag, 6f / 60f);
+        payloadBuilder = new Constructor("payload-builder"){{
+            requirements(Category.units, with(Items.silicon, 50, Items.graphite, 120, Items.thorium, 60));
+            hasPower = true;
+            buildSpeed = 0.8f;
+            consumePower(3f);
+            size = 3;
+            filter = Seq.with(
+                Blocks.scrapWallLarge,
+                Blocks.copperWallLarge,
+                Blocks.titaniumWallLarge,
+                Blocks.thoriumWallLarge,
+                Blocks.plastaniumWallLarge,
+                Blocks.surgeWallLarge,
+                Blocks.liquidContainer,
+                Blocks.container,
+                Blocks.powerNode,
+                Blocks.mender,
+                Blocks.mendProjector,
+                Blocks.cultivator
+            );
+        }};
+
+        payloadBreaker = new PayloadDeconstructor("payload-breaker"){{
+            requirements(Category.units, with(Items.silicon, 50, Items.metaglass, 100, Items.thorium, 60, Items.graphite, 80));
+            itemCapacity = 100;
+            consumePower(3f);
+            size = 3;
+            deconstructSpeed = 2f;
         }};
 
         payloadPropulsionTower = new PayloadMassDriver("payload-propulsion-tower"){{
@@ -196,6 +210,29 @@ public class OBBlocks{
             consumePower(4f);
             consumeItem(Items.titanium, 6);
             consumeItem(Items.coal, 2);
+        }};
+        
+        diseaseExtractor = new Separator("disease-extractor"){{
+            requirements(Category.production, with(Items.copper, 25, Items.lead, 25, Items.silicon, 10));
+            results = with(
+                Items.sand, 9,
+                OBItems.diseaseFragments, 1
+            );
+            craftTime = 45f;
+            size = 2;
+            drawer = new DrawMulti(new DrawDefault(), new DrawRegion("-rotator"){{
+                spinSprite = true;
+                rotateSpeed = 6;
+                layer = Layer.block + 0.2f;
+            }}, new DrawRegion("-top"){{
+                layer = Layer.block + 0.3f;
+            }});
+            hasLiquids = true;
+            hasPower = true;
+            hasItems = true;
+
+            consumePower(130f / 60f);
+            consumeLiquid(Liquids.slag, 6f / 60f);
         }};
 
         diseaseMixer = new GenericCrafter("disease-mixer"){{
