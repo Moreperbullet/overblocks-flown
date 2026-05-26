@@ -8,6 +8,7 @@ import mindustry.ctype.*;
 import mindustry.game.Objectives.*;
 import mindustry.type.*;
 
+import static mindustry.content.Items.*;
 import static mindustry.content.Blocks.*;
 import static mindustry.content.SectorPresets.*;
 import static mindustry.content.UnitTypes.*;
@@ -89,7 +90,10 @@ public class OBTechTree{
         });
 
         vanillaNode(biomassFacility, () -> {
-            node(lifelessCanyon);
+            node(lifelessCanyon, Seq.with(
+                new Produce(titanium),
+                new SectorComplete(biomassFacility)
+            ));
         });
     }
 
