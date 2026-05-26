@@ -9,8 +9,9 @@ import mindustry.game.Objectives.*;
 import mindustry.type.*;
 
 import static mindustry.content.Blocks.*;
+import static mindustry.content.SectorPresets.*;
 import static mindustry.content.UnitTypes.*;
-import static overflown.content.OBBlocks.*;
+import static overflown.content.OBSectorPresets.*;
 import static overflown.content.OBUnitTypes.*;
 
 @SuppressWarnings({"unused", "CodeBlock2Expr"})
@@ -59,15 +60,19 @@ public class OBTechTree{
         });
 
         vanillaNode(meltdown, () -> {
-            node(devastation, Seq.with(new SectorComplete(SectorPresets.overgrowth), new Research(plastaniumCrusher)));
+            node(devastation, Seq.with(new SectorComplete(overgrowth), new Research(plastaniumCrusher)));
         });
 
         vanillaNode(scorch, () -> {
-            node(vampirism);
+            node(vampirism, Seq.with(
+                new OnSector(lifelessCanyon)
+            ));
         });
 
         vanillaNode(nova, () -> {
-            node(relayer, () -> {
+            node(relayer, Seq.with(
+                new SectorComplete(lifelessCanyon)
+            ), () -> {
                 node(announcer, () -> {
                     node(agent, () -> {
                         node(attorney);
@@ -77,7 +82,13 @@ public class OBTechTree{
         });
 
         vanillaNode(mono, () -> {
-            node(aphid);
+            node(aphid, Seq.with(
+                new SectorComplete(lifelessCanyon)
+            ));
+        });
+
+        vanillaNode(biomassFacility, () -> {
+            node(lifelessCanyon);
         });
     }
 

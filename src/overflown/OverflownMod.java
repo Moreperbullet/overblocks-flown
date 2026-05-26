@@ -38,6 +38,7 @@ public class OverflownMod extends Mod{
         OBItems.load();
         OBUnitTypes.load();
         OBBlocks.load();
+        OBSectorPresets.load();
         OBTechTree.load();
         loadOther();
     }
