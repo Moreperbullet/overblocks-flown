@@ -287,11 +287,12 @@ public class OBUnitTypes{
         }};
 
         acyrtho = new OBUnitType("acyrtho", UnitEntity.class){{
-            speed = 2.5f;
+            armor = 3f;
+            speed = 2.7f;
             accel = 0.08f;
             drag = 0.03f;
             flying = true;
-            health = 310;
+            health = 350;
             engineOffset = 6f;
     
             targetFlags = new BlockFlag[]{BlockFlag.generator, BlockFlag.battery, null};
@@ -299,18 +300,18 @@ public class OBUnitTypes{
             itemCapacity = 15;
     
             weapons.add(new Weapon(name + "-weapon"){{
-                reload = 45f;
+                reload = 30f;
                 x = 3f;
                 y = 2f;
                 rotate = true;
                 shake = 1f;
                 inaccuracy = 2f;
                 velocityRnd = 0.2f;
-                shootSound = Sounds.shootMissileLong;
+                shootSound = Sounds.shootMissile;
 
-                bullet = new MissileBulletType(3f, 27){{
-                    width = 4f;
-                    height = 4f;
+                bullet = new MissileBulletType(3f, 28){{
+                    width = 6f;
+                    height = 8f;
                     shrinkY = 0f;
                     drag = -0.003f;
                     homingRange = 60f;
