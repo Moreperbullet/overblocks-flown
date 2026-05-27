@@ -7,12 +7,14 @@ import arc.math.geom.*;
 import arc.struct.*;
 import mindustry.content.*;
 import mindustry.entities.*;
+import mindustry.entities.abilities.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.pattern.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
 import mindustry.world.meta.*;
+import overflown.entities.abilities.*;
 import overflown.gen.*;
 import overflown.type.*;
 
@@ -148,6 +150,7 @@ public class OBUnitTypes{
             health = 560;
             armor = 9f;
             mechFrontSway = 0.55f;
+            abilities.add(new InvisibleAbility(0.01f));
 
             weapons.add(new Weapon(name + "-weapon"){{
                 top = false;
@@ -195,6 +198,7 @@ public class OBUnitTypes{
             stepSound = Sounds.mechStep;
             stepSoundPitch = 0.9f;
             stepSoundVolume = 0.25f;
+            abilities.add(new InvisibleAbility(0.01f));
             
             immunities = ObjectSet.with(StatusEffects.shocked, StatusEffects.electrified);
             
