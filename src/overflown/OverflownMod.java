@@ -39,8 +39,8 @@ public class OverflownMod extends Mod{
         OBUnitTypes.load();
         OBBlocks.load();
         OBSectorPresets.load();
-        OBTechTree.load();
         loadOther();
+        OBTechTree.load();
     }
 
     public void loadOther(){

@@ -149,7 +149,7 @@ public class OBBlocks{
         }};
 
         largePayloadConveyor = new PayloadConveyor("large-payload-conveyor"){{
-            requirements(Category.units, with(Items.graphite, 30, Items.copper, 30));
+            requirements(Category.units, with(Items.graphite, 30, Items.copper, 30, Items.titanium, 12));
             canOverdrive = false;
             size = 5;
         }};
@@ -282,7 +282,7 @@ public class OBBlocks{
                     despawnEffect = Fx.none;
                     width = 1f;
                     lifetime = 35f;
-                    knockback = -2f;
+                    knockback = -4f;
                     reloadMultiplier = 0.7f;
                     ammoMultiplier = 2;
                 }},
@@ -329,7 +329,7 @@ public class OBBlocks{
         }};
 
         devastation = new PowerTurret("devastation"){{
-            requirements(Category.turret, with(Items.titanium, 750, Items.lead, 350, Items.metaglass, 250, Items.surgeAlloy, 325, Items.silicon, 275));
+            requirements(Category.turret, with(Items.lead, 650, Items.titanium, 350, Items.metaglass, 300, Items.surgeAlloy, 255, Items.silicon, 275));
             recoil = 3.5f;
             reload = 420f;
             shake = 7f;
@@ -349,7 +349,7 @@ public class OBBlocks{
 
             float brange = range + 10f;
 
-            shootType = new LaserBulletType(400){{
+            shootType = new LaserBulletType(430){{
                 length = brange;
                 width = 50f;
 

@@ -164,8 +164,8 @@ public class OBUnitTypes{
 
                 bullet = new LightningBulletType(){{
                     lightningColor = hitColor = Pal.lancerLaser;
-                    damage = 20f;
-                    lightningLength = 8;
+                    damage = 24f;
+                    lightningLength = 19;
                     lightningLengthRand = 7;
 
                     lightningType = new BulletType(0.0001f, 0f){{
