@@ -93,7 +93,9 @@ public class OBTechTree{
         vanillaNode(mono, () -> {
             node(aphid, Seq.with(
                 new SectorComplete(lifelessCanyon)
-            ));
+            ), () -> {
+                node(acyrtho);
+            });
         });
 
         vanillaNode(biomassFacility, () -> {

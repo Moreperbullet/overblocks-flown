@@ -215,7 +215,7 @@ public class OBBlocks{
         }};
         
         diseaseExtractor = new Separator("disease-extractor"){{
-            requirements(Category.production, with(Items.copper, 25, Items.lead, 25, Items.silicon, 10));
+            requirements(Category.production, with(Items.copper, 25, Items.titanium, 25, Items.silicon, 10));
             results = with(
                 Items.sand, 9,
                 OBItems.diseaseFragments, 1
@@ -263,7 +263,7 @@ public class OBBlocks{
             ammo(
                 Items.lead, new SapBulletType(){{
                     sapStrength = 0.3f;
-                    length = 95f;
+                    length = 85f;
                     damage = 20;
                     shootEffect = Fx.shootSmall;
                     hitColor = color = Color.valueOf("bf92f9");
@@ -275,7 +275,7 @@ public class OBBlocks{
                 }},
                 Items.graphite, new SapBulletType(){{
                     sapStrength = 0.6f;
-                    length = 95f;
+                    length = 85f;
                     damage = 48;
                     shootEffect = Fx.shootSmall;
                     hitColor = color = OBPal.graphitic;
@@ -288,11 +288,11 @@ public class OBBlocks{
                 }},
                 Items.thorium, new SapBulletType(){{
                     sapStrength = 0.6f;
-                    length = 155f;
+                    length = 145f;
                     damage = 32;
                     rangeChange = 60f;
                     shootEffect = Fx.shootSmall;
-                    hitColor = color = Items.thorium.color;
+                    hitColor = color = Pal.thoriumAmmoBack;
                     despawnEffect = Fx.none;
                     width = 1f;
                 
@@ -300,11 +300,26 @@ public class OBBlocks{
                 
                     knockback = -3f;
                     ammoMultiplier = 4;
+                 }},
+                 OBItems.diseaseVector, new SapBulletType(){{
+                    sapStrength = 0.6f;
+                    length = 85f
+                    damage = 32;
+                    shootEffect = Fx.shootSmall;
+                    hitColor = color = OBPal.dreadRust;
+                    despawnEffect = Fx.none;
+                    width = 1f;
+                
+                    lifetime = 35f;
+                    reloadMultiplier = 0.5f;
+                    knockback = -2f;
+                    status = OBStatusEffects.dreadRust;
+                    ammoMultiplier = 4;
                  }}
             );
             scaledHealth = 280;
             size = 2;
-            range = 95f;
+            range = 85f;
             reload = 25f;
             recoil = 2f;
             shootSound = Sounds.shootSap;

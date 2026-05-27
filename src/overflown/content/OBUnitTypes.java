@@ -242,14 +242,14 @@ public class OBUnitTypes{
         
         //region insectoid air
         aphid = new OBUnitType("aphid", UnitEntity.class){{
-            speed = 2.6f;
+            speed = 3f;
             accel = 0.06f;
-            drag = 0.04f;
+            drag = 0.01f;
             flying = true;
             health = 120;
             engineOffset = 5.75f;
             targetFlags = new BlockFlag[]{BlockFlag.generator, BlockFlag.battery, null};
-            hitSize = 10;
+            hitSize = 9;
             itemCapacity = 15;
             rotateSpeed = 5f;
             wreckSoundVolume = 0.7f;
@@ -282,6 +282,47 @@ public class OBUnitTypes{
                     trailWidth = 1.5f;
                     trailLength = 5;
                     hitEffect = despawnEffect = Fx.hitBulletColor;
+                }};
+            }});
+        }};
+
+        acyrtho = new OBUnitType("acyrtho", UnitEntity.class){{
+            speed = 2.5f;
+            accel = 0.08f;
+            drag = 0.03f;
+            flying = true;
+            health 310;
+            engineOffset = 6f;
+    
+            targetFlags = new BlockFlag[]{BlockFlag.generator, BlockFlag.battery, null};
+            hitSize = 11;
+            itemCapacity = 15;
+    
+            weapons.add(new Weapon(name + "weapon"){{
+                reload = 45f;
+                x = 2f;
+                y = 3f
+                rotate = true;
+                shake = 1f;
+                inaccuracy = 2f;
+                velocityRnd = 0.2f;
+                shootSound = Sounds.shootMissileLong;
+
+                bullet = new MissileBulletType(3f, 17){{
+                    width = 4f;
+                    height = 4f;
+                    shrinkY = 0f;
+                    drag = -0.003f;
+                    homingRange = 60f;
+                    scaleKeepVelocity = true;
+                    lifetime = 45f;
+                    trailColor = Pal.sap;
+                    backColor = Pal.sap;
+                    frontColor = Pal.sap;
+                    hitEffect = Fx.sparkExplosion;
+                    despawnEffect = Fx.sparkExplosion;
+                    weaveScale = 6f;
+                    weaveMag = 1f;
                 }};
             }});
         }};
