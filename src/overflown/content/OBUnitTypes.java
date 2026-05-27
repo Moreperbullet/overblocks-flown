@@ -291,7 +291,7 @@ public class OBUnitTypes{
             accel = 0.08f;
             drag = 0.03f;
             flying = true;
-            health 310;
+            health = 310;
             engineOffset = 6f;
     
             targetFlags = new BlockFlag[]{BlockFlag.generator, BlockFlag.battery, null};
@@ -300,8 +300,8 @@ public class OBUnitTypes{
     
             weapons.add(new Weapon(name + "weapon"){{
                 reload = 45f;
-                x = 2f;
-                y = 3f
+                x = 1.5f;
+                y = 3f;
                 rotate = true;
                 shake = 1f;
                 inaccuracy = 2f;
