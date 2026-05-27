@@ -16,10 +16,10 @@ public class InvisibleAbility extends Ability{
    
    @Override
    public void created(Unit unit){
+      boolean found;
       if(unit instanceof Invisiblec n){
          if (n.invisibleA() != null) return;
 
-         boolean found;
          for(var ab : unit.abilities){
             if(ab == this){
                found = true;
