@@ -24,7 +24,7 @@ public class InvisibleAbility extends Ability{
             if(ab == this){
                found = true;
                n.invisibleA(this);
-               Log.info("Invisible ability is found");
+               //Log.info("Invisible ability is found");
                break;
             }
          }
