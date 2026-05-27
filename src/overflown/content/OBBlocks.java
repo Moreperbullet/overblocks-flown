@@ -303,7 +303,7 @@ public class OBBlocks{
                  }},
                  OBItems.diseaseVector, new SapBulletType(){{
                     sapStrength = 0.6f;
-                    length = 85f
+                    length = 85f;
                     damage = 32;
                     shootEffect = Fx.shootSmall;
                     hitColor = color = OBPal.dreadRust;
