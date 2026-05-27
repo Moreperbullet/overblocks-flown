@@ -17,17 +17,18 @@ public class InvisibleAbility extends Ability{
    @Override
    public void created(Unit unit){
       if(unit instanceof Invisiblec n){
+         if (n.invisibleA() != null) return;
+
          boolean found;
-         if (n.invisibleA != null) return;
          for(var ab : unit.abilities){
             if(ab == this){
                found = true;
-               n.invisibleA = this;
+               n.invisibleA(this);
                Log.info("Invisible ability is found");
                break;
             }
          }
-         if(!found) throw new RuntimeException("Invisible ability not found");
+         if(!found) throw new RuntimeException("Invisible ability isn't found");
       }else{
          Log.warn("This unit does not extend Invisiblec");
       }
