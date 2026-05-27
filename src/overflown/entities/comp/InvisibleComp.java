@@ -6,6 +6,7 @@ import ent.anno.Annotations.*;
 import mindustry.game.*;
 import mindustry.gen.*;
 import mindustry.type.*;
+import overflown.entities.abilities.*;
 
 @EntityComponent
 abstract class InvisibleComp implements Unitc{
@@ -18,6 +19,8 @@ abstract class InvisibleComp implements Unitc{
     @Import Team team;
     @Import float x, y, hitSize, health, maxHealth;
     @Import boolean isShooting;
+
+    public InvisibleAbility invisibleA;
 
     @Override
     public void update(){
@@ -43,7 +46,7 @@ abstract class InvisibleComp implements Unitc{
     }
 
     void updateInvisibility(boolean visible){
-        alphaLerp = Mathf.approachDelta(alphaLerp, visible ? 1f : 0f, 0.01f);
+        alphaLerp = Mathf.approachDelta(alphaLerp, visible ? 1f : 0f, invisibleA.invisibleSpeed);
         invisible = alphaLerp >= 0.5f;
     }
 
