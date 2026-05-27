@@ -298,29 +298,26 @@ public class OBUnitTypes{
             hitSize = 11;
             itemCapacity = 15;
     
-            weapons.add(new Weapon(name + "weapon"){{
+            weapons.add(new Weapon(name + "-weapon"){{
                 reload = 45f;
-                x = 1.5f;
-                y = 3f;
+                x = 3f;
+                y = 2f;
                 rotate = true;
                 shake = 1f;
                 inaccuracy = 2f;
                 velocityRnd = 0.2f;
                 shootSound = Sounds.shootMissileLong;
 
-                bullet = new MissileBulletType(3f, 17){{
+                bullet = new MissileBulletType(3f, 27){{
                     width = 4f;
                     height = 4f;
                     shrinkY = 0f;
                     drag = -0.003f;
                     homingRange = 60f;
                     scaleKeepVelocity = true;
-                    lifetime = 45f;
-                    trailColor = Pal.sap;
-                    backColor = Pal.sap;
-                    frontColor = Pal.sap;
-                    hitEffect = Fx.sparkExplosion;
-                    despawnEffect = Fx.sparkExplosion;
+                    lifetime = 50f;
+                    trailColor = backColor = Pal.sapBulletBack;
+                    frontColor = Pal.sapBullet;
                     weaveScale = 6f;
                     weaveMag = 1f;
                 }};
