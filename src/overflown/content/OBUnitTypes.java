@@ -316,7 +316,7 @@ public class OBUnitTypes{
 
                 bullet = new MissileBulletType(3f, 7){{
                     splashDamage = 21f;
-                    splashDamageRadius = 18f
+                    splashDamageRadius = 18f;
                     width = 6f;
                     height = 8f;
                     shrinkY = 0f;
@@ -358,7 +358,7 @@ public class OBUnitTypes{
 
                 bullet = new MissileBulletType(3f, 3){{
                     splashDamage = 26f;
-                    splashDamageRadius = 25f
+                    splashDamageRadius = 25f;
                     width = 7f;
                     height = 9f;
                     shrinkY = 0f;
@@ -385,7 +385,7 @@ public class OBUnitTypes{
 
                 bullet = new MissileBulletType(5f, 3){{
                     splashDamage = 18f;
-                    splashDamageRadius = 18f
+                    splashDamageRadius = 18f;
                     width = 6f;
                     height = 8f;
                     shrinkY = 0f;
