@@ -301,7 +301,7 @@ public class OBUnitTypes{
             engineOffset = 6f;
     
             targetFlags = new BlockFlag[]{BlockFlag.generator, BlockFlag.battery, null};
-            hitSize = 21;
+            hitSize = 19;
             itemCapacity = 15;
     
             weapons.add(new Weapon(name + "-weapon"){{
