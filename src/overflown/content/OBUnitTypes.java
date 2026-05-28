@@ -95,6 +95,7 @@ public class OBUnitTypes{
                     damage = 28;
                     hitColor = Pal.lancerLaser;
                     hitEffect = endEffect = Fx.hitBulletColor;
+                    pierceCap = 3;
 
                     smokeEffect = Fx.colorSpark;
                     status = StatusEffects.shocked;
