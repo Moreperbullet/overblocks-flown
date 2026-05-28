@@ -95,7 +95,7 @@ public class OBUnitTypes{
                     damage = 28;
                     hitColor = Pal.lancerLaser;
                     hitEffect = endEffect = Fx.hitBulletColor;
-                    pierceCap = 3;
+                    pierceDamageFactor = 0.4f;
 
                     smokeEffect = Fx.colorSpark;
                     status = StatusEffects.shocked;
@@ -276,7 +276,7 @@ public class OBUnitTypes{
                 shoot = new ShootSpread(3, 11f);
 
                 bullet = new BasicBulletType(7f, 9){{
-                    recoil = 1f;
+                    recoil = 0.1f;
                     homingPower = 0.2f;
                     width = 7f;
                     height = 12f;
@@ -302,7 +302,7 @@ public class OBUnitTypes{
             engineOffset = 6f;
     
             targetFlags = new BlockFlag[]{BlockFlag.generator, BlockFlag.battery, null};
-            hitSize = 19;
+            hitSize = 11;
             itemCapacity = 15;
     
             weapons.add(new Weapon(name + "-weapon"){{
@@ -343,7 +343,7 @@ public class OBUnitTypes{
             engineOffset = 8f;
     
             targetFlags = new BlockFlag[]{BlockFlag.generator, BlockFlag.battery, null};
-            hitSize = 11;
+            hitSize = 20;
             itemCapacity = 15;
     
             weapons.add(
