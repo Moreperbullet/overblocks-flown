@@ -338,7 +338,7 @@ public class OBUnitTypes{
             accel = 0.09f;
             drag = 0.04f;
             flying = true;
-            health = 710;
+            health = 690;
             engineOffset = 8f;
     
             targetFlags = new BlockFlag[]{BlockFlag.generator, BlockFlag.battery, null};
@@ -365,7 +365,7 @@ public class OBUnitTypes{
                     drag = -0.003f;
                     homingRange = 60f;
                     scaleKeepVelocity = true;
-                    lifetime = 58f;
+                    lifetime = 60f;
                     status = StatusEffects.sapped;
                     trailColor = backColor = Pal.sapBulletBack;
                     frontColor = Pal.sapBullet;
