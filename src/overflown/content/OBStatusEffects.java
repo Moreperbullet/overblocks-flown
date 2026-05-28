@@ -44,6 +44,8 @@ public class OBStatusEffects{
             permanent = true;
             damageMultiplier = 2f;
             healthMultiplier = 2f;
+            effectChance = 0.07f;
+            effect = Fx.overdriven;
         }};
     }
 }
