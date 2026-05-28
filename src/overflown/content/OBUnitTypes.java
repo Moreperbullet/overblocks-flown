@@ -335,10 +335,10 @@ public class OBUnitTypes{
         mindarus = new OBUnitType("mindarus", UnitEntity.class){{
             armor = 7f;
             speed = 1.9f;
-            accel = 0.08f;
-            drag = 0.03f;
+            accel = 0.09f;
+            drag = 0.04f;
             flying = true;
-            health = 350;
+            health = 710;
             engineOffset = 8f;
     
             targetFlags = new BlockFlag[]{BlockFlag.generator, BlockFlag.battery, null};
