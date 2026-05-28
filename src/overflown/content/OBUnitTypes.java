@@ -314,7 +314,9 @@ public class OBUnitTypes{
                 velocityRnd = 0.2f;
                 shootSound = Sounds.shootMissile;
 
-                bullet = new MissileBulletType(3f, 28){{
+                bullet = new MissileBulletType(3f, 7){{
+                    splashDamage = 21f;
+                    splashDamageRadius = 18f
                     width = 6f;
                     height = 8f;
                     shrinkY = 0f;
@@ -337,7 +339,7 @@ public class OBUnitTypes{
             drag = 0.03f;
             flying = true;
             health = 350;
-            engineOffset = 6f;
+            engineOffset = 8f;
     
             targetFlags = new BlockFlag[]{BlockFlag.generator, BlockFlag.battery, null};
             hitSize = 11;
@@ -345,16 +347,18 @@ public class OBUnitTypes{
     
             weapons.add(
                 new Weapon(acyrtho.name + "-weapon"){{
-                reload = 50f;
-                x = 5f;
-                y = -1f;
+                reload = 70f;
+                x = 7f;
+                y = -2f;
                 rotate = true;
                 shake = 1f;
                 inaccuracy = 2f;
                 velocityRnd = 0.2f;
                 shootSound = Sounds.shootMissile;
 
-                bullet = new MissileBulletType(3f, 30){{
+                bullet = new MissileBulletType(3f, 3){{
+                    splashDamage = 26f;
+                    splashDamageRadius = 25f
                     width = 7f;
                     height = 9f;
                     shrinkY = 0f;
@@ -371,22 +375,24 @@ public class OBUnitTypes{
             }},
                 new Weapon(acyrtho.name + "-weapon"){{
                 reload = 30f;
-                x = 5f;
-                y = -1f;
+                x = 2f;
+                y = 2f;
                 rotate = true;
                 shake = 1f;
                 inaccuracy = 2f;
                 velocityRnd = 0.2f;
                 shootSound = Sounds.shootMissile;
 
-                bullet = new MissileBulletType(5f, 21){{
+                bullet = new MissileBulletType(5f, 3){{
+                    splashDamage = 18f;
+                    splashDamageRadius = 18f
                     width = 6f;
                     height = 8f;
                     shrinkY = 0f;
                     drag = -0.003f;
                     homingRange = 60f;
                     scaleKeepVelocity = true;
-                    lifetime = 42f;
+                    lifetime = 37f;
                     status = StatusEffects.sapped;
                     trailColor = backColor = Pal.sapBulletBack;
                     frontColor = Pal.sapBullet;
