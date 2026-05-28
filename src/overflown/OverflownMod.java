@@ -93,7 +93,10 @@ public class OverflownMod extends Mod{
             new UnitType[]{OBUnitTypes.aphid, OBUnitTypes.acyrtho}
         );
 
-        ((Reconstructor)Blocks.multiplicativeReconstructor).upgrades.add(new UnitType[]{OBUnitTypes.announcer, OBUnitTypes.agent});
+        ((Reconstructor)Blocks.multiplicativeReconstructor).upgrades.add(
+            new UnitType[]{OBUnitTypes.announcer, OBUnitTypes.agent},
+            new UnitType[]{OBUnitTypes.acyrtho, OBUnitTypes.mindarus}
+        );
     
         ((Reconstructor)Blocks.exponentialReconstructor).upgrades.add(new UnitType[]{OBUnitTypes.agent, OBUnitTypes.attorney});
     }

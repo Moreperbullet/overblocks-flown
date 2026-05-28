@@ -94,7 +94,9 @@ public class OBTechTree{
             node(aphid, Seq.with(
                 new SectorComplete(lifelessCanyon)
             ), () -> {
-                node(acyrtho);
+                node(acyrtho, () -> {
+                    node(mindarus);
+                });
             });
         });
 

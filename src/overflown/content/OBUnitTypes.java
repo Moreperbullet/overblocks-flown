@@ -275,6 +275,7 @@ public class OBUnitTypes{
                 shoot = new ShootSpread(3, 11f);
 
                 bullet = new BasicBulletType(7f, 9){{
+                    recoil = 1f;
                     homingPower = 0.2f;
                     width = 7f;
                     height = 12f;
@@ -327,6 +328,73 @@ public class OBUnitTypes{
                     weaveMag = 1f;
                 }};
             }});
+        }};
+
+        mindarus = new OBUnitType("mindarus", UnitEntity.class){{
+            armor = 7f;
+            speed = 1.9f;
+            accel = 0.08f;
+            drag = 0.03f;
+            flying = true;
+            health = 350;
+            engineOffset = 6f;
+    
+            targetFlags = new BlockFlag[]{BlockFlag.generator, BlockFlag.battery, null};
+            hitSize = 11;
+            itemCapacity = 15;
+    
+            weapons.add(
+                new Weapon(acyrtho.name + "-weapon"){{
+                reload = 50f;
+                x = 5f;
+                y = -1f;
+                rotate = true;
+                shake = 1f;
+                inaccuracy = 2f;
+                velocityRnd = 0.2f;
+                shootSound = Sounds.shootMissile;
+
+                bullet = new MissileBulletType(3f, 30){{
+                    width = 7f;
+                    height = 9f;
+                    shrinkY = 0f;
+                    drag = -0.003f;
+                    homingRange = 60f;
+                    scaleKeepVelocity = true;
+                    lifetime = 58f;
+                    status = StatusEffects.sapped;
+                    trailColor = backColor = Pal.sapBulletBack;
+                    frontColor = Pal.sapBullet;
+                    weaveScale = 6f;
+                    weaveMag = 1f;
+                }};
+            }},
+                new Weapon(acyrtho.name + "-weapon"){{
+                reload = 30f;
+                x = 5f;
+                y = -1f;
+                rotate = true;
+                shake = 1f;
+                inaccuracy = 2f;
+                velocityRnd = 0.2f;
+                shootSound = Sounds.shootMissile;
+
+                bullet = new MissileBulletType(5f, 21){{
+                    width = 6f;
+                    height = 8f;
+                    shrinkY = 0f;
+                    drag = -0.003f;
+                    homingRange = 60f;
+                    scaleKeepVelocity = true;
+                    lifetime = 42f;
+                    status = StatusEffects.sapped;
+                    trailColor = backColor = Pal.sapBulletBack;
+                    frontColor = Pal.sapBullet;
+                    weaveScale = 6f;
+                    weaveMag = 1f;
+                }};
+            }}
+            );
         }};
         //endregion
     }
