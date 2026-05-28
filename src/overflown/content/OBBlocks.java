@@ -25,7 +25,7 @@ public class OBBlocks{
     public static Block
     //enviroment
     hotCarbonStone, magmaCarbonStone, graphiticFloor, ceriseStone, redIceStone, shallowSlag, sunkenCoreZone, carbonPebbles, beryllicVent,
-    redIceVent, ceriseVent, ceriseStoneWall, redGraphiticWall, ceriseBoulder,
+    redIceVent, ceriseVent, ceriseStoneWall, redGraphiticWall, ceriseBoulder, oreDiseaseFragments,
     //payloads
     largePayloadConveyor, payloadBuilder, payloadBreaker, payloadPropulsionTower,
     //other
@@ -146,6 +146,10 @@ public class OBBlocks{
         ceriseBoulder = new Prop("cerise-boulder"){{
             variants = 2;
             ceriseStone.asFloor().decoration = this;
+        }};
+
+        oreDiseaseFragments = new OreBlock("ore-disease-fragments", OBItems.diseaseFragments){{
+            variants = 3;
         }};
 
         largePayloadConveyor = new PayloadConveyor("large-payload-conveyor"){{

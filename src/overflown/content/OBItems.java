@@ -14,7 +14,10 @@ public class OBItems{
             cost = 1.2f;
         }};
 
-        diseaseFragments = new Item("disease-fragments", OBPal.darkDreadRust);
+        diseaseFragments = new Item("disease-fragments", OBPal.darkDreadRust){{
+            hardness = 4;
+            buildable = false;
+        }};
 
         diseaseVector = new Item("disease-vector", OBPal.dreadRust);
     }
