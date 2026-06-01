@@ -24,7 +24,9 @@ public class OBTechTree{
     public static void load(){
 
         vanillaNode(plastaniumCompressor, () -> {
-            node(plastaniumCrusher);
+            node(plastaniumCrusher, Seq.with(
+                new SectorComplete(diseaseAmmoFactory)
+            ));
         });
 
         vanillaNode(pyratite, () -> {
@@ -38,10 +40,12 @@ public class OBTechTree{
         });
 
         vanillaNode(pyratiteMixer, () -> {
-            node(diseaseExtractor, Seq.with(
-                new SectorComplete(lifelessCanyon)
+            node(diseaseMixer, Seq.with(
+                new OnSector(diseaseAmmoFactory)
             ), () -> {
-                node(diseaseMixer);
+                node(diseaseExtractor, Seq.with(
+                    new SectorComplete(diseaseAmmoFactory)
+                ));
             });
         });
 
@@ -109,7 +113,12 @@ public class OBTechTree{
                 new Research(titanium),
                 new Research(thermalGenerator),
                 new SectorComplete(biomassFacility)
-            ));
+            ), () -> {
+                node(diseaseAmmoFactory, Seq.with(
+                    new Research(plastanium),
+                    new SectorComplete(lifelessCanyon)
+                ))
+            });
         });
     }
 

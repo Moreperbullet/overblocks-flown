@@ -288,7 +288,7 @@ public class OBBlocks{
                     lifetime = 35f;
                     knockback = -4f;
                     reloadMultiplier = 0.7f;
-                    ammoMultiplier = 2;
+                    ammoMultiplier = 4;
                 }},
                 Items.thorium, new SapBulletType(){{
                     sapStrength = 0.6f;
@@ -303,7 +303,7 @@ public class OBBlocks{
                     lifetime = 35f;
                 
                     knockback = -3f;
-                    ammoMultiplier = 4;
+                    ammoMultiplier = 2;
                  }},
                  OBItems.diseaseVector, new SapBulletType(){{
                     sapStrength = 0.6f;
