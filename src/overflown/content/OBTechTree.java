@@ -69,7 +69,11 @@ public class OBTechTree{
         });
 
         vanillaNode(meltdown, () -> {
-            node(devastation, Seq.with(new SectorComplete(overgrowth), new Research(plastaniumCrusher)));
+            node(devastation, Seq.with(
+                new SectorComplete(overgrowth),
+                new SectorComplete(lifelessCanyon),
+                new Research(plastaniumCrusher)
+            ));
         });
 
         vanillaNode(scorch, () -> {
@@ -103,6 +107,7 @@ public class OBTechTree{
         vanillaNode(biomassFacility, () -> {
             node(lifelessCanyon, Seq.with(
                 new Research(titanium),
+                new Research(thermalGenerator),
                 new SectorComplete(biomassFacility)
             ));
         });
