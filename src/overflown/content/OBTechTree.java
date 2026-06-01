@@ -117,7 +117,7 @@ public class OBTechTree{
                 node(diseaseAmmoFactory, Seq.with(
                     new Research(plastanium),
                     new SectorComplete(lifelessCanyon)
-                ))
+                ));
             });
         });
     }
