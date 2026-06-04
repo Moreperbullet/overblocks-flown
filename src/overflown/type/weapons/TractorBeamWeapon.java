@@ -84,7 +84,7 @@ public class TractorBeamWeapon extends Weapon{
       if(canShoot && mount.target instanceof Unit u){
          tractor.lastX = u.x;
          tractor.lastY = u.y;
-         tractor.strength = Mathf.lerpDelta(strength, 1f, 0.1f);
+         tractor.strength = Mathf.lerpDelta(tractor.strength, 1f, 0.1f);
 
          if(actualDamage > 0){
             u.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team));
@@ -102,14 +102,14 @@ public class TractorBeamWeapon extends Weapon{
       if(canShoot && mount.target instanceof Building b){
          tractor.lastX = b.x;
          tractor.lastY = b.y;
-         tractor.strength = Mathf.lerpDelta(strength, 1f, 0.1f);
+         tractor.strength = Mathf.lerpDelta(tractor.strength, 1f, 0.1f);
 
          b.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team));
          tractor.any = true;
       }
 
       if(!canShoot){
-         tractor.strength = Mathf.lerpDelta(strength, 0f, 0.1f);
+         tractor.strength = Mathf.lerpDelta(tractor.strength, 0f, 0.1f);
       }
    }
 
