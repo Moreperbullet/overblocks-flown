@@ -18,11 +18,11 @@ import static mindustry.Vars.*;
 public class TractorBeamWeapon extends Weapon{
    public float laserWidth = 0.6f;
    public float shootLength = 5f;
-   public float actualDamage = 0.5f;
-   public float force = 1.8f;
+   public float actualDamage = 8f;
+   public float force = 2.8f;
    public float scaledForce = 0f;
 
-   public boolean targetAir = true, targetGround = true, targetBuildings = false;
+   public boolean targetAir = true, targetGround = true, targetBuildings = true;
    public Color laserColor = Color.white;
    
    public String laserSpriteName = "overflown-purple";
@@ -61,7 +61,7 @@ public class TractorBeamWeapon extends Weapon{
 
    @Override
    protected Teamc findTarget(Unit unit, float x, float y, float range, boolean air, boolean ground){
-      return Units.closestTarget(unit.team, x, y, range + Math.abs(shootY), u -> u.checkTarget(targetAir, targetGround), t -> targetBuildings);
+      return Units.closestTarget(unit.team, x, y, range + Math.abs(shootY), u -> u.checkTarget(targetAir, targetGround), t -> targetBuildings && (t.health / t.size > actualDamage * 50));
    }
 
    @Override
@@ -105,7 +105,7 @@ public class TractorBeamWeapon extends Weapon{
          tractor.lastY = b.y;
          tractor.strength = Mathf.lerpDelta(tractor.strength, 1f, 0.1f);
 
-         b.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team));
+         b.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team) * bullet.buildingDamageMultiplier);
          tractor.any = true;
       }
 

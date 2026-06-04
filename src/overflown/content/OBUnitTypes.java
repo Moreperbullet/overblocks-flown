@@ -454,6 +454,7 @@ public class OBUnitTypes{
 
                 bullet = new BulletType(){{
                     maxRange = 270f;
+                    buildingDamageMultiplier = 0.4f;
                     status = StatusEffects.sapped;
                     statusDuration = 15f;
                 }};
