@@ -76,7 +76,7 @@ public class TractorBeamWeapon extends Weapon{
             u.apply(bullet.status, bullet.statusDuration);
          }
 
-         u.impulseNet(Tmp.v1.set(this).sub(target).limit((force + (1f - u.dst(unit) / range) * scaledForce));
+         u.impulseNet(Tmp.v1.set(this).sub(target).limit((force + (1f - u.dst(unit) / range) * scaledForce)));
       }
    }
 
