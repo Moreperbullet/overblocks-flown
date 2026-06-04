@@ -39,6 +39,7 @@ public class TractorBeamWeapon extends Weapon{
    {
       //must be >0 to prevent various bugs
       reload = 1f;
+      shootCone = 4f;
       predictTarget = false;
       autoTarget = true;
       controllable = false;
@@ -78,7 +79,7 @@ public class TractorBeamWeapon extends Weapon{
       wy = unit.y + Angles.trnsy(weaponRotation, x, y);
 
       TractorBeamMount tractor = (TractorBeamMount)mount;
-      boolean canShoot = mount.shoot;
+      boolean canShoot = mount.shoot && Angles.within(mount.rotation + baseRotation, mount.targetRotation, shootCone);
 
       tractor.any = false;
       if(canShoot && mount.target instanceof Unit u){
@@ -118,22 +119,20 @@ public class TractorBeamWeapon extends Weapon{
       super.draw(unit, mount);
       TractorBeamMount tractor = (TractorBeamMount)mount;
       
-      if(unit.canShoot()){
+      if(tractor.any){
          float
             weaponRotation = unit.rotation - 90,
             wx = unit.x + Angles.trnsx(weaponRotation, x, y),
             wy = unit.y + Angles.trnsy(weaponRotation, x, y);
 
-         Draw.z(Layer.bullet);
          float ang = Angles.angle(wx, wy, tractor.lastX, tractor.lastY);
 
          Draw.mixcol(laserColor, Mathf.absin(4f, 0.6f));
-
          Drawf.laser(laser, laserEnd, laserEnd,
          wx + Angles.trnsx(ang, shootLength), wy + Angles.trnsy(ang, shootLength),
          tractor.lastX, tractor.lastY, tractor.strength * laserWidth);
-
          Draw.mixcol();
+         Draw.z(Layer.bullet);
       }
    }
 
