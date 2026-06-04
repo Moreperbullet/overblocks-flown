@@ -3,11 +3,14 @@ package overflown.type.weapons;
 import arc.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
+import arc.util.*;
 import mindustry.content.*;
 import mindustry.entities.*;
 import mindustry.entities.units.*;
 import mindustry.gen.*;
 import mindustry.type.*;
+
+import static mindustry.Vars.*;
 
 public class TractorBeamWeapon extends Weapon{
    public float laserWidth = 0.6f;
@@ -69,14 +72,14 @@ public class TractorBeamWeapon extends Weapon{
 
       if(canShoot && mount.target instanceof Unit u){
          if(actualDamage > 0){
-            u.damageContinuousPierce(actualDamage * state.rules.blockDamage(team));
+            u.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team));
          }
 
-         if(status != StatusEffects.none){
+         if(bullet.status != StatusEffects.none){
             u.apply(bullet.status, bullet.statusDuration);
          }
 
-         u.impulseNet(Tmp.v1.set(this).sub(target).limit((force + (1f - u.dst(unit) / range) * scaledForce)));
+         u.impulseNet(Tmp.v1.set(this).sub(u).limit((force + (1f - u.dst(unit) / bullet.maxRange) * scaledForce)));
       }
    }
 
