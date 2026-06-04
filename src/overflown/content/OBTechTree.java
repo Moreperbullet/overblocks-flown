@@ -103,7 +103,9 @@ public class OBTechTree{
                 new SectorComplete(lifelessCanyon)
             ), () -> {
                 node(acyrtho, () -> {
-                    node(mindarus);
+                    node(mindarus, () -> {
+                        node(rhophalo);
+                    });
                 });
             });
         });

@@ -98,7 +98,10 @@ public class OverflownMod extends Mod{
             new UnitType[]{OBUnitTypes.acyrtho, OBUnitTypes.mindarus}
         );
     
-        ((Reconstructor)Blocks.exponentialReconstructor).upgrades.add(new UnitType[]{OBUnitTypes.agent, OBUnitTypes.attorney});
+        ((Reconstructor)Blocks.exponentialReconstructor).upgrades.add(
+            new UnitType[]{OBUnitTypes.agent, OBUnitTypes.attorney},
+            new UnitType[]{OBUnitTypes.mindarus, OBUnitTypes.rhophalo}
+        );
     }
 
     public static void assignColor(Block block, Color color){

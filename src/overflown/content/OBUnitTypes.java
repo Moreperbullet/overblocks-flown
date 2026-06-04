@@ -17,6 +17,7 @@ import mindustry.world.meta.*;
 import overflown.entities.abilities.*;
 import overflown.gen.*;
 import overflown.type.*;
+import overflown.type.weapons.*;
 
 import static arc.graphics.g2d.Draw.*;
 import static arc.graphics.g2d.Lines.*;
@@ -413,9 +414,9 @@ public class OBUnitTypes{
             rotateSpeed = 1.9f;
             flying = true;
             lowAltitude = true;
-            health = 7300;
+            health = 7250;
             armor = 8f;
-            engineOffset = 19;
+            engineOffset = 18;
             engineSize = 5.3f;
             hitSize = 46f;
             targetFlags = new BlockFlag[]{BlockFlag.reactor, BlockFlag.generator, BlockFlag.core, null};
@@ -424,14 +425,14 @@ public class OBUnitTypes{
 
             weapons.add(
             new Weapon(name + "-salvo"){{
-                y = 3f;
                 x = 18f;
+                y = 4f;
                 reload = 30f;
                 shoot.shots = 4;
                 shoot.shotDelay = 3f;
                 ejectEffect = Fx.casing1;
                 rotateSpeed = 8f;
-                bullet = new BasicBulletType(3.5f, 23){{
+                bullet = new BasicBulletType(3.5f, 32){{
                     width = 9f;
                     height = 12f;
                     lifetime = 60f;
@@ -445,6 +446,17 @@ public class OBUnitTypes{
                 shootSound = Sounds.shootSalvo;
                 rotate = true;
                 shadow = 6f;
+            }},
+            new TractorBeamWeapon(name + "-parallax"){{
+                x = 11f;
+                y = -2f;
+                shootY = 5f;
+
+                bullet = new BulletType(){{
+                    maxRange = 130f;
+                    status = StatusEffects.sapped;
+                    statusDuration = 15f;
+                }};
             }}
             );
         }};
