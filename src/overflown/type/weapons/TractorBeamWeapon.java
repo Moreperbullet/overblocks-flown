@@ -3,6 +3,7 @@ package overflown.type.weapons;
 import arc.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
+import arc.math.geom.*;
 import arc.util.*;
 import mindustry.content.*;
 import mindustry.entities.*;
@@ -79,7 +80,7 @@ public class TractorBeamWeapon extends Weapon{
             u.apply(bullet.status, bullet.statusDuration);
          }
 
-         u.impulseNet(Tmp.v1.set(this).sub(u).limit((force + (1f - u.dst(unit) / bullet.maxRange) * scaledForce)));
+         u.impulseNet(Tmp.v1.set(unit).sub(u).limit((force + (1f - u.dst(unit) / bullet.maxRange) * scaledForce)));
       }
    }
 
