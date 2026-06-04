@@ -344,7 +344,7 @@ public class OBUnitTypes{
     
             targetFlags = new BlockFlag[]{BlockFlag.generator, BlockFlag.battery, null};
             hitSize = 20;
-            itemCapacity = 15;
+            itemCapacity = 30;
     
             weapons.add(
                 new Weapon(acyrtho.name + "-weapon"){{
@@ -368,6 +368,7 @@ public class OBUnitTypes{
                     scaleKeepVelocity = true;
                     lifetime = 60f;
                     status = StatusEffects.sapped;
+                    statusDuration = 90f;
                     trailColor = backColor = Pal.sapBulletBack;
                     frontColor = Pal.sapBullet;
                     weaveScale = 6f;
@@ -395,6 +396,7 @@ public class OBUnitTypes{
                     scaleKeepVelocity = true;
                     lifetime = 37f;
                     status = StatusEffects.sapped;
+                    statusDuration = 90f;
                     trailColor = backColor = Pal.sapBulletBack;
                     frontColor = Pal.sapBullet;
                     weaveScale = 6f;
