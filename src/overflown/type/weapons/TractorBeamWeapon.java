@@ -18,8 +18,8 @@ import static mindustry.Vars.*;
 public class TractorBeamWeapon extends Weapon{
    public float laserWidth = 0.6f;
    public float shootLength = 5f;
-   public float actualDamage = 8f;
-   public float force = 2.8f;
+   public float actualDamage = 14f;
+   public float force = 2.1f;
    public float scaledForce = 0f;
 
    public boolean targetAir = true, targetGround = true, targetBuildings = true;
