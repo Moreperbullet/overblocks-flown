@@ -95,6 +95,7 @@ public class TractorBeamWeapon extends Weapon{
          }
 
          tractor.any = true;
+         //attracts the target to the weapon holder (unit) instead of the unit itself, i don't know how to fix this.
          u.impulseNet(Tmp.v1.set(unit).sub(u).limit((force + (1f - u.dst(unit) / bullet.maxRange) * scaledForce)));
       }
 
@@ -102,8 +103,8 @@ public class TractorBeamWeapon extends Weapon{
          tractor.lastX = b.x;
          tractor.lastY = b.y;
          strength = Mathf.lerpDelta(strength, 1f, 0.1f);
-   
-         b.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team))
+
+         b.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team));
          tractor.any = true;
       }
 
@@ -121,7 +122,8 @@ public class TractorBeamWeapon extends Weapon{
          float
             weaponRotation = unit.rotation - 90,
             wx = unit.x + Angles.trnsx(weaponRotation, x, y),
-            wy = unit.y + Angles.trnsy(weaponRotation, x, y),
+            wy = unit.y + Angles.trnsy(weaponRotation, x, y);
+
          Draw.z(Layer.bullet);
          float ang = angleTo(tractor.lastX, tractor.lastY);
 
