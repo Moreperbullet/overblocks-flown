@@ -453,7 +453,7 @@ public class OBUnitTypes{
                 shootY = 5f;
 
                 bullet = new BulletType(){{
-                    maxRange = 130f;
+                    maxRange = 270f;
                     status = StatusEffects.sapped;
                     statusDuration = 15f;
                 }};
