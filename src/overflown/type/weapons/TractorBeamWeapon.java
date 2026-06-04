@@ -18,7 +18,7 @@ import static mindustry.Vars.*;
 public class TractorBeamWeapon extends Weapon{
    public float laserWidth = 0.6f;
    public float shootLength = 5f;
-   public float actualDamage = 10f;
+   public float actualDamage = 0.5f;
    public float force = 1.8f;
    public float scaledForce = 0f;
 
@@ -88,7 +88,7 @@ public class TractorBeamWeapon extends Weapon{
          tractor.strength = Mathf.lerpDelta(tractor.strength, 1f, 0.1f);
 
          if(actualDamage > 0){
-            u.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team) * Time.delta);
+            u.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team));
          }
 
          if(bullet.status != StatusEffects.none){
@@ -105,7 +105,7 @@ public class TractorBeamWeapon extends Weapon{
          tractor.lastY = b.y;
          tractor.strength = Mathf.lerpDelta(tractor.strength, 1f, 0.1f);
 
-         b.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team) * Time.delta);
+         b.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team));
          tractor.any = true;
       }
 
