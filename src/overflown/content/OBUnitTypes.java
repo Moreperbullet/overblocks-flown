@@ -448,12 +448,12 @@ public class OBUnitTypes{
                 shadow = 6f;
             }},
             new TractorBeamWeapon(name + "-parallax"){{
-                x = 11f;
-                y = -2f;
+                x = 12f;
+                y = -3f;
                 shootY = 5f;
 
                 bullet = new BulletType(){{
-                    maxRange = 105f;
+                    maxRange = 95f;
                     buildingDamageMultiplier = 0.35f;
                     status = StatusEffects.sapped;
                     statusDuration = 15f;

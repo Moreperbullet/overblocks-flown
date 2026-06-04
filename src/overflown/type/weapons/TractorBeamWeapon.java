@@ -123,8 +123,7 @@ public class TractorBeamWeapon extends Weapon{
          float
             weaponRotation = unit.rotation - 90,
             wx = unit.x + Angles.trnsx(weaponRotation, x, y),
-            wy = unit.y + Angles.trnsy(weaponRotation, x, y),
-            z = Draw.z();
+            wy = unit.y + Angles.trnsy(weaponRotation, x, y);
 
          float ang = Angles.angle(wx, wy, tractor.lastX, tractor.lastY);
 
@@ -133,7 +132,7 @@ public class TractorBeamWeapon extends Weapon{
          wx + Angles.trnsx(ang, shootLength), wy + Angles.trnsy(ang, shootLength),
          tractor.lastX, tractor.lastY, tractor.strength * laserWidth);
          Draw.mixcol();
-         Draw.z(z + 1f);
+         Draw.z(Layer.bullet);
       }
    }
 
