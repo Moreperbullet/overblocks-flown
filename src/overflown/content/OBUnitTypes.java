@@ -414,11 +414,11 @@ public class OBUnitTypes{
             rotateSpeed = 1.9f;
             flying = true;
             lowAltitude = true;
-            health = 7250;
+            health = 7000;
             armor = 8f;
             engineOffset = 18;
             engineSize = 5.3f;
-            hitSize = 46f;
+            hitSize = 40f;
             targetFlags = new BlockFlag[]{BlockFlag.reactor, BlockFlag.generator, BlockFlag.core, null};
 
             loopSound = Sounds.loopHover;
@@ -427,15 +427,15 @@ public class OBUnitTypes{
             new Weapon(name + "-salvo"){{
                 x = 18f;
                 y = 4f;
-                reload = 30f;
+                reload = 45f;
                 shoot.shots = 4;
                 shoot.shotDelay = 3f;
                 ejectEffect = Fx.casing1;
                 rotateSpeed = 8f;
-                bullet = new BasicBulletType(3.5f, 32){{
+                bullet = new BasicBulletType(3.1f, 28){{
                     width = 9f;
                     height = 12f;
-                    lifetime = 60f;
+                    lifetime = 50f;
 
                     hitEffect = despawnEffect = Fx.hitBulletColor;
                     hitColor = backColor = trailColor = Pal.sapBulletBack;
@@ -453,8 +453,8 @@ public class OBUnitTypes{
                 shootY = 5f;
 
                 bullet = new BulletType(){{
-                    maxRange = 180f;
-                    buildingDamageMultiplier = 0.6f;
+                    maxRange = 105f;
+                    buildingDamageMultiplier = 0.35f;
                     status = StatusEffects.sapped;
                     statusDuration = 15f;
                 }};
