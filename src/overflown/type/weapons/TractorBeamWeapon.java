@@ -84,7 +84,7 @@ public class TractorBeamWeapon extends Weapon{
       if(canShoot && mount.target instanceof Unit u){
          tractor.lastX = u.x;
          tractor.lastY = u.y;
-         strength = Mathf.lerpDelta(strength, 1f, 0.1f);
+         tractor.strength = Mathf.lerpDelta(strength, 1f, 0.1f);
 
          if(actualDamage > 0){
             u.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team));
@@ -102,14 +102,14 @@ public class TractorBeamWeapon extends Weapon{
       if(canShoot && mount.target instanceof Building b){
          tractor.lastX = b.x;
          tractor.lastY = b.y;
-         strength = Mathf.lerpDelta(strength, 1f, 0.1f);
+         tractor.strength = Mathf.lerpDelta(strength, 1f, 0.1f);
 
          b.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team));
          tractor.any = true;
       }
 
       if(!canShoot){
-         strength = Mathf.lerpDelta(strength, 0f, 0.1f);
+         tractor.strength = Mathf.lerpDelta(strength, 0f, 0.1f);
       }
    }
 
@@ -125,7 +125,7 @@ public class TractorBeamWeapon extends Weapon{
             wy = unit.y + Angles.trnsy(weaponRotation, x, y);
 
          Draw.z(Layer.bullet);
-         float ang = angleTo(tractor.lastX, tractor.lastY);
+         float ang = Angles.angle(wx, wy, tractor.lastX, tractor.lastY);
 
          Draw.mixcol(laserColor, Mathf.absin(4f, 0.6f));
 
@@ -146,5 +146,9 @@ public class TractorBeamWeapon extends Weapon{
    public static class TractorBeamMount extends WeaponMount{
       public float lastX, lastY, strength;
       public boolean any;
+
+      public TractorBeamMount(Weapon weapon){
+         super(weapon);
+      }
    }
 }
