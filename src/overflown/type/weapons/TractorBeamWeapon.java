@@ -61,7 +61,7 @@ public class TractorBeamWeapon extends Weapon{
 
    @Override
    protected Teamc findTarget(Unit unit, float x, float y, float range, boolean air, boolean ground){
-      return Units.closestTarget(unit.team, x, y, range + Math.abs(shootY), u -> u.checkTarget(targetAir, targetGround), t -> targetBuildings && (t.health / t.size > actualDamage * 50));
+      return Units.closestTarget(unit.team, x, y, range + Math.abs(shootY), u -> u.checkTarget(targetAir, targetGround), t -> targetBuildings && (t.health > actualDamage * 50));
    }
 
    @Override
