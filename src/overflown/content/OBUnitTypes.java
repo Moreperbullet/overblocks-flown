@@ -405,6 +405,49 @@ public class OBUnitTypes{
             }}
             );
         }};
+
+        rhophalo = new OBUnitType("rhophalo", UnitEntity.class){{
+            speed = 0.9f;
+            accel = 0.03f;
+            drag = 0.03f;
+            rotateSpeed = 1.9f;
+            flying = true;
+            lowAltitude = true;
+            health = 7300;
+            armor = 8f;
+            engineOffset = 19;
+            engineSize = 5.3f;
+            hitSize = 46f;
+            targetFlags = new BlockFlag[]{BlockFlag.reactor, BlockFlag.generator, BlockFlag.core, null};
+
+            loopSound = Sounds.loopHover;
+
+            weapons.add(
+            new Weapon(name + "-salvo"){{
+                y = 3f;
+                x = 18f;
+                reload = 30f;
+                shoot.shots = 4;
+                shoot.shotDelay = 3f;
+                ejectEffect = Fx.casing1;
+                rotateSpeed = 8f;
+                bullet = new BasicBulletType(3.5f, 23){{
+                    width = 9f;
+                    height = 12f;
+                    lifetime = 60f;
+
+                    hitEffect = despawnEffect = Fx.hitBulletColor;
+                    hitColor = backColor = trailColor = Pal.sapBulletBack;
+                    frontColor = Pal.sapBullet;
+                    status = StatusEffects.sapped;
+                    statusDuration = 30f;
+                }};
+                shootSound = Sounds.shootSalvo;
+                rotate = true;
+                shadow = 6f;
+            }}
+            );
+        }};
         //endregion
     }
 }

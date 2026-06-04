@@ -1,5 +1,6 @@
 package overflown.type.weapons;
 
+import arc.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
 import mindustry.content.*;
@@ -66,7 +67,7 @@ public class TractorBeamWeapon extends Weapon{
    public void init(){
       super.init();
       bullet.damage = this.actualDamage;
-      bullet.status = this.status;
+      if(this.status != StatusEffects.none) bullet.status = this.status;
       bullet.statusDuration = this.statusDuration;
    }
 }
