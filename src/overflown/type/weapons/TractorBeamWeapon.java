@@ -88,7 +88,7 @@ public class TractorBeamWeapon extends Weapon{
          tractor.strength = Mathf.lerpDelta(tractor.strength, 1f, 0.1f);
 
          if(actualDamage > 0){
-            u.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team));
+            u.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team) * Time.delta);
          }
 
          if(bullet.status != StatusEffects.none){
@@ -105,7 +105,7 @@ public class TractorBeamWeapon extends Weapon{
          tractor.lastY = b.y;
          tractor.strength = Mathf.lerpDelta(tractor.strength, 1f, 0.1f);
 
-         b.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team));
+         b.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team) * Time.delta);
          tractor.any = true;
       }
 
@@ -123,7 +123,8 @@ public class TractorBeamWeapon extends Weapon{
          float
             weaponRotation = unit.rotation - 90,
             wx = unit.x + Angles.trnsx(weaponRotation, x, y),
-            wy = unit.y + Angles.trnsy(weaponRotation, x, y);
+            wy = unit.y + Angles.trnsy(weaponRotation, x, y),
+            z = Draw.z();
 
          float ang = Angles.angle(wx, wy, tractor.lastX, tractor.lastY);
 
@@ -132,7 +133,7 @@ public class TractorBeamWeapon extends Weapon{
          wx + Angles.trnsx(ang, shootLength), wy + Angles.trnsy(ang, shootLength),
          tractor.lastX, tractor.lastY, tractor.strength * laserWidth);
          Draw.mixcol();
-         Draw.z(Layer.bullet);
+         Draw.z(z + 1f);
       }
    }
 
