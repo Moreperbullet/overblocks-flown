@@ -426,7 +426,7 @@ public class OBUnitTypes{
             weapons.add(
             new Weapon(name + "-salvo"){{
                 x = 18f;
-                y = 4f;
+                y = 5f;
                 reload = 45f;
                 shoot.shots = 4;
                 shoot.shotDelay = 3f;
@@ -448,13 +448,15 @@ public class OBUnitTypes{
                 shadow = 6f;
             }},
             new TractorBeamWeapon(name + "-parallax"){{
-                x = 12f;
+                x = 13f;
                 y = -3f;
                 shootY = 5f;
 
                 //doesn't spawn, but assigns the stats
                 bullet = new ContinuousBulletType(){{
                     damageInterval = 1f;
+                    pierce = false;
+                    pierceArmor = true;
                     maxRange = 145f;
                     status = StatusEffects.sapped;
                     statusDuration = 15f;

@@ -19,7 +19,7 @@ import static mindustry.Vars.*;
 public class TractorBeamWeapon extends Weapon{
    public float laserWidth = 0.6f;
    public float shootLength = 5f;
-   public float actualDamage = 0.66667f;
+   public float actualDamage = 0.67f;
    public float force = 1.7f;
    public float scaledForce = 0f;
 
@@ -113,7 +113,8 @@ public class TractorBeamWeapon extends Weapon{
          float
             weaponRotation = unit.rotation - 90,
             wx = unit.x + Angles.trnsx(weaponRotation, x, y),
-            wy = unit.y + Angles.trnsy(weaponRotation, x, y);
+            wy = unit.y + Angles.trnsy(weaponRotation, x, y),
+            z = Draw.z();
 
          float ang = Angles.angle(wx, wy, tractor.lastX, tractor.lastY);
 
@@ -122,7 +123,7 @@ public class TractorBeamWeapon extends Weapon{
          wx + Angles.trnsx(ang, shootLength), wy + Angles.trnsy(ang, shootLength),
          tractor.lastX, tractor.lastY, tractor.strength * laserWidth);
          Draw.mixcol();
-         Draw.z(Layer.bullet);
+         Draw.z(z);
       }
    }
 
