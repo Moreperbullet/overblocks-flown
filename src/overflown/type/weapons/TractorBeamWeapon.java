@@ -37,8 +37,9 @@ public class TractorBeamWeapon extends Weapon{
    }
 
    {
+      alternate = false;
       //must be >0 to prevent various bugs
-      reload = 1f;
+      reload = 60f;
       shootCone = 4f;
       predictTarget = false;
       autoTarget = true;
@@ -83,33 +84,24 @@ public class TractorBeamWeapon extends Weapon{
 
       tractor.any = false;
       if(canShoot && mount.target instanceof Unit u){
-         tractor.lastX = u.x;
-         tractor.lastY = u.y;
-         tractor.strength = Mathf.lerpDelta(tractor.strength, 1f, 0.1f);
-
-         if(actualDamage > 0){
-            u.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team));
-         }
-
          if(bullet.status != StatusEffects.none){
             u.apply(bullet.status, bullet.statusDuration);
          }
-
-         tractor.any = true;
          //attracts the target to the weapon holder (unit) instead of the unit itself, i don't know how to fix this.
          u.impulseNet(Tmp.v1.set(unit).sub(u).limit((force + (1f - u.dst(unit) / bullet.maxRange) * scaledForce)));
       }
-
-      if(canShoot && mount.target instanceof Building b){
-         tractor.lastX = b.x;
-         tractor.lastY = b.y;
-         tractor.strength = Mathf.lerpDelta(tractor.strength, 1f, 0.1f);
-
-         b.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team) * bullet.buildingDamageMultiplier);
-         tractor.any = true;
+      
+      if(canShoot && mount.target instanceof Posc p){
+         tractor.lastX = p.x();
+         tractor.lastY = p.y();
       }
 
-      if(!canShoot){
+      if(canShoot && mount.target instanceof Healthc h){
+         tractor.strength = Mathf.lerpDelta(tractor.strength, 1f, 0.1f);
+
+         if(actualDamage > 0) h.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team));
+         tractor.any = true;
+      }else{
          tractor.strength = Mathf.lerpDelta(tractor.strength, 0f, 0.1f);
       }
    }

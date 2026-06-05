@@ -452,9 +452,10 @@ public class OBUnitTypes{
                 y = -3f;
                 shootY = 5f;
 
-                bullet = new BulletType(){{
-                    maxRange = 100f;
-                    buildingDamageMultiplier = 0.65f;
+                //doesn't spawn, but assigns the stats
+                bullet = new ContinuousBulletType(){{
+                    damageInterval = 1f;
+                    maxRange = 145f;
                     status = StatusEffects.sapped;
                     statusDuration = 15f;
                 }};
