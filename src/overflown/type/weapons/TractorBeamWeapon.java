@@ -18,7 +18,7 @@ import static mindustry.Vars.*;
 public class TractorBeamWeapon extends Weapon{
    public float laserWidth = 0.6f;
    public float shootLength = 5f;
-   public float actualDamage = 0.667f;
+   public float actualDamage = 0.66667f;
    public float force = 1.7f;
    public float scaledForce = 0f;
 
@@ -128,7 +128,7 @@ public class TractorBeamWeapon extends Weapon{
    @Override
    public void init(){
       super.init();
-      bullet.damage = this.actualDamage * 60;
+      bullet.damage = bullet instanceof ContinuousBulletType ? this.actualDamage : this.actualDamage * 60;
    }
 
    public static class TractorBeamMount extends WeaponMount{
