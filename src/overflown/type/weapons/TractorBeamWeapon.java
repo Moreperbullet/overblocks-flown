@@ -90,13 +90,10 @@ public class TractorBeamWeapon extends Weapon{
          //attracts the target to the weapon holder (unit) instead of the unit itself, i don't know how to fix this.
          u.impulseNet(Tmp.v1.set(unit).sub(u).limit((force + (1f - u.dst(unit) / bullet.maxRange) * scaledForce)));
       }
-      
-      if(canShoot && mount.target instanceof Posc p){
-         tractor.lastX = p.x();
-         tractor.lastY = p.y();
-      }
 
       if(canShoot && mount.target instanceof Healthc h){
+         tractor.lastX = mount.target.x();
+         tractor.lastY = mount.target.y();
          tractor.strength = Mathf.lerpDelta(tractor.strength, 1f, 0.1f);
 
          if(actualDamage > 0) h.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team));
