@@ -333,11 +333,11 @@ public class OBBlocks{
         }};
 
         devastation = new PowerTurret("devastation"){{
-            requirements(Category.turret, with(Items.lead, 650, Items.titanium, 350, Items.metaglass, 300, Items.surgeAlloy, 255, Items.silicon, 275));
+            requirements(Category.turret, with(Items.lead, 650, Items.titanium, 350, Items.metaglass, 370, Items.surgeAlloy, 255, Items.silicon, 275));
             recoil = 3.5f;
-            reload = 430f;
+            reload = 450f;
             shake = 7f;
-            range = 382f;
+            range = 380f;
             cooldownTime = reload;
 
             shoot = new ShootSpread(3, 7.5f);
@@ -349,13 +349,15 @@ public class OBBlocks{
             size = 4;
             moveWhileCharging = false;
             shootY = 6f;
+  
+            float brange = range + 8f;
 
-            shootType = new LaserBulletType(447){{
-                length = range + 8f;
+            shootType = new LaserBulletType(451){{
+                length = brange;
                 width = 50f;
 
                 lifetime = 65f;
-                lightColor = lightningColor = Pal.powerLight;
+                lightColor = Pal.powerLight;
                 largeHit = true;
                 chargeEffect = OBFx.orangeLaserCharge;
 
@@ -368,10 +370,11 @@ public class OBBlocks{
                 incendAmount = 1;
                 pierceArmor = true;
                 status = StatusEffects.burning;
+                statusDuration = 270f;
             }};
             unitSort = UnitSorts.strongest;
-            coolantMultiplier = 0.6f;
-            coolant = consumeCoolant(0.8f);
+            coolantMultiplier = 0.7f;
+            coolant = consumeCoolant(0.9f);
 
             consumePower(12f);
         }};
