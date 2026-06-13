@@ -337,7 +337,7 @@ public class OBBlocks{
             recoil = 3.5f;
             reload = 430f;
             shake = 7f;
-            range = 380f;
+            range = 382f;
             cooldownTime = reload;
 
             shoot = new ShootSpread(3, 7.5f);
@@ -350,8 +350,8 @@ public class OBBlocks{
             moveWhileCharging = false;
             shootY = 6f;
 
-            shootType = new LaserBulletType(441){{
-                length = range + 7f;
+            shootType = new LaserBulletType(447){{
+                length = range + 8f;
                 width = 50f;
 
                 lifetime = 65f;
@@ -373,7 +373,7 @@ public class OBBlocks{
             coolantMultiplier = 0.6f;
             coolant = consumeCoolant(0.8f);
 
-            consumePower(11f);
+            consumePower(12f);
         }};
     }
 }
