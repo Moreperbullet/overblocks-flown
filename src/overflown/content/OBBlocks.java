@@ -373,8 +373,8 @@ public class OBBlocks{
                 statusDuration = 270f;
             }};
             unitSort = UnitSorts.strongest;
-            coolantMultiplier = 0.7f;
-            coolant = consumeCoolant(0.9f);
+            coolantMultiplier = 0.5f;
+            coolant = consumeCoolant(1.25f);
 
             consumePower(12f);
         }};
