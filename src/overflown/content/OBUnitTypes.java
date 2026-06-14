@@ -187,7 +187,7 @@ public class OBUnitTypes{
         
         attorney = new OBUnitType("attorney", InvisibleMechUnit.class){{
             speed = 0.4f;
-            hitSize = 21f;
+            hitSize = 20f;
             rotateSpeed = 2.1f;
             health = 7900f;
             armor = 11f;
@@ -418,7 +418,7 @@ public class OBUnitTypes{
             armor = 8f;
             engineOffset = 18;
             engineSize = 5.3f;
-            hitSize = 40f;
+            hitSize = 38f;
             targetFlags = new BlockFlag[]{BlockFlag.reactor, BlockFlag.generator, BlockFlag.core, null};
 
             loopSound = Sounds.loopHover;
@@ -432,7 +432,7 @@ public class OBUnitTypes{
                 shoot.shotDelay = 3f;
                 ejectEffect = Fx.casing1;
                 rotateSpeed = 8f;
-                bullet = new BasicBulletType(4.1f, 28){{
+                bullet = new BasicBulletType(3.5f, 28){{
                     width = 9f;
                     height = 12f;
                     lifetime = 50f;
@@ -457,7 +457,7 @@ public class OBUnitTypes{
                     damageInterval = 1f;
                     pierce = false;
                     pierceArmor = true;
-                    maxRange = 145f;
+                    maxRange = 140f;
                     status = StatusEffects.sapped;
                     statusDuration = 15f;
                 }};
