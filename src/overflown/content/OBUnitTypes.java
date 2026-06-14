@@ -432,7 +432,7 @@ public class OBUnitTypes{
                 shoot.shotDelay = 3f;
                 ejectEffect = Fx.casing1;
                 rotateSpeed = 8f;
-                bullet = new BasicBulletType(3.1f, 28){{
+                bullet = new BasicBulletType(4.1f, 28){{
                     width = 9f;
                     height = 12f;
                     lifetime = 50f;
