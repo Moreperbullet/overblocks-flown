@@ -335,9 +335,9 @@ public class OBBlocks{
         devastation = new PowerTurret("devastation"){{
             requirements(Category.turret, with(Items.lead, 650, Items.titanium, 350, Items.metaglass, 370, Items.surgeAlloy, 255, Items.silicon, 275));
             recoil = 3.5f;
-            reload = 450f;
+            reload = 420f;
             shake = 7f;
-            range = 380f;
+            range = 390f;
             cooldownTime = reload;
 
             shoot = new ShootSpread(3, 7.5f);
@@ -350,9 +350,9 @@ public class OBBlocks{
             moveWhileCharging = false;
             shootY = 6f;
   
-            float brange = range + 8f;
+            float brange = range + 10f;
 
-            shootType = new LaserBulletType(451){{
+            shootType = new LaserBulletType(460){{
                 length = brange;
                 width = 50f;
 
@@ -376,7 +376,7 @@ public class OBBlocks{
             coolantMultiplier = 0.5f;
             coolant = consumeCoolant(1.25f);
 
-            consumePower(12f);
+            consumePower(11.5f);
         }};
     }
 }
