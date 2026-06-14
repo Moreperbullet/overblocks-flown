@@ -118,6 +118,7 @@ public class TractorBeamWeapon extends Weapon{
 
          float ang = Angles.angle(wx, wy, tractor.lastX, tractor.lastY);
 
+         Draw.z(Layer.flyingUnit + 1f);
          Draw.mixcol(laserColor, Mathf.absin(4f, 0.6f));
          Drawf.laser(laser, laserEnd, laserEnd,
          wx + Angles.trnsx(ang, shootLength), wy + Angles.trnsy(ang, shootLength),
