@@ -23,6 +23,7 @@ import mindustry.world.blocks.*;
 import mindustry.world.blocks.defense.*;
 import mindustry.world.consumers.*;
 import mindustry.world.meta.*;
+import overflown.world.meta.*;
 
 
 public class DensityProjector extends ForceProjector{
@@ -93,7 +94,7 @@ public class DensityProjector extends ForceProjector{
 
          float buildupFraction = Mathf.clamp(buildup / (shieldHealth + phaseShieldBoost * phaseHeat));
 
-         currentPhase = Mathf.clamp((int)(buildupFraction * phases), 0, phases - 1) + 1;
+         currentPhase = Mathf.clamp((int)((buildupFraction * phases), 0, phases - 1);
          resultArmor = baseForceArmor * (float)(currentPhase / phases);
       }
 
