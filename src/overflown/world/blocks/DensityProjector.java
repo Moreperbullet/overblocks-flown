@@ -28,7 +28,7 @@ public class DensityProjector extends ForceProjector{
    public int phases = 4;
    //TODO armor
 
-   public ForceProjector(String name){
+   public DensityProjector(String name){
       super(name);
       update = true;
       solid = true;
