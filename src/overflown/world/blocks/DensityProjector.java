@@ -28,7 +28,25 @@ import mindustry.world.meta.*;
 public class DensityProjector extends ForceProjector{
    public int phases = 4;
    public float baseForceArmor;
+
    //TODO actually calculate armor for enemy bullets
+   protected static DensityProjector dBlock;
+   protected static DensityBuild dEntity;
+   protected static final Cons<Bullet> dConsumer = bullet -> {
+       if(bullet.team != dEntity.team && bullet.type.absorbable && !bullet.absorbed &&
+         Intersector.isInRegularPolygon(paramBlock.sides, paramEntity.x, paramEntity.y, paramEntity.realRadius(), paramBlock.shieldRotation, bullet.x, bullet.y)){
+
+         bullet.absorb();
+         dBlock.hitSound.at(bullet.x, bullet.y, 1f + Mathf.range(0.1f), paramBlock.hitSoundVolume);
+         dBlock.absorbEffect.at(bullet);
+         dEntity.hit = 1f;
+         if(!bullet.type.pierceArmor){
+            dEntity.buildup += Damage.applyArmor(bullet.type.shieldDamage(bullet), dEntity.resultArmor);
+         }else{
+            dEntity.buildup += bullet.type.shieldDamage(bullet);
+         }
+      }
+   };
 
    public DensityProjector(String name){
       super(name);
@@ -71,6 +89,17 @@ public class DensityProjector extends ForceProjector{
 
          currentPhase = Mathf.clamp((int)(buildupFraction * phases), 0, phases - 1) + 1;
          resultArmor = baseForceArmor * (currentPhase / phases);
+      }
+
+      @Override
+      public void deflectBullets(){
+         float realRadius = realRadius();
+
+         if(realRadius > 0 && !broken){
+            dBlock = DensityProjector.this;
+            dEntity = this;
+            Groups.bullet.intersect(x - realRadius, y - realRadius, realRadius * 2f, realRadius * 2f, dConsumer);
+         }
       }
    }
 }
