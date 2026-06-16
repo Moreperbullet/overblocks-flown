@@ -270,6 +270,8 @@ public class OBBlocks{
             phaseRadiusBoost = 0f;
             phaseShieldBoost = 0f;
             radius = 180f;
+
+            baseForceArmor = 20f;
             shieldHealth = 6000f;
             cooldownNormal = 3f;
             cooldownLiquid = 1.5f;

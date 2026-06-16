@@ -74,7 +74,7 @@ public class DensityProjector extends ForceProjector{
       new Bar(() ->
       Core.bundle.format("bar.shield-phases", entity.currentPhase),
       () -> Pal.darkMetal,
-      () -> entity.currentPhase / phases));
+      () -> 1 - entity.currentPhase / phases));
    }
 
    public class DensityBuild extends ForceBuild{
@@ -85,9 +85,9 @@ public class DensityProjector extends ForceProjector{
       public void updateTile(){
          super.updateTile();
 
-         float buildupFraction = Mathf.clamp(1f - buildup / shieldHealth + phaseShieldBoost * phaseHeat);
+         float buildupFraction = Mathf.clamp(buildup / shieldHealth + phaseShieldBoost * phaseHeat);
 
-         currentPhase = Mathf.clamp((int)(buildupFraction * phases), 0, phases - 1) + 1;
+         currentPhase = Mathf.clamp((int)(1 - buildupFraction * phases), 0, phases - 1) + 1;
          resultArmor = baseForceArmor * (currentPhase / phases);
       }
 
