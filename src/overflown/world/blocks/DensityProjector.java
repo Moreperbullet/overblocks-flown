@@ -27,7 +27,8 @@ import mindustry.world.meta.*;
 
 public class DensityProjector extends ForceProjector{
    public int phases = 4;
-   //TODO armor
+   public float baseForceArmor;
+   //TODO actually calculate armor for enemy bullets
 
    public DensityProjector(String name){
       super(name);
@@ -53,11 +54,14 @@ public class DensityProjector extends ForceProjector{
 
       addBar("shieldphase", (DensityBuild entity) ->
       new Bar(() ->
-      Core.bundle.format("bar.shield-phases", entity.currentPhase), () -> Pal.darkMetal, () -> entity.currentPhase / phases));
+      Core.bundle.format("bar.shield-phases", entity.currentPhase),
+      () -> Pal.darkMetal,
+      () -> entity.currentPhase / phases));
    }
 
    public class DensityBuild extends ForceBuild{
       public int currentPhase;
+      public float resultArmor;
 
       @Override
       public void updateTile(){
@@ -65,7 +69,8 @@ public class DensityProjector extends ForceProjector{
 
          float buildupFraction = Mathf.clamp(1f - buildup / shieldHealth + phaseShieldBoost * phaseHeat);
 
-         currentPhase = Mathf.clamp((int)(buildupFraction * phases), 0, phases - 1);
+         currentPhase = Mathf.clamp((int)(buildupFraction * phases), 0, phases - 1) + 1;
+         resultArmor = baseForceArmor * (currentPhase / phases);
       }
    }
 }

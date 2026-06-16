@@ -269,13 +269,13 @@ public class OBBlocks{
             sides = 8;
             phaseRadiusBoost = 0f;
             phaseShieldBoost = 0f;
-            radius = 200f;
-            shieldHealth = 5000f;
-            cooldownNormal = 3.5f;
-            cooldownLiquid = 3.2f;
+            radius = 180f;
+            shieldHealth = 6000f;
+            cooldownNormal = 3f;
+            cooldownLiquid = 1.5f;
             cooldownBrokenBase = 0.4f;
 
-            itemConsumer = consumeItems(with(Items.phaseFabric, 1, Items.silicon, 3));
+            itemConsumer = consumeItems(with(Items.phaseFabric, 1, Items.silicon, 4));
             consumePower(11f);
         }};
 
