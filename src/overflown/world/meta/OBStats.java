@@ -9,6 +9,10 @@ public class OBStats {
     damagePercent = new Stat("overflown-damage-percent", StatCat.function),
 
     healPercent = new Stat("overflown-heal-percent", StatCat.function),
-    
-    special = new Stat("overflown-special", StatCat.function);
+
+    special = new Stat("overflown-special", StatCat.function),
+
+    armorPhases = new Stat("overflown-armor-phases"),
+
+    baseShieldArmor = new Stat("overflown-base-shield-armor");
 }

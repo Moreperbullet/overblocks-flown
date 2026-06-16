@@ -29,7 +29,6 @@ public class DensityProjector extends ForceProjector{
    public int phases = 4;
    public float baseForceArmor;
 
-   //TODO actually calculate armor for enemy bullets
    protected static DensityProjector dBlock;
    protected static DensityBuild dEntity;
    protected static final Cons<Bullet> dConsumer = bullet -> {
@@ -67,6 +66,13 @@ public class DensityProjector extends ForceProjector{
    }
 
    @Override
+   public void setStats(){
+      super.setStats();
+      stats.add(OBStats.armorPhases, phases, StatUnit.none);
+      stats.add(OBStats.baseShieldArmor, baseForceArmor, StatUnit.none);
+   }
+
+   @Override
    public void setBars(){
       super.setBars();
 
@@ -74,7 +80,7 @@ public class DensityProjector extends ForceProjector{
       new Bar(() ->
       Core.bundle.format("bar.shield-phases", entity.currentPhase),
       () -> Pal.darkMetal,
-      () -> 1 - entity.currentPhase / phases));
+      () -> 1f - (float)(entity.currentPhase / phases)));
    }
 
    public class DensityBuild extends ForceBuild{
@@ -85,10 +91,10 @@ public class DensityProjector extends ForceProjector{
       public void updateTile(){
          super.updateTile();
 
-         float buildupFraction = Mathf.clamp(buildup / shieldHealth + phaseShieldBoost * phaseHeat);
+         float buildupFraction = Mathf.clamp(buildup / (shieldHealth + phaseShieldBoost * phaseHeat));
 
          currentPhase = Mathf.clamp((int)(buildupFraction * phases), 0, phases - 1) + 1;
-         resultArmor = baseForceArmor * (1 - currentPhase / phases);
+         resultArmor = baseForceArmor * (currentPhase / phases);
       }
 
       @Override
