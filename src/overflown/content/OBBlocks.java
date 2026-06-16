@@ -275,7 +275,7 @@ public class OBBlocks{
             cooldownLiquid = 3.2f;
             cooldownBrokenBase = 0.4f;
 
-            itemConsumer = consumeItems(with(Items.phaseFabric, 1, silicon, 3));
+            itemConsumer = consumeItems(with(Items.phaseFabric, 1, Items.silicon, 3));
             consumePower(11f);
         }};
 
