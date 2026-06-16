@@ -30,7 +30,7 @@ public class OBBlocks{
     //payloads
     largePayloadConveyor, payloadBuilder, payloadBreaker, payloadPropulsionTower,
     //other
-    plastaniumCrusher, diseaseExtractor, diseaseMixer, plastaniumDeflectWall, densityProjector
+    plastaniumCrusher, diseaseExtractor, diseaseMixer, plastaniumDeflectWall, densityProjector,
     //turrets
     vampirism, devastation;
 
@@ -271,12 +271,12 @@ public class OBBlocks{
             phaseShieldBoost = 0f;
             radius = 200f;
             shieldHealth = 5000f;
-            cooldownNormal = 1.5f;
-            cooldownLiquid = 1.2f;
-            cooldownBrokenBase = 0.35f;
+            cooldownNormal = 3.5f;
+            cooldownLiquid = 3.2f;
+            cooldownBrokenBase = 0.4f;
 
             itemConsumer = consumeItems(with(Items.phaseFabric, 1, silicon, 3));
-            consumePower(4f);
+            consumePower(11f);
         }};
 
         vampirism = new ItemTurret("vampirism"){{

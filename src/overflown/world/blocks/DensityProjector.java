@@ -17,7 +17,7 @@ public class DensityProjector extends ForceProjector{
    public void setBars(){
       super.setBars();
 
-      addBar("phase", (DensityBuild entity) ->
+      addBar("shieldphase", (DensityBuild entity) ->
       new Bar(() ->
       Core.bundle.format("bar.shield-phases", entity.currentPhase), () -> Color.scarlet, () -> entity.currentPhase / phases));
    }
@@ -29,7 +29,7 @@ public class DensityProjector extends ForceProjector{
       public void updateTile(){
          super.updateTile();
 
-         float buildupFraction = Mathf.clamp(this.buildup / this.shieldHealth);
+         float buildupFraction = Mathf.clamp(1f - buildup / shieldHealth + phaseShieldBoost * phaseHeat);
 
          currentPhase = Mathf.clamp((int)(buildupFraction * phases), 0, phases - 1);
       }
