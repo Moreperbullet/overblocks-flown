@@ -10,6 +10,7 @@ import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
 import mindustry.world.*;
+import mindustry.world.blocks.defense.*;
 import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.payloads.*;
@@ -29,7 +30,7 @@ public class OBBlocks{
     //payloads
     largePayloadConveyor, payloadBuilder, payloadBreaker, payloadPropulsionTower,
     //other
-    plastaniumCrusher, diseaseExtractor, diseaseMixer, plastaniumDeflectWall,
+    plastaniumCrusher, diseaseExtractor, diseaseMixer, plastaniumDeflectWall, densityProjector
     //turrets
     vampirism, devastation;
 
@@ -260,6 +261,22 @@ public class OBBlocks{
             size = 2;
             insulated = true;
             absorbLasers = true;
+        }};
+
+        densityProjector = new DensityProjector("density-projector"){{
+            requirements(Category.effect, with(Items.metaglass, 225, Items.thorium, 100, Items.silicon, 250, Items.phaseFabric, 75));
+            size = 4;
+            sides = 8;
+            phaseRadiusBoost = 0f;
+            phaseShieldBoost = 0f;
+            radius = 200f;
+            shieldHealth = 5000f;
+            cooldownNormal = 1.5f;
+            cooldownLiquid = 1.2f;
+            cooldownBrokenBase = 0.35f;
+
+            itemConsumer = consumeItems(with(Items.phaseFabric, 1, silicon, 3));
+            consumePower(4f);
         }};
 
         vampirism = new ItemTurret("vampirism"){{
