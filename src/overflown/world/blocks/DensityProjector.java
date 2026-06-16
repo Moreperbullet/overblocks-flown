@@ -20,6 +20,7 @@ import mindustry.type.*;
 import mindustry.ui.*;
 import mindustry.world.*;
 import mindustry.world.blocks.*;
+import mindustry.world.blocks.defense.*;
 import mindustry.world.consumers.*;
 import mindustry.world.meta.*;
 
