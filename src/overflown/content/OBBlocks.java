@@ -269,7 +269,7 @@ public class OBBlocks{
             sides = 8;
             phaseRadiusBoost = 0f;
             phaseShieldBoost = 0f;
-            radius = 180f;
+            radius = 195f;
 
             baseForceArmor = 20f;
             shieldHealth = 6000f;
