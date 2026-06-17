@@ -273,8 +273,8 @@ public class OBBlocks{
 
             baseForceArmor = 20f;
             shieldHealth = 6000f;
-            cooldownNormal = 3f;
-            cooldownLiquid = 1.5f;
+            cooldownNormal = 2.7f;
+            cooldownLiquid = 1.4f;
             cooldownBrokenBase = 0.4f;
 
             itemConsumer = consumeItems(with(Items.phaseFabric, 1, Items.silicon, 4));

@@ -12,7 +12,7 @@ public class OBStats {
 
     special = new Stat("overflown-special", StatCat.function),
 
-    armorPhases = new Stat("overflown-armor-phases"),
+    armorPhases = new Stat("overflown-armor-phases", StatCat.function),
 
-    baseShieldArmor = new Stat("overflown-base-shield-armor");
+    baseShieldArmor = new Stat("overflown-base-shield-armor", StatCat.function);
 }

@@ -34,7 +34,7 @@ public class DensityProjector extends ForceProjector{
    protected static DensityBuild dEntity;
    protected static final Cons<Bullet> dConsumer = bullet -> {
        if(bullet.team != dEntity.team && bullet.type.absorbable && !bullet.absorbed &&
-         Intersector.isInRegularPolygon(paramBlock.sides, paramEntity.x, paramEntity.y, paramEntity.realRadius(), paramBlock.shieldRotation, bullet.x, bullet.y)){
+         Intersector.isInRegularPolygon(dBlock.sides, dEntity.x, dEntity.y, dEntity.realRadius(), dBlock.shieldRotation, bullet.x, bullet.y)){
 
          bullet.absorb();
          dBlock.hitSound.at(bullet.x, bullet.y, 1f + Mathf.range(0.1f), paramBlock.hitSoundVolume);
@@ -79,9 +79,9 @@ public class DensityProjector extends ForceProjector{
 
       addBar("shieldphase", (DensityBuild entity) ->
       new Bar(() ->
-      Core.bundle.format("bar.shield-phases", entity.currentPhase),
+      Core.bundle.format("bar.shield-phases", (int)entity.resultArmor),
       () -> Pal.darkMetal,
-      () -> 1f - (float)(entity.currentPhase / phases)));
+      () -> (float)entity.currentPhase / phases));
    }
 
    public class DensityBuild extends ForceBuild{
@@ -92,10 +92,10 @@ public class DensityProjector extends ForceProjector{
       public void updateTile(){
          super.updateTile();
 
-         float buildupFraction = Mathf.clamp(buildup / (shieldHealth + phaseShieldBoost * phaseHeat));
+         float buildupFraction = Mathf.clamp(buildup / (shieldHealth + phaseShieldBoost * phaseHeat - 0.001f));
 
-         currentPhase = Mathf.clamp((int)((buildupFraction * phases)), 0, phases - 1);
-         resultArmor = baseForceArmor * (float)(currentPhase / phases);
+         currentPhase = Mathf.clamp((int)(buildupFraction * phases), 0, phases - 1) + 1;
+         resultArmor = baseForceArmor * (float)currentPhase / phases;
       }
 
       @Override
