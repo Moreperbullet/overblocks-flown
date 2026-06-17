@@ -53,7 +53,9 @@ public class OBTechTree{
             node(plastaniumDeflectWall, Seq.with(
                 new Research(plastaniumWallLarge), 
                 new Research(segment)
-            ));
+            ), () -> {
+                node(deflectWallLarge);
+            });
         });
 
         vanillaNode(forceProjector, () -> {

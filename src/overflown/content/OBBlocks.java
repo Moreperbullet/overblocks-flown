@@ -30,7 +30,7 @@ public class OBBlocks{
     //payloads
     largePayloadConveyor, payloadBuilder, payloadBreaker, payloadPropulsionTower,
     //other
-    plastaniumCrusher, diseaseExtractor, diseaseMixer, plastaniumDeflectWall, densityProjector,
+    plastaniumCrusher, diseaseExtractor, diseaseMixer, plastaniumDeflectWall, deflectWallLarge, densityProjector,
     //turrets
     vampirism, devastation;
 
@@ -256,8 +256,16 @@ public class OBBlocks{
         }};
 
         plastaniumDeflectWall = new ReflectionWall("plastanium-deflect-wall"){{
-            requirements(Category.defense, ItemStack.with(Items.phaseFabric, 24, Items.plastanium, 16, Items.metaglass, 8));
-            health = 220 * 16;
+            requirements(Category.defense, ItemStack.with(Items.phaseFabric, 6, Items.plastanium, 4, Items.metaglass, 2));
+            health = 200 * 4;
+            size = 2;
+            insulated = true;
+            absorbLasers = true;
+        }};
+
+        deflectWallLarge = new ReflectionWall("plastanium-deflect-wall-large"){{
+            requirements(Category.defense, ItemStack.mult(plastaniumDeflectWall.requirements, 4));
+            health = 200 * 16;
             size = 2;
             insulated = true;
             absorbLasers = true;
