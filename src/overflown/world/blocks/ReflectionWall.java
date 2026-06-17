@@ -24,7 +24,7 @@ public class ReflectionWall extends Wall{
         @Override
         public boolean collision(Bullet bullet){
             super.collision(bullet);
-            float finalDamage = Math.min(bulletDamage() * reflectMod, reflectCap)
+            float finalDamage = Math.min(bulletDamage() * reflectMod, reflectCap);
 
             if(damageMultiplier > 0f && bullet.owner instanceof Healthc c) {
                 c.damage(finalDamage);
