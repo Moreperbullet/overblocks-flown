@@ -271,15 +271,15 @@ public class OBBlocks{
             phaseShieldBoost = 0f;
             radius = 195f;
 
-            baseForceArmor = 20f;
+            baseForceArmor = 24f;
             shieldHealth = 6000f;
             cooldownNormal = 2.7f;
             cooldownLiquid = 1.4f;
             cooldownBrokenBase = 0.4f;
             fullOverride = "overflown-density-projector-full";
 
-            itemConsumer = consumeItems(with(Items.phaseFabric, 1, Items.silicon, 4));
-            consumePower(11f);
+            itemConsumer = consumeItems(with(Items.phaseFabric, 2, Items.silicon, 4));
+            consumePower(12f);
         }};
 
         vampirism = new ItemTurret("vampirism"){{
