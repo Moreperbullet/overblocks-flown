@@ -94,8 +94,8 @@ public class DensityProjector extends ForceProjector{
 
          float buildupFraction = Mathf.clamp(buildup / (shieldHealth + phaseShieldBoost * phaseHeat - 0.001f));
 
-         currentPhase = Mathf.clamp((int)(buildupFraction * phases), 0, phases - 1) + 1;
-         resultArmor = baseForceArmor * (float)currentPhase / phases;
+         currentPhase = Mathf.clamp((int)(buildupFraction * phases), 0, phases - 1);
+         resultArmor = baseForceArmor * (float)(currentPhase + 1) / phases;
       }
 
       @Override
