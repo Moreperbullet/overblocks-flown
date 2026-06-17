@@ -80,7 +80,7 @@ public class DensityProjector extends ForceProjector{
       addBar("shieldarmor", (DensityBuild entity) ->
       new Bar(() ->
       Core.bundle.format("bar.shield-armor", (int)entity.resultArmor, baseForceArmor),
-      () -> Pal.darkMetal,
+      () -> Pal.logicOperations,
       () -> (float)entity.currentPhase / (phases - 1)));
    }
 
