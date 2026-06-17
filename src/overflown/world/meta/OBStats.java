@@ -12,6 +12,10 @@ public class OBStats {
 
     special = new Stat("overflown-special", StatCat.function),
 
+    reflectModNum = new Stat("overflown-reflect-modifier", StatCat.function)
+
+    reflectCapNum = new Stat("overflown-reflect-cap", StatCat.function)
+
     armorPhases = new Stat("overflown-armor-phases", StatCat.function),
 
     baseShieldArmor = new Stat("overflown-base-shield-armor", StatCat.function);
