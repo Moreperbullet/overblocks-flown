@@ -276,6 +276,7 @@ public class OBBlocks{
             cooldownNormal = 2.7f;
             cooldownLiquid = 1.4f;
             cooldownBrokenBase = 0.4f;
+            fullOverride = "overflown-density-projector-full";
 
             itemConsumer = consumeItems(with(Items.phaseFabric, 1, Items.silicon, 4));
             consumePower(11f);
