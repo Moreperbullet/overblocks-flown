@@ -256,7 +256,7 @@ public class OBBlocks{
         }};
 
         plastaniumDeflectWall = new ReflectionWall("plastanium-deflect-wall"){{
-            requirements(Category.defense, ItemStack.with(Items.phaseFabric, 6, Items.plastanium, 4, Items.metaglass, 2));
+            requirements(Category.defense, ItemStack.with(Items.phaseFabric, 8, Items.plastanium, 6, Items.metaglass, 2));
             health = 200 * 4;
             size = 1;
             insulated = true;
