@@ -55,6 +55,10 @@ public class OBTechTree{
                 new Research(segment)
             ));
         });
+
+        vanillaNode(forceProjector, () -> {
+            node(densityProjector);
+        });
     
         vanillaNode(massDriver, () -> {
             node(payloadPropulsionTower, Seq.with(
