@@ -37,7 +37,7 @@ public class DensityProjector extends ForceProjector{
          Intersector.isInRegularPolygon(dBlock.sides, dEntity.x, dEntity.y, dEntity.realRadius(), dBlock.shieldRotation, bullet.x, bullet.y)){
 
          bullet.absorb();
-         dBlock.hitSound.at(bullet.x, bullet.y, 1f + Mathf.range(0.1f), paramBlock.hitSoundVolume);
+         dBlock.hitSound.at(bullet.x, bullet.y, 1f + Mathf.range(0.1f), dBlock.hitSoundVolume);
          dBlock.absorbEffect.at(bullet);
          dEntity.hit = 1f;
          if(!bullet.type.pierceArmor){
