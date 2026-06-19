@@ -27,86 +27,86 @@ import overflown.world.meta.*;
 
 
 public class DensityProjector extends ForceProjector{
-   public int phases = 4;
-   public float baseForceArmor;
+    public int phases = 4;
+    public float baseForceArmor;
 
-   protected static DensityProjector dBlock;
-   protected static DensityBuild dEntity;
-   protected static final Cons<Bullet> dConsumer = bullet -> {
-       if(bullet.team != dEntity.team && bullet.type.absorbable && !bullet.absorbed &&
-         Intersector.isInRegularPolygon(dBlock.sides, dEntity.x, dEntity.y, dEntity.realRadius(), dBlock.shieldRotation, bullet.x, bullet.y)){
+    protected static DensityProjector dBlock;
+    protected static DensityBuild dEntity;
+    protected static final Cons<Bullet> dConsumer = bullet -> {
+        if(bullet.team != dEntity.team && bullet.type.absorbable && !bullet.absorbed &&
+            Intersector.isInRegularPolygon(dBlock.sides, dEntity.x, dEntity.y, dEntity.realRadius(), dBlock.shieldRotation, bullet.x, bullet.y)){
 
-         bullet.absorb();
-         dBlock.hitSound.at(bullet.x, bullet.y, 1f + Mathf.range(0.1f), dBlock.hitSoundVolume);
-         dBlock.absorbEffect.at(bullet);
-         dEntity.hit = 1f;
-         if(!bullet.type.pierceArmor){
-            dEntity.buildup += Damage.applyArmor(bullet.type.shieldDamage(bullet), dEntity.resultArmor);
-         }else{
-            dEntity.buildup += bullet.type.shieldDamage(bullet);
+            bullet.absorb();
+            dBlock.hitSound.at(bullet.x, bullet.y, 1f + Mathf.range(0.1f), dBlock.hitSoundVolume);
+            dBlock.absorbEffect.at(bullet);
+            dEntity.hit = 1f;
+            if(!bullet.type.pierceArmor){
+               dEntity.buildup += Damage.applyArmor(bullet.type.shieldDamage(bullet), dEntity.resultArmor);
+            }else{
+               dEntity.buildup += bullet.type.shieldDamage(bullet);
+            }
          }
-      }
-   };
+    };
 
-   public DensityProjector(String name){
-      super(name);
-      update = true;
-      solid = true;
-      group = BlockGroup.projectors;
-      hasPower = true;
-      hasLiquids = true;
-      hasItems = true;
-      envEnabled |= Env.space;
-      ambientSound = Sounds.loopShield;
-      ambientSoundVolume = 0.1f;
-      flags = EnumSet.of(BlockFlag.shield);
+    public DensityProjector(String name){
+        super(name);
+        update = true;
+        solid = true;
+        group = BlockGroup.projectors;
+        hasPower = true;
+        hasLiquids = true;
+        hasItems = true;
+        envEnabled |= Env.space;
+        ambientSound = Sounds.loopShield;
+        ambientSoundVolume = 0.1f;
+        flags = EnumSet.of(BlockFlag.shield);
 
-      if(consumeCoolant){
-         consume(coolantConsumer = new ConsumeCoolant(coolantConsumption)).boost().update(false);
-      }
-   }
+        if(consumeCoolant){consume(
+            coolantConsumer = new ConsumeCoolant(coolantConsumption)).boost().update(false);
+        }
+    }
 
-   @Override
-   public void setStats(){
-      super.setStats();
-      stats.add(OBStats.armorPhases, phases, StatUnit.none);
-      stats.add(OBStats.baseShieldArmor, baseForceArmor, StatUnit.none);
-   }
+    @Override
+    public void setStats(){
+        super.setStats();
+        stats.add(OBStats.armorPhases, phases, StatUnit.none);
+        stats.add(OBStats.baseShieldArmor, baseForceArmor, StatUnit.none);
+    }
 
-   @Override
-   public void setBars(){
-      super.setBars();
+    @Override
+    public void setBars(){
+        super.setBars();
 
-      addBar("shieldarmor", (DensityBuild entity) ->
-      new Bar(() ->
-      Core.bundle.format("bar.shield-armor", (int)entity.resultArmor, baseForceArmor),
-      () -> Pal.logicControl,
-      () -> (float)entity.currentPhase / (phases - 1)));
-   }
+        addBar("shieldarmor", (DensityBuild entity) ->
+        new Bar(() ->
+        Core.bundle.format("bar.shield-armor", (int)entity.resultArmor, baseForceArmor),
+        () -> Pal.logicControl,
+        () -> (float)entity.currentPhase / (phases - 1)));
+    }
 
-   public class DensityBuild extends ForceBuild{
-      public int currentPhase;
-      public float resultArmor;
+    public class DensityBuild extends ForceBuild{
+        public int currentPhase;
+        public float resultArmor;
 
-      @Override
-      public void updateTile(){
-         super.updateTile();
+        @Override
+        public void updateTile(){
+            super.updateTile();
 
-         float buildupFraction = Mathf.clamp(buildup / (shieldHealth + phaseShieldBoost * phaseHeat - 0.001f));
+            float buildupFraction = Mathf.clamp(buildup / (shieldHealth + phaseShieldBoost * phaseHeat - 0.001f));
 
-         currentPhase = Mathf.clamp((int)(buildupFraction * phases), 0, phases - 1);
-         resultArmor = baseForceArmor * (float)(currentPhase + 1) / phases;
-      }
+            currentPhase = Mathf.clamp((int)(buildupFraction * phases), 0, phases - 1);
+            resultArmor = baseForceArmor * (float)(currentPhase + 1) / phases;
+        }
 
-      @Override
-      public void deflectBullets(){
-         float realRadius = realRadius();
+        @Override
+        public void deflectBullets(){
+            float realRadius = realRadius();
 
-         if(realRadius > 0 && !broken){
-            dBlock = DensityProjector.this;
-            dEntity = this;
-            Groups.bullet.intersect(x - realRadius, y - realRadius, realRadius * 2f, realRadius * 2f, dConsumer);
-         }
-      }
-   }
+            if(realRadius > 0 && !broken){
+                dBlock = DensityProjector.this;
+                dEntity = this;
+                Groups.bullet.intersect(x - realRadius, y - realRadius, realRadius * 2f, realRadius * 2f, dConsumer);
+            }
+        }
+    }
 }

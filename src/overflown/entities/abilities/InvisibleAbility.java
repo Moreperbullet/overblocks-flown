@@ -8,29 +8,28 @@ import mindustry.gen.*;
 import overflown.gen.*;
 
 public class InvisibleAbility extends Ability{
-   public float invisibleSpeed;
+    public float invisibleSpeed;
 
-   public InvisibleAbility(float invisibleSpeed){
-      this.invisibleSpeed = invisibleSpeed;
-   }
+    public InvisibleAbility(float invisibleSpeed){
+        this.invisibleSpeed = invisibleSpeed;
+    }
    
-   @Override
-   public void created(Unit unit){
-      if(unit instanceof Invisiblec n){
-         boolean found = false;
-         if (n.invisibleA() != null) return;
+    @Override
+    public void created(Unit unit){
+        if(unit instanceof Invisiblec n){
+            boolean found = false;
+            if (n.invisibleA() != null) return;
 
-         for(var ab : unit.abilities){
-            if(ab == this){
-               found = true;
-               n.invisibleA(this);
-               //Log.info("Invisible ability is found");
-               break;
+            for(var ab : unit.abilities){
+                if(ab == this){
+                    found = true;
+                    n.invisibleA(this);
+                    //Log.info("Invisible ability is found");
+                    break;
+                }
             }
+         }else{
+            Log.warn("This unit does not extend Invisiblec");
          }
-         if(!found) throw new RuntimeException("Invisible ability isn't found");
-      }else{
-         Log.warn("This unit does not extend Invisiblec");
-      }
-   }
+    }
 }
