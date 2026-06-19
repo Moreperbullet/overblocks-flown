@@ -215,8 +215,7 @@ public class OBBlocks{
 
             consumeLiquid(Liquids.oil, 0.5f);
             consumePower(4f);
-            consumeItem(Items.titanium, 6);
-            consumeItem(Items.coal, 2);
+            consumeItems(with(Items.titanium, 6, Items.coal, 2));
         }};
         
         diseaseExtractor = new Separator("disease-extractor"){{
@@ -256,7 +255,7 @@ public class OBBlocks{
         }};
 
         plastaniumDeflectWall = new ReflectionWall("plastanium-deflect-wall"){{
-            requirements(Category.defense, ItemStack.with(Items.phaseFabric, 8, Items.plastanium, 6, Items.metaglass, 2));
+            requirements(Category.defense, with(Items.phaseFabric, 8, Items.plastanium, 6, Items.metaglass, 2));
             health = 200 * 4;
             size = 1;
             insulated = true;
@@ -264,7 +263,7 @@ public class OBBlocks{
         }};
 
         deflectWallLarge = new ReflectionWall("plastanium-deflect-wall-large"){{
-            requirements(Category.defense, ItemStack.mult(plastaniumDeflectWall.requirements, 4));
+            requirements(Category.defense, mult(plastaniumDeflectWall.requirements, 4));
             health = 200 * 16;
             size = 2;
             insulated = true;
@@ -393,12 +392,12 @@ public class OBBlocks{
                 sideWidth = 0f;
                 sideLength = 0f;
                 colors = new Color[]{Color.valueOf("ec7458aa"), Color.valueOf("ff9c5a"), Color.white};
-                incendChance = 0.7f;
-                incendSpread = 5f;
+                incendChance = 0.8f;
+                incendSpread = 6f;
                 incendAmount = 1;
                 pierceArmor = true;
                 status = StatusEffects.burning;
-                statusDuration = 270f;
+                statusDuration = 810f;
             }};
             unitSort = UnitSorts.strongest;
             coolantMultiplier = 0.5f;
