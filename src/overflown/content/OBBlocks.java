@@ -263,6 +263,7 @@ public class OBBlocks{
             sameBlockConnection = true;
             laserScale = 0.8f;
             scaledHealth = 140;
+            schematicPriority = -15;
         }};
 
         plastaniumDeflectWall = new ReflectionWall("plastanium-deflect-wall"){{

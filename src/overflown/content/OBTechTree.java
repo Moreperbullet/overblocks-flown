@@ -49,6 +49,10 @@ public class OBTechTree{
             });
         });
 
+        vanillaNode(surgeTower, () -> {
+            node(surgeLink);
+        });
+
         vanillaNode(phaseWall, () -> {
             node(plastaniumDeflectWall, Seq.with(
                 new Research(plastaniumWallLarge), 
