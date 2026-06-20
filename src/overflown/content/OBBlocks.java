@@ -256,11 +256,12 @@ public class OBBlocks{
         }};
 
         surgeLink = new PowerNode("surge-link"){{
-            requirements(Category.power, with(Items.lead, 150, Items.silicon, 180, Items.titanium, 120, Items.phaseFabric, 60, Items.surgeAlloy, 60));
+            requirements(Category.power, with(Items.lead, 360, Items.silicon, 270, Items.titanium, 120, Items.phaseFabric, 60, Items.surgeAlloy, 60));
             size = 3;
             maxNodes = 2;
-            laserRange = 280f;
+            laserRange = 300f;
             autolink = false;
+            drawRange = false;
             sameBlockConnection = true;
             laserScale = 0.8f;
             scaledHealth = 140;
