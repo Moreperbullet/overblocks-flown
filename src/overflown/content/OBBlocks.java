@@ -30,7 +30,7 @@ public class OBBlocks{
     //payloads
     largePayloadConveyor, payloadBuilder, payloadBreaker, payloadPropulsionTower,
     //other
-    plastaniumCrusher, diseaseExtractor, diseaseMixer, plastaniumDeflectWall, deflectWallLarge, densityProjector,
+    plastaniumCrusher, diseaseExtractor, diseaseMixer, surgeLink, plastaniumDeflectWall, deflectWallLarge, densityProjector,
     //turrets
     vampirism, devastation;
 
@@ -252,6 +252,17 @@ public class OBBlocks{
 
             consumePower(0.3f);
             consumeItem(OBItems.diseaseFragments, 8);
+        }};
+
+        surgeLink = new PowerNode("surge-link"){{
+            requirements(Category.power, with(Items.lead, 150, Items.silicon, 180, Items.titanium, 120, Items.phaseFabric, 60, Items.surgeAlloy, 60));
+            size = 3;
+            maxNodes = 2;
+            laserRange = 280f;
+            autolink = false;
+            sameBlockConnection = true;
+            laserScale = 0.8f;
+            scaledHealth = 140;
         }};
 
         plastaniumDeflectWall = new ReflectionWall("plastanium-deflect-wall"){{
