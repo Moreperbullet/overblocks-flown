@@ -246,20 +246,21 @@ public class OBBlocks{
         }};
 
         diseaseMixer = new GenericCrafter("disease-mixer"){{
-            requirements(Category.crafting, with(Items.copper, 50, Items.lead, 25, Items.titanium, 20));
+            requirements(Category.crafting, with(Items.copper, 50, Items.lead, 30, Items.titanium, 30));
             hasItems = true;
             hasPower = true;
+            itemCapacity = 12;
             outputItem = new ItemStack(OBItems.diseaseVector, 1);
 
             size = 2;
-            craftTime = 45f;
+            craftTime = 75f;
 
             consumePower(0.3f);
-            consumeItem(OBItems.diseaseFragments, 8);
+            consumeItem(OBItems.diseaseFragments, 6);
         }};
 
         surgeLink = new PowerNode("surge-link"){{
-            requirements(Category.power, with(Items.lead, 360, Items.silicon, 270, Items.titanium, 120, Items.phaseFabric, 60, Items.surgeAlloy, 60));
+            requirements(Category.power, with(Items.lead, 300, Items.silicon, 180, Items.titanium, 120, Items.phaseFabric, 60, Items.surgeAlloy, 60));
             size = 3;
             maxNodes = 2;
             laserRange = 300f;
@@ -272,7 +273,7 @@ public class OBBlocks{
         }};
 
         plastaniumDeflectWall = new ReflectionWall("plastanium-deflect-wall"){{
-            requirements(Category.defense, with(Items.phaseFabric, 8, Items.plastanium, 6, Items.metaglass, 2));
+            requirements(Category.defense, with(Items.phaseFabric, 4, Items.plastanium, 6, Items.metaglass, 4));
             health = 200 * 4;
             size = 1;
             insulated = true;

@@ -54,11 +54,12 @@ public class OverflownMod extends Mod{
             hitSize = 5;
             width = 15f;
             height = 21f;
+            reloadMultiplier = 0.5f;
             frontColor = OBPal.dreadRust;
             backColor = OBPal.darkDreadRust;
             status = OBStatusEffects.dreadRust;
             shootEffect = Fx.shootBig;
-            statusDuration = 180;
+            statusDuration = 270;
             pierceCap = 2;
             pierceBuilding = true;
             knockback = 0.6f;
@@ -70,10 +71,11 @@ public class OverflownMod extends Mod{
             damage = 66f;
             ammoMultiplier = 5f;
             width = 17f;
+            reloadMultiplier = 0.5f;
             toColor = OBPal.dreadRust;
             shootEffect = smokeEffect = OBFx.dreadShoot;
             status = OBStatusEffects.dreadRust;
-            statusDuration = 180;
+            statusDuration = 270;
         }};
 
         ((ItemTurret)Blocks.spectre).ammoTypes.put(OBItems.diseaseVector, diseaseSpectreBullet);
