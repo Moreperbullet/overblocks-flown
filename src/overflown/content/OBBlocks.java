@@ -84,7 +84,7 @@ public class OBBlocks{
             variants = 4;
         }};
 
-        ceriseStone = new Floor("cerisoid-floor"){{
+        cerisoidFloor = new Floor("cerisoid-floor"){{
             variants = 4;
         }};
 
