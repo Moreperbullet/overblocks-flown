@@ -26,7 +26,7 @@ import static mindustry.type.ItemStack.*;
 public class OBBlocks{
     public static Block
     //enviroment
-    hotCarbonStone, magmaCarbonStone, graphiticFloor, ceriseStone, redIceStone, shallowSlag, sunkenCoreZone, carbonPebbles, beryllicVent,
+    hotCarbonStone, magmaCarbonStone, graphiticFloor, ceriseStone, ceriseCrystalFloor, cerisoidFloor, redIceStone, shallowSlag, sunkenCoreZone, carbonPebbles, beryllicVent,
     redIceVent, ceriseVent, ceriseStoneWall, redGraphiticWall, ceriseBoulder, oreDiseaseFragments,
     //payloads
     largePayloadConveyor, payloadBuilder, payloadBreaker, payloadPropulsionTower,
@@ -75,7 +75,18 @@ public class OBBlocks{
             decoration = Blocks.carbonBoulder;
             variants = 3;
         }};
-        ceriseStone = new Floor("cerise-stone");
+
+        ceriseStone = new Floor("cerise-stone"){{
+            variants = 4;
+        }};
+
+        ceriseCrystalFloor = new Floor("cerise-crystal-floor"){{
+            variants = 4;
+        }};
+
+        ceriseStone = new Floor("cerisoid-floor"){{
+            variants = 4;
+        }};
 
         redIceStone = new Floor("red-ice-stone"){{
             dragMultiplier = 0.6f;
@@ -136,7 +147,7 @@ public class OBBlocks{
         }};
 
         ceriseStoneWall = new StaticWall("cerise-stone-wall"){{
-            ceriseStone.asFloor().wall = this;
+            ceriseStone.asFloor().wall = ceriseCrystalFloor.asFloor().wall = cerisoidFloor.asFloor().wall = this;
             attributes.set(Attribute.sand, 1.1f);
         }};
 
