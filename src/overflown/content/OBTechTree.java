@@ -39,6 +39,12 @@ public class OBTechTree{
             ));
         });
 
+        vanillaNode(surgeWall, () -> {
+            node(aquamarineWall, () -> {
+                node(aquamarineWallLarge);
+            });
+        });
+
         vanillaNode(plastaniumCompressor, () -> {
             node(plastaniumCrusher, Seq.with(
                 new SectorComplete(diseaseAmmoFactory)

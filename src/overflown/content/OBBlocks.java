@@ -27,11 +27,11 @@ public class OBBlocks{
     public static Block
     //enviroment
     hotCarbonStone, magmaCarbonStone, graphiticFloor, ceriseStone, redIceStone, shallowSlag, sunkenCoreZone, carbonPebbles, beryllicVent,
-    redIceVent, ceriseVent, ceriseStoneWall, redGraphiticWall, ceriseBoulder, oreDiseaseFragments,
+    redIceVent, ceriseVent, ceriseStoneWall, redGraphiticWall, ceriseBoulder, oreDiseaseFragments, oreAquamarine
     //payloads
     largePayloadConveyor, payloadBuilder, payloadBreaker, payloadPropulsionTower,
     //other
-    plastaniumCrusher, diseaseExtractor, diseaseMixer, surgeLink, plastaniumDeflectWall, deflectWallLarge, densityProjector,
+    plastaniumCrusher, diseaseExtractor, diseaseMixer, surgeLink, plastaniumDeflectWall, deflectWallLarge, aquamarineWall, aquamarineWallLarge, densityProjector,
     //turrets
     vampirism, devastation;
 
@@ -157,6 +157,10 @@ public class OBBlocks{
             variants = 3;
         }};
 
+        oreAquamarine = new OreBlock("ore-aquamarine", OBItems.aquamarine){{
+            variants = 4;
+        }};
+
         largePayloadConveyor = new PayloadConveyor("large-payload-conveyor"){{
             requirements(Category.units, with(Items.graphite, 30, Items.copper, 30, Items.titanium, 12));
             canOverdrive = false;
@@ -275,7 +279,6 @@ public class OBBlocks{
         plastaniumDeflectWall = new ReflectionWall("plastanium-deflect-wall"){{
             requirements(Category.defense, with(Items.phaseFabric, 4, Items.plastanium, 6, Items.metaglass, 4));
             health = 200 * 4;
-            size = 1;
             insulated = true;
             absorbLasers = true;
         }};
@@ -286,6 +289,17 @@ public class OBBlocks{
             size = 2;
             insulated = true;
             absorbLasers = true;
+        }};
+
+        aquamarineWall = new Wall("aquamarine-wall"){{
+            requirements(Category.defense, with(OBItems.aquamarine, 6, Items.surgeAlloy, 4));
+            health = 280 * 4;
+        }};
+
+        aquamarineWallLarge = new Wall("aquamarine-wall-large"){{
+            requirements(Category.defense, mult(aquamarineWall.requirements, 4));
+            health = 280 * 16;
+            size = 2;
         }};
 
         densityProjector = new DensityProjector("density-projector"){{

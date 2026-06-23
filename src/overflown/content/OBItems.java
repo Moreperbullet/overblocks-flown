@@ -22,7 +22,9 @@ public class OBItems{
         diseaseVector = new Item("disease-vector", OBPal.dreadRust);
         
         aquamarine = new Item("aquamarine", Color.valueOf("68ACF5")){{
+            cost = 1.3f;
             hardness = 5;
+            healthScaling = 0.3f;
         }};
     }
 }
