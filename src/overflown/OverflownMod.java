@@ -110,6 +110,17 @@ public class OverflownMod extends Mod{
     public void progMatsCompat(){
         if(Vars.mods.locateMod("prog-mats") == null) return;
         Log.info("[OverflownMod] Meepscellaneous Concepts detected. Loading compatibility...");
+        try {
+            Item tenelium = Vars.content.item("prog-mats-techtanite");
+            OBBlocks.densityProjector.requirements = ItemStack.with(
+                Items.metaglass, 225,
+                Items.thorium, 100,
+                Items.silicon, 250,
+                tenelium, 25
+            );
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to load compatibility.", e);
+        }
     }
 
     public static void assignColor(Block block, Color color){
