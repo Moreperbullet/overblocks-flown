@@ -40,6 +40,7 @@ public class OverflownMod extends Mod{
         OBBlocks.load();
         OBSectorPresets.load();
         loadOther();
+        progMatsCompat();
         OBTechTree.load();
     }
 
@@ -104,6 +105,11 @@ public class OverflownMod extends Mod{
             new UnitType[]{OBUnitTypes.agent, OBUnitTypes.attorney},
             new UnitType[]{OBUnitTypes.mindarus, OBUnitTypes.rhophalo}
         );
+    }
+    
+    public void progMatsCompat(){
+        if(Vars.mods.locateMod("prog-mats") == null) return;
+        Log.info("[OverflownMod] Meepscellaneous Concepts detected. Loading compatibility...");
     }
 
     public static void assignColor(Block block, Color color){
