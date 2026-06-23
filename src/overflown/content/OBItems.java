@@ -6,7 +6,7 @@ import overflown.graphics.*;
 
 public class OBItems{
 
-    public static Item rosingAlloy, diseaseFragments, diseaseVector;
+    public static Item rosingAlloy, diseaseFragments, diseaseVector, aquamarine;
 
     public static void load(){
 
@@ -20,5 +20,9 @@ public class OBItems{
         }};
 
         diseaseVector = new Item("disease-vector", OBPal.dreadRust);
+        
+        aquamarine = new Item("aquamarine", Color.valueOf("68ACF5")){{
+            hardness = 5;
+        }};
     }
 }

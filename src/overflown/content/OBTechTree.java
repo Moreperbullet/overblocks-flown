@@ -23,12 +23,6 @@ public class OBTechTree{
 
     public static void load(){
 
-        vanillaNode(plastaniumCompressor, () -> {
-            node(plastaniumCrusher, Seq.with(
-                new SectorComplete(diseaseAmmoFactory)
-            ));
-        });
-
         vanillaNode(pyratite, () -> {
             node(diseaseFragments, Seq.with(
                 new Produce(diseaseFragments)
@@ -37,6 +31,18 @@ public class OBTechTree{
                     new Produce(diseaseVector)
                 ));
             });
+        });
+
+        vanillaNode(thorium, () -> {
+            node(aquamarine, Seq.with(
+                new Produce(aquamarine)
+            ));
+        });
+
+        vanillaNode(plastaniumCompressor, () -> {
+            node(plastaniumCrusher, Seq.with(
+                new SectorComplete(diseaseAmmoFactory)
+            ));
         });
 
         vanillaNode(pyratiteMixer, () -> {
