@@ -13,6 +13,7 @@ public class OBPal{
 
     aquaDark = Color.valueOf("4275BE"),
     aquaMedium = Color.valueOf("68ACF5"),
-    aquaLight = Color.valueOf("A9E8FF");
+    aquaLight = Color.valueOf("A9E8FF"),
+    aquaBright = Color.valueOf("CEF7FF");
 
 }

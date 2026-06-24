@@ -52,7 +52,7 @@ public class OverflownMod extends Mod{
         Blocks.denseRedStone.asFloor().attributes.set(Attribute.water, -0.1f);
         Blocks.carbonStone.asFloor().attributes.set(Attribute.water, -0.1f);
 
-        BulletType diseaseSpectreBullet = new BasicBulletType(7f, 60){{
+        BulletType diseaseSpectreBullet = new BasicBulletType(7f, 65){{
             hitSize = 5;
             width = 15f;
             height = 21f;
@@ -65,6 +65,19 @@ public class OverflownMod extends Mod{
             pierceCap = 2;
             pierceBuilding = true;
             knockback = 0.6f;
+            ammoMultiplier = 4;
+        }};
+
+        BulletType aquaSpectreBullet = new BasicBulletType(7f, 58){{
+            hitSize = 5;
+            width = 15f;
+            height = 21f;
+            frontColor = OBPal.aquaBright;
+            backColor = OBPal.aquaMedium;
+            shootEffect = Fx.shootBig;
+            pierceCap = 3;
+            pierceBuilding = true;
+            knockback = 1.2f;
             ammoMultiplier = 4;
         }};
 
@@ -81,6 +94,8 @@ public class OverflownMod extends Mod{
         }};
 
         ((ItemTurret)Blocks.spectre).ammoTypes.put(OBItems.diseaseVector, diseaseSpectreBullet);
+
+        ((ItemTurret)Blocks.spectre).ammoTypes.put(OBItems.aquamarine, aquaSpectreBullet);
 
         ((ItemTurret)Blocks.fuse).ammoTypes.put(OBItems.diseaseVector, diseaseFuseBullet);
 

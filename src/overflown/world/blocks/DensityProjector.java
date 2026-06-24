@@ -40,12 +40,14 @@ public class DensityProjector extends ForceProjector{
             dBlock.hitSound.at(bullet.x, bullet.y, 1f + Mathf.range(0.1f), dBlock.hitSoundVolume);
             dBlock.absorbEffect.at(bullet);
             dEntity.hit = 1f;
-            if(!bullet.type.pierceArmor){
-               dEntity.buildup += Damage.applyArmor(bullet.type.shieldDamage(bullet), dEntity.resultArmor);
+            if(bullet.type.pierceArmor){
+                dEntity.buildup += bullet.type.shieldDamage(bullet);
+            else if(bullet.type.armorMultiplier != 1)
+                dEntity.buildup += Damage.applyArmor(bullet.type.shieldDamage(bullet), dEntity.resultArmor * bullet.type.armorMultiplier);
             }else{
-               dEntity.buildup += bullet.type.shieldDamage(bullet);
+                dEntity.buildup += Damage.applyArmor(bullet.type.shieldDamage(bullet), dEntity.resultArmor);
             }
-         }
+        }
     };
 
     public DensityProjector(String name){
