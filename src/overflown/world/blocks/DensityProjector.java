@@ -42,7 +42,7 @@ public class DensityProjector extends ForceProjector{
             dEntity.hit = 1f;
             if(bullet.type.pierceArmor){
                 dEntity.buildup += bullet.type.shieldDamage(bullet);
-            else if(bullet.type.armorMultiplier != 1)
+            }else if(bullet.type.armorMultiplier != 1)
                 dEntity.buildup += Damage.applyArmor(bullet.type.shieldDamage(bullet), dEntity.resultArmor * bullet.type.armorMultiplier);
             }else{
                 dEntity.buildup += Damage.applyArmor(bullet.type.shieldDamage(bullet), dEntity.resultArmor);
