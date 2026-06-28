@@ -94,10 +94,12 @@ public class DensityProjector extends ForceProjector{
         public void updateTile(){
             super.updateTile();
 
-            float buildupFraction = Mathf.clamp(buildup / (shieldHealth + phaseShieldBoost * phaseHeat - 0.001f));
-
-            currentPhase = Mathf.clamp((int)(buildupFraction * phases), 0, phases - 1);
-            resultArmor = baseForceArmor * (float)(currentPhase + 1) / phases;
+            if(phases > 0){
+                updatePhases();
+            }else{
+                resultArmor = baseForceArmor;
+                currentPhase = 0;
+            }
         }
 
         @Override
@@ -109,6 +111,13 @@ public class DensityProjector extends ForceProjector{
                 dEntity = this;
                 Groups.bullet.intersect(x - realRadius, y - realRadius, realRadius * 2f, realRadius * 2f, dConsumer);
             }
+        }
+
+        public void updatePhases(){
+            float buildupFraction = Mathf.clamp(buildup / (shieldHealth + phaseShieldBoost * phaseHeat - 0.001f));
+
+            currentPhase = Mathf.clamp((int)(buildupFraction * phases), 0, phases - 1);
+            resultArmor = baseForceArmor * (float)(currentPhase + 1) / phases;
         }
     }
 }
