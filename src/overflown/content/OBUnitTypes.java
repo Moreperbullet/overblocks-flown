@@ -416,7 +416,7 @@ public class OBUnitTypes{
             lowAltitude = true;
             health = 7000;
             armor = 8f;
-            engineOffset = 18;
+            engineOffset = 21;
             engineSize = 5.3f;
             hitSize = 38f;
             targetFlags = new BlockFlag[]{BlockFlag.reactor, BlockFlag.generator, BlockFlag.core, null};
@@ -425,8 +425,8 @@ public class OBUnitTypes{
 
             weapons.add(
             new Weapon(name + "-salvo"){{
-                x = 18f;
-                y = 5f;
+                x = 17f;
+                y = 6f;
                 reload = 45f;
                 shoot.shots = 4;
                 shoot.shotDelay = 3f;
@@ -448,8 +448,8 @@ public class OBUnitTypes{
                 shadow = 6f;
             }},
             new TractorBeamWeapon(name + "-parallax"){{
-                x = 13f;
-                y = -3f;
+                x = 14f;
+                y = -4f;
                 shootY = 5f;
 
                 //doesn't spawn, but assigns the stats
