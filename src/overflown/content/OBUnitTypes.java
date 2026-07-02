@@ -27,9 +27,11 @@ public class OBUnitTypes{
 
     public static UnitType testUnit,
 
-    relayer, announcer, agent, attorney, undercover,
+    //tyrant, capricorn, cyatholipid, penumbra, hexadeca, livyatan, ateocina
 
-    aphid, acyrtho, mindarus, rhophalo, toxoptera;
+    relayer, announcer, agent, attorney, undercover, secrecy
+
+    aphid, acyrtho, mindarus, rhophalo, toxoptera, tamalia;
 
     public static void load(){
 
@@ -417,7 +419,7 @@ public class OBUnitTypes{
             health = 7000;
             armor = 8f;
             engineOffset = 21;
-            engineSize = 5.3f;
+            engineSize = 5.4f;
             hitSize = 38f;
             targetFlags = new BlockFlag[]{BlockFlag.reactor, BlockFlag.generator, BlockFlag.core, null};
 
