@@ -41,6 +41,104 @@ public class OBUnitTypes{
             flying = true;
         }};
 
+        cyatholipid = new OBUnitType("cyatholipid", LegsUnit.class){{
+            drag = 0.1f;
+            speed = 0.4f;
+            hitSize = 26f;
+            health = 90000;
+            armor = 24f;
+            lightRadius = 140f;
+            stepSound = Sounds.walkerStep;
+            stepSoundVolume = 1.1f;
+
+            rotateSpeed = 1.9f;
+
+            legCount = 8;
+            legMoveSpace = 0.8f;
+            legPairOffset = 3;
+            legLength = 80f;
+            legExtension = -20;
+            legBaseOffset = 8f;
+            stepShake = 1f;
+            legLengthScl = 0.93f;
+            rippleScale = 3f;
+            legSpeed = 0.19f;
+
+            legSplashDamage = 120;
+            legSplashRange = 60;
+
+            hovering = true;
+            shadowElevation = 0.95f;
+            groundLayer = Layer.legUnit;
+            
+            weapons.add(
+            new Weapon("large-purple-mount"){{
+                y = -2f;
+                x = 14f;
+                shootY = 7f;
+                reload = 75;
+                shake = 4f;
+                rotateSpeed = 2f;
+                ejectEffect = Fx.casing1;
+                shootSound = Sounds.shootToxopidShotgun;
+                shootSoundVolume = 0.8f;
+                rotate = true;
+                shadow = 12f;
+                recoil = 3f;
+
+                shoot = new ShootSpread(3, 9f);
+
+                bullet = new ShrapnelBulletType(){{
+                    length = 90f;
+                    damage = 185f;
+                    width = 25f;
+                    armorMultiplier = 0.8f;
+                    serrationLenScl = 7f;
+                    serrationSpaceOffset = 60f;
+                    serrationFadeOffset = 0f;
+                    serrations = 10;
+                    serrationWidth = 6f;
+                    fromColor = Pal.sapBullet;
+                    toColor = Pal.sapBulletBack;
+                    shootEffect = smokeEffect = Fx.sparkShoot;
+                }};
+            }});
+
+            weapons.add(new Weapon("overflown-ultra-mount"){{
+                y = -17f;
+                x = 0f;
+                shootY = 22f;
+                mirror = false;
+                cooldownTime = 180f;
+                reload = 210;
+                shake = 12f;
+                recoil = 12f;
+                rotateSpeed = 1f;
+                ejectEffect = Fx.none;
+                shootSound = Sounds.shootOmura;
+                rotate = true;
+                shadow = 30f;
+
+                rotationLimit = 80f;
+
+                bullet = new RailBulletType(){{
+                    shootEffect = OBFx.railShootColor;
+                    length = 600;
+                    damage = 1500;
+                    pierceEffect = OBFx.railHitColor;
+                    pointEffect = OBFx.railTrailColor;
+                    hitEffect = Fx.sapExplosion;
+                    pierceDamageFactor = 0.6f;
+                    trailColor = Pal.sapBullet;
+                    smokeEffect = Fx.shootBig2;
+                    pointEffectSpace = 80f;
+
+                    status = StatusEffects.sapped;
+                    statusDuration = 60f * 10;
+                }};
+            }});
+        }};
+
         //region ground spook
         relayer = new OBUnitType("relayer", DodgeMechUnit.class){{
             dodge = 0.5f;

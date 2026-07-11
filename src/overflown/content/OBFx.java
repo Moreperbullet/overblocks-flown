@@ -60,4 +60,36 @@ public class OBFx{
             lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fin() * 5f + 2f);
         });
     });
+
+    railShootColor = new Effect(24f, e -> {
+        e.scaled(10f, b -> {
+            color(Color.white, Color.lightGray, b.fin());
+            stroke(b.fout() * 3f + 0.2f);
+            Lines.circle(b.x, b.y, b.fin() * 50f);
+        });
+
+        color(e.color);
+
+        for(int i : Mathf.signs){
+            Drawf.tri(e.x, e.y, 13f * e.fout(), 85f, e.rotation + 90f * i);
+        }
+    }),
+
+    railTrailColor = new Effect(16f, e -> {
+        color(e.color);
+
+        for(int i : Mathf.signs){
+            Drawf.tri(e.x, e.y, 10f * e.fout(), 24f, e.rotation + 90 + 90f * i);
+        }
+
+        Drawf.light(e.x, e.y, 60f * e.fout(), Pal.orangeSpark, 0.5f);
+    }),
+
+    railHitColor = new Effect(18f, 200f, e -> {
+        color(e.color);
+
+        for(int i : Mathf.signs){
+            Drawf.tri(e.x, e.y, 10f * e.fout(), 60f, e.rotation + 140f * i);
+        }
+    }),
 }
