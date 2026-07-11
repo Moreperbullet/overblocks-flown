@@ -73,7 +73,7 @@ public class OBUnitTypes{
             
             weapons.add(
             new Weapon("large-purple-mount"){{
-                y = -2f;
+                y = 3f;
                 x = 14f;
                 shootY = 7f;
                 reload = 75;
@@ -105,9 +105,9 @@ public class OBUnitTypes{
             }});
 
             weapons.add(new Weapon("overflown-ultra-mount"){{
-                y = -17f;
+                y = -2f;
                 x = 0f;
-                shootY = 22f;
+                shootY = 4f;
                 mirror = false;
                 cooldownTime = 180f;
                 reload = 210;
@@ -123,7 +123,7 @@ public class OBUnitTypes{
 
                 bullet = new RailBulletType(){{
                     shootEffect = OBFx.railShootColor;
-                    length = 600;
+                    length = 530;
                     damage = 1500;
                     pierceEffect = OBFx.railHitColor;
                     pointEffect = OBFx.railTrailColor;
@@ -131,7 +131,7 @@ public class OBUnitTypes{
                     pierceDamageFactor = 0.6f;
                     trailColor = hitColor = Pal.sapBullet;
                     smokeEffect = Fx.shootBig2;
-                    pointEffectSpace = 80f;
+                    pointEffectSpace = 30f;
 
                     status = StatusEffects.sapped;
                     statusDuration = 60f * 10;
