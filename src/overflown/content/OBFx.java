@@ -59,7 +59,7 @@ public class OBFx{
         randLenVectors(e.id, 7, 25f * e.finpow(), e.rotation, 50f, (x, y) -> {
             lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fin() * 5f + 2f);
         });
-    });
+    }),
 
     railShootColor = new Effect(24f, e -> {
         e.scaled(10f, b -> {
@@ -91,5 +91,5 @@ public class OBFx{
         for(int i : Mathf.signs){
             Drawf.tri(e.x, e.y, 10f * e.fout(), 60f, e.rotation + 140f * i);
         }
-    }),
+    });
 }
