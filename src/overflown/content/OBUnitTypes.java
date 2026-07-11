@@ -27,9 +27,9 @@ public class OBUnitTypes{
 
     public static UnitType testUnit,
 
-    //tyrant, capricorn, cyatholipid, penumbra, hexadeca, livyatan, ateocina
+    cyatholipid, //tyrant, capricorn, penumbra, hexadeca, livyatan, ateocina
 
-    relayer, announcer, agent, attorney, undercover, secrecy
+    relayer, announcer, agent, attorney, undercover, secrecy,
 
     aphid, acyrtho, mindarus, rhophalo, toxoptera, tamalia;
 
