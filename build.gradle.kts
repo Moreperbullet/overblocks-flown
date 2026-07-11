@@ -68,6 +68,11 @@ allprojects{
         }
     }
 
+    dependencies{
+        // Downgrade Java 9+ syntax into being available in Java 8.
+        annotationProcessor(entity(":downgrader"))
+    }
+
     repositories{
         // Necessary Maven repositories to pull dependencies from.
         mavenCentral()
