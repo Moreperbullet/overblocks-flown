@@ -2,7 +2,7 @@
     "displayName": "Overflown Mod",
     "description": "A java mod",
     "version": "0.0.1",
-    "minGameVersion": "158.1",
+    "minGameVersion": "159.2",
     "author": "Moreperbullet",
     "java": true,
     "main": "overflown.OverflownMod",
