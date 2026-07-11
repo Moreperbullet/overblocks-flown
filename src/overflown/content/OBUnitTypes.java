@@ -129,7 +129,7 @@ public class OBUnitTypes{
                     pointEffect = OBFx.railTrailColor;
                     hitEffect = Fx.sapExplosion;
                     pierceDamageFactor = 0.6f;
-                    trailColor = Pal.sapBullet;
+                    trailColor = hitColor = Pal.sapBullet;
                     smokeEffect = Fx.shootBig2;
                     pointEffectSpace = 80f;
 
