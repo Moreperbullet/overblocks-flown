@@ -58,7 +58,7 @@ public class OBUnitTypes{
             legPairOffset = 3;
             legLength = 80f;
             legExtension = -20;
-            legBaseOffset = 8f;
+            legBaseOffset = 10f;
             stepShake = 1f;
             legLengthScl = 0.93f;
             rippleScale = 3f;
