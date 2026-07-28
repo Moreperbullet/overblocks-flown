@@ -9,11 +9,6 @@ import overflown.graphics.*;
 import overflown.world.meta.*;
 
 public class OBStatusEffect extends StatusEffect{
-    /** Outline colors.*/
-    public Color outlineColor = Pal.gray;
-
-    /** Outline thickness.*/
-    public int outlineThickness = 3;
 
     /** Damage percentage per second. Heals if negative.*/
     public float damagePercentage;
@@ -32,15 +27,8 @@ public class OBStatusEffect extends StatusEffect{
     @Override
     public void update(Unit unit, StatusEntry entry){
         super.update(unit, entry);
-        if (damagePercentage > 0) {
+        if(damagePercentage > 0) {
             unit.damageContinuousPierce(unit.maxHealth * damagePercentage / 100);
         }
-    }
-
-    @Override
-    public void createIcons(MultiPacker packer){
-        Outliner.outlineRegion(packer, fullIcon, outlineColor, name, outlineThickness);
-
-        super.createIcons(packer);
     }
 }
