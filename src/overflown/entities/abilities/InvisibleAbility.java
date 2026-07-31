@@ -25,7 +25,7 @@ public class InvisibleAbility extends Ability{
                 if(ab == this){
                     found = true;
                     n.invisibleA(this);
-		    holder = n;
+		    holder = unit;
                     //Log.info("Invisible ability is found");
                     break;
                 }

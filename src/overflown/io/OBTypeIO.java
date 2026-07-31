@@ -18,7 +18,7 @@ public class OBTypeIO{
 	byte holderId = read.i();
 	Unit holder = Groups.unit.getByID(holderId);
 	for(var a : holder.abilities) if(a instanceof InvisibleAbility i) return i;
-	}
 	return null;
+	}
     }
 }
