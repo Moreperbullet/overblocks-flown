@@ -19,7 +19,7 @@ public class OBTypeIo{
     }
 
     public static InvisibleAbility readInvisibleA(Reads read, Ability[] abilities){
-	byte existence
+	byte existence = read.b();
 	if(existence = 1){
 	    for(var a : abilities) if(a instanceof InvisibleAbility i) return i;
 	}
