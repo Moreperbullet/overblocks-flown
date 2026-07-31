@@ -9,8 +9,7 @@ import overflown.entities.abilities.*;
 @TypeIOHandler
 public class OBTypeIO{
     
-    public static void writeInvisibleA(Writes write
-, Ability[] abilities, InvisibleAbility invisibleA){
+    public static void writeInvisibleA(Ability[] abilities, Writes write, InvisibleAbility invisibleA){
         if(invisibleA != null && Structs.contains(abilities, invisibleA)){
 	    write.b(1);
 	}else{
@@ -18,7 +17,7 @@ public class OBTypeIO{
 	}
     }
 
-    public static InvisibleAbility readInvisibleA(Reads read, Ability[] abilities){
+    public static InvisibleAbility readInvisibleA(Ability[] abilities, Reads read){
 	byte existence = read.b();
 	if(existence == 1){
 	    for(var a : abilities) if(a instanceof InvisibleAbility i) return i;
