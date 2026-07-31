@@ -7,7 +7,7 @@ import mindustry.entities.abilities.*;
 import overflown.entities.abilities.*;
 
 @TypeIOHandler
-public class OBTypeIo{
+public class OBTypeIO{
     
     public static void writeInvisibleA(Writes write
 , Ability[] abilities, InvisibleAbility invisibleA){
