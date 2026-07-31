@@ -22,6 +22,8 @@ public class OBTypeIO{
 	byte existence = read.b();
 	if(existence == 1){
 	    for(var a : abilities) if(a instanceof InvisibleAbility i) return i;
+	}else{
+	    return null;
 	}
     }
 }
