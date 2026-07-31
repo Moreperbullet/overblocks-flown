@@ -107,7 +107,7 @@ project(":"){
     apply(plugin = "com.github.GglLfr.EntityAnno")
     configure<EntityAnnoExtension>{
         modName = providers.gradleProperty("modName").get()
-        mindustryVersion = providers.gradleProperty(if(useJitpack) "mindustryBEVersion" else "mindustryVersion"].get()
+        mindustryVersion = providers.gradleProperty(if(useJitpack) "mindustryBEVersion" else "mindustryVersion").get()
         isJitpack = useJitpack
         revisionDir = layout.projectDirectory.dir("revisions").asFile
         fetchPackage = modFetch
