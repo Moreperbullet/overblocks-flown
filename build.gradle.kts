@@ -15,7 +15,6 @@ buildscript{
     repositories{
         if(!useJitpack) maven("https://maven.xpdustry.com/mindustry")
         maven("https://jitpack.io")
-        maven("https://maven.xpdustry.com/mindustry")
     }
 }
 
@@ -24,7 +23,7 @@ plugins{
     id("com.github.GglLfr.EntityAnno") apply false
 }
 
-val arcVersion: String = providers.gradleProperty("arcVersion").get() 
+val arcVersion: String = providers.gradleProperty("arcVersion").get()
 val mindustryVersion: String = providers.gradleProperty("mindustryVersion").get()
 val mindustryBEVersion: String = providers.gradleProperty("mindustryBEVersion").get()
 val entVersion: String = providers.gradleProperty("entVersion").get()
@@ -34,10 +33,6 @@ val modArtifact: String = providers.gradleProperty("modArtifact").get()
 val modFetch: String = providers.gradleProperty("modFetch").get()
 val modGenSrc: String = providers.gradleProperty("modGenSrc").get()
 val modGen: String = providers.gradleProperty("modGen").get()
-
-val androidSdkVersion: String = providers.gradleProperty("androidSdkVersion").get()
-val androidBuildVersion: String = providers.gradleProperty("androidBuildVersion").get()
-val androidMinVersion: String = providers.gradleProperty("androidMinVersion").get()
 
 val useJitpack = providers.gradleProperty("mindustryBE").get().toBooleanStrict()
 
@@ -64,10 +59,10 @@ allprojects{
                 useTarget("com.github.Anuken.MindustryJitpack:${requested.module.name}:$mindustryBEVersion")
             }else if(requested.group == "com.github.Anuken.Arc"){
                 if(useJitpack){
-		    useVersion(arcVersion)
-		}else{
-		    useVersion(mindustryVersion)
-		}
+                    useVersion(arcVersion)
+                }else{
+                    useVersion(mindustryVersion)
+                }
             }
         }
     }
@@ -75,6 +70,7 @@ allprojects{
     repositories{
         // Necessary Maven repositories to pull dependencies from.
         mavenCentral()
+        mavenLocal()
         maven("https://oss.sonatype.org/content/repositories/snapshots/")
         maven("https://oss.sonatype.org/content/repositories/releases/")
         maven("https://raw.githubusercontent.com/GglLfr/EntityAnnoMaven/main")
@@ -85,21 +81,21 @@ allprojects{
     }
 
     tasks.withType<JavaCompile>().configureEach{
-        // Use Java 17+ syntax, but target Java 8 bytecode version.
         options.apply{
             compilerArgs.add("-Xlint:-options")
-	    compilerArgs.addAll(providers.gradleProperty("org.gradle.jvmargs").get()
+            compilerArgs.addAll(providers.gradleProperty("org.gradle.jvmargs").get()
                 .split(Regex("\\s+"))
                 .filter{it.startsWith("--add-opens")}
                 .map{"--add-exports=${it.substring("--add-opens=".length)}"}
             )
 
             isIncremental = true
-	    isFork = false
+            isFork = false
             encoding = "UTF-8"
         }
-	sourceCompatibility = "17"
-	targetCompatibility = "17"
+
+        sourceCompatibility = "17"
+        targetCompatibility = "17"
     }
 }
 
@@ -129,7 +125,7 @@ project(":"){
 
         val meta = layout.projectDirectory.file("$temporaryDir/mod.json")
 
-	        // Deliberately check if the mod meta is actually written in HJSON, since, well, some people actually use
+        // Deliberately check if the mod meta is actually written in HJSON, since, well, some people actually use
         // it. But this is also not mentioned in the `README.md`, for the mischievous reason of driving beginners
         // into using JSON instead.
         val metaJson = layout.projectDirectory.file("mod.json")
@@ -160,7 +156,6 @@ project(":"){
         doFirst{
 
             val map = usedMeta.asFile
-
                 .reader(Charsets.UTF_8)
                 .use{Jval.read(it)}
 
@@ -176,39 +171,43 @@ project(":"){
         val desktopJar = jar.flatMap{it.archiveFile}
         val dexJar = File(temporaryDir, "Dex.jar")
 
+        val androidSdkVersion: String = providers.gradleProperty("androidSdkVersion").get()
+        val androidBuildVersion: String = providers.gradleProperty("androidBuildVersion").get()
+        val androidMinVersion: String = providers.gradleProperty("androidMinVersion").get()
+
+        val classpaths = configurations.compileClasspath.get().toList() + configurations.runtimeClasspath.get().toList()
+        val providers = project.providers
+
         from(zipTree(desktopJar), zipTree(dexJar))
         doFirst{
-            logger.lifecycle("Running `d8`.")
-            providers.exec{
-                // Find Android SDK root.
-                val sdkRoot = File(
-                    OS.env("ANDROID_SDK_ROOT") ?: OS.env("ANDROID_HOME") ?:
-                    throw IllegalStateException("Neither `ANDROID_SDK_ROOT` nor `ANDROID_HOME` is set.")
-                )
+            // Find Android SDK root.
+            val sdkRoot = File(
+                OS.env("ANDROID_SDK_ROOT") ?: OS.env("ANDROID_HOME") ?:
+                throw IllegalStateException("Neither `ANDROID_SDK_ROOT` nor `ANDROID_HOME` is set.")
+            )
 
-                // Find `d8`.
-                val d8 = File(sdkRoot, "build-tools/$androidBuildVersion/${if(OS.isWindows) "d8.bat" else "d8"}")
-                if(!d8.exists()) throw IllegalStateException("Android SDK `build-tools;$androidBuildVersion` isn't installed or is corrupted")
+            // Find `d8`.
+            val d8 = File(sdkRoot, "build-tools/$androidBuildVersion/${if(OS.isWindows) "d8.bat" else "d8"}")
+            if(!d8.exists()) throw IllegalStateException("Android SDK `build-tools;$androidBuildVersion` isn't installed or is corrupted")
 
-                // Initialize a release build.
-                val input = desktopJar.get().asFile
-                val command = arrayListOf("$d8", "--release", "--min-api", androidMinVersion, "--output", "$dexJar", "$input")
+            // Initialize a release build.
+            val input = desktopJar.get().asFile
+            val command = arrayListOf("$d8", "--release", "--min-api", androidMinVersion, "--output", "$dexJar", "$input")
 
-                // Include all compile and runtime classpath.
-                (configurations.compileClasspath.get().toList() + configurations.runtimeClasspath.get().toList()).forEach{
-                    if(it.exists()) command.addAll(arrayOf("--classpath", it.path))
-                }
+            // Include all compile and runtime classpath.
+            classpaths.forEach{
+                if(it.exists()) command.addAll(arrayOf("--classpath", it.path))
+            }
 
-                // Include Android platform as library.
-                val androidJar = File(sdkRoot, "platforms/android-$androidSdkVersion/android.jar")
-                if(!androidJar.exists()) throw IllegalStateException("Android SDK `platforms;android-$androidSdkVersion` isn't installed or is corrupted")
+            // Include Android platform as library.
+            val androidJar = File(sdkRoot, "platforms/android-$androidSdkVersion/android.jar")
+            if(!androidJar.exists()) throw IllegalStateException("Android SDK `platforms;android-$androidSdkVersion` isn't installed or is corrupted")
 
-                command.addAll(arrayOf("--lib", "$androidJar"))
-                if(OS.isWindows) command.addAll(0, arrayOf("cmd", "/c").toList())
+            command.addAll(arrayOf("--lib", "$androidJar"))
+            if(OS.isWindows) command.addAll(0, arrayOf("cmd", "/c").toList())
 
-                // Run `d8`.
-                commandLine(command)
-            }.result.get().rethrowFailure()
+            // Run `d8`.
+            providers.exec{commandLine(command)}.result.get().rethrowFailure()
         }
     }
 
