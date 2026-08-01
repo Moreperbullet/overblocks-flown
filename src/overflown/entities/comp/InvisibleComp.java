@@ -26,7 +26,6 @@ abstract class InvisibleComp implements Unitc{
 
     @Override
     public void update(){
-	if(invisibleA == null) invisibleA = findMyAbility();
         disabledTime = Math.max(disabledTime - Time.delta, 0f);
 
         if(scanInterval.get(0, 5f) && invisible){
@@ -58,6 +57,11 @@ abstract class InvisibleComp implements Unitc{
 	    if(a instanceof InvisibleAbility i) return i;
 	}
 	return null;
+    }
+
+    @Override
+    public void setType(UnitType type){
+	if(invisibleA == null || findMyAbility() != invisibleA) invisibleA = findMyAbility();
     }
 
     @Replace(10)
