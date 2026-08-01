@@ -22,7 +22,7 @@ abstract class InvisibleComp implements Unitc{
     @Import boolean isShooting;
     @Import Ability[] abilities;
 
-    public transient InvisibleAbility invisibleA;
+    public InvisibleAbility invisibleA;
 
     @Override
     public void update(){
