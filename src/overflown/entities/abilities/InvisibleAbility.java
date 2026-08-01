@@ -23,7 +23,7 @@ public class InvisibleAbility extends Ability{
             for(var ab : unit.abilities){
                 if(ab == this){
                     found = true;
-		    n.abilityHolder(new Ability[]{this});
+		    n.invisibleA(this);
                     //Log.info("Invisible ability is found");
                     break;
                 }

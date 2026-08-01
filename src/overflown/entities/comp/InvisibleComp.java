@@ -22,21 +22,11 @@ abstract class InvisibleComp implements Unitc{
     @Import boolean isShooting;
     @Import Ability[] abilities;
 
-    public Ability[] abilityHolder = {};
     public transient InvisibleAbility invisibleA;
 
     @Override
-    public void afterReadAll(){
-	findAbility();
-    }
-
-    @Override
-    public void afterSync(){
-	findAbility();
-    }
-
-    @Override
     public void update(){
+	if(invisibleA == null) invisibleA = findMyAbility();
         disabledTime = Math.max(disabledTime - Time.delta, 0f);
 
         if(scanInterval.get(0, 5f) && invisible){
@@ -63,8 +53,11 @@ abstract class InvisibleComp implements Unitc{
         invisible = alphaLerp >= 0.5f;
     }
 
-    void findAbility(){
-	invisibleA = (InvisibleAbility)abilityHolder[0];
+    InvisibleAbility findMyAbility(){
+	for(var a : abilities){
+	    if(a instanceof InvisibleAbility i) return i;
+	}
+	return null;
     }
 
     @Replace(10)
