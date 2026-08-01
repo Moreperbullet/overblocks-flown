@@ -3,6 +3,7 @@ package overflown.entities.comp;
 import arc.math.*;
 import arc.util.*;
 import ent.anno.Annotations.*;
+import mindustry.entities.abilities.*;
 import mindustry.game.*;
 import mindustry.gen.*;
 import mindustry.type.*;
@@ -19,8 +20,20 @@ abstract class InvisibleComp implements Unitc{
     @Import Team team;
     @Import float x, y, hitSize, health, maxHealth;
     @Import boolean isShooting;
+    @Import Ability[] abilities;
 
-    public InvisibleAbility invisibleA;
+    public Ability[] abilityHolder = {};
+    public transient InvisibleAbility invisibleA;
+
+    @Override
+    public void afterReadAll(){
+	findAbility();
+    }
+
+    @Override
+    public void afterSync(){
+	findAbility();
+    }
 
     @Override
     public void update(){
@@ -48,6 +61,10 @@ abstract class InvisibleComp implements Unitc{
     void updateInvisibility(boolean visible){
         alphaLerp = Mathf.approachDelta(alphaLerp, visible ? 1f : 0f, invisibleA.invisibleSpeed);
         invisible = alphaLerp >= 0.5f;
+    }
+
+    void findAbility(){
+	invisibleA = (InvisibleAbility)abilityHolder[0];
     }
 
     @Replace(10)

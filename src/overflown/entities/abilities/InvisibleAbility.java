@@ -9,7 +9,6 @@ import overflown.gen.*;
 
 public class InvisibleAbility extends Ability{
     public float invisibleSpeed;
-    public Unit holder;
 
     public InvisibleAbility(float invisibleSpeed){
         this.invisibleSpeed = invisibleSpeed;
@@ -24,8 +23,7 @@ public class InvisibleAbility extends Ability{
             for(var ab : unit.abilities){
                 if(ab == this){
                     found = true;
-                    n.invisibleA(this);
-		    holder = unit;
+		    n.abilityHolder(new Ability[]{this});
                     //Log.info("Invisible ability is found");
                     break;
                 }
