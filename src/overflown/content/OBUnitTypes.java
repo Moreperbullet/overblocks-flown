@@ -564,6 +564,40 @@ public class OBUnitTypes{
             }}
             );
         }};
+
+	toxoptera = new OBUnitType("toxoptera", UnitEntity.class){{
+	    speed = 0.7f;
+	    accel = 0.03f;
+	    drag = 0.03f;
+	    rotateSpeed = 1.9f;
+	    flying = true;
+	    lowAltitude = true;
+	    health = 20000;
+	    armor = 14f;
+	    engineOffset = 21;
+	    engineSize = 9.6f;
+	    hitSize = 50f;
+	    targetFlags = new BlockFlag[]{BlockFlag.reactor, BlockFlag.generator, BlockFlag.core, null};
+	    loopSound = Sounds.loopHover;
+
+	    weapons.add(
+            new TractorBeamWeapon(rhophalo.name + "-parallax"){{
+                x = 14f;
+                y = -7f;
+                shootY = 5f;
+
+                //doesn't spawn, but assigns the stats
+                bullet = new ContinuousBulletType(){{
+                    damageInterval = 1f;
+                    pierce = false;
+                    pierceArmor = true;
+                    maxRange = 140f;
+                    status = StatusEffects.sapped;
+                    statusDuration = 15f;
+                }};
+            }}
+            );
+	}};
         //endregion
     }
 }
