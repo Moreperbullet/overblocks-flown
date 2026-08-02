@@ -12,7 +12,7 @@ import overflown.entities.abilities.*;
 @EntityComponent
 abstract class InvisibleComp implements Unitc{
     boolean invisible;
-    @ReadOnly transient float disabledTime = 120f;
+    @ReadOnly float disabledTime = 120f;
     @ReadOnly transient Interval scanInterval = new Interval(2);
     @SyncLocal @SyncField(true) float alphaLerp;
 
