@@ -53,10 +53,10 @@ abstract class InvisibleComp implements Unitc{
     }
 
     InvisibleAbility findMyAbility(){
-	for(var a : abilities){
-	    if(a instanceof InvisibleAbility i) return i;
-	}
-	return null;
+        for(var a : abilities){
+            if(a instanceof InvisibleAbility i) return i;
+        }
+        return null;
     }
 
     @Override

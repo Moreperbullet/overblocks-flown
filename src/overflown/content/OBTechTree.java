@@ -126,9 +126,13 @@ public class OBTechTree{
             ), () -> {
                 node(acyrtho, () -> {
                     node(mindarus, () -> {
-                        node(rhophalo);
+                        node(rhophalo, () -> {
+			    node(toxoptera, Seq.with(new SectorComplete(mycelialBastion)), () -> {
+
+			    });
+			});
                     });
-                });
+		});
             });
         });
 

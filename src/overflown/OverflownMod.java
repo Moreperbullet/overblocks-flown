@@ -121,6 +121,10 @@ public class OverflownMod extends Mod{
             new UnitType[]{OBUnitTypes.agent, OBUnitTypes.attorney},
             new UnitType[]{OBUnitTypes.mindarus, OBUnitTypes.rhophalo}
         );
+
+        ((Reconstructor)Blocks.tetrativeReconstructor).upgrades.add(
+            new UnitType[]{OBUnitTypes.rhophalo, OBUnitTypes.toxoptera}
+        );
     }
     
     public void progMatsCompat(){
