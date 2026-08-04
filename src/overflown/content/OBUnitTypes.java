@@ -558,7 +558,7 @@ public class OBUnitTypes{
 
                 //doesn't spawn, but assigns the stats
                 bullet = new ContinuousBulletType(){{
-                    damage = 0.6667f;
+                    damage = 0.666667f;
                     damageInterval = 1f;
                     pierce = false;
                     pierceArmor = true;
@@ -587,9 +587,10 @@ public class OBUnitTypes{
 
             BulletType tractorBullet = new ContinuousBulletType(){{
                 damage = 1f;
+                damageInterval = 1f;
                 pierce = false;
                 pierceArmor = true;
-                maxRange = 150f;
+                maxRange = 180f;
                 status = StatusEffects.sapped;
                 statusDuration = 15f;
             }};
@@ -597,24 +598,24 @@ public class OBUnitTypes{
 	    weapons.add(
             new TractorBeamWeapon(rhophalo.name + "-parallax"){{
                 x = 19f;
-                y = -12f;
+                y = -16f;
                 shootY = 5f;
                 bullet = tractorBullet;
             }},
             new TractorBeamWeapon(rhophalo.name + "-parallax"){{
-                x = 12f;
-                y = 6f;
+                x = 19f;
+                y = 8f;
                 shootY = 5f;
                 bullet = tractorBullet;
             }},
             new Weapon(name + "-mount"){{
-                x = 8f;
+                x = 10f;
                 y = -1f;
-                shootY = 7f;
+                shootY = 9f;
 
                 shoot = new ShootAlternate(5f);
 
-                bullet = new BasicBulletType(7.5f, 40){{
+                bullet = new BasicBulletType(7.5f, 42){{
                     hitSize = 4f;
                     width = 10f;
                     height = 16f;
@@ -627,6 +628,8 @@ public class OBUnitTypes{
                 }};
                 shootSound = Sounds.shootSpectre;
                 reload = 8f;
+                rotateSpeed = 2f;
+                rotate = true;
                 recoil = 3f;
                 shake = 2f;
             }}
