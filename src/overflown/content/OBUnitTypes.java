@@ -29,9 +29,13 @@ public class OBUnitTypes{
 
     cyatholipid, //tyrant, capricorn, penumbra, hexadeca, livyatan, ateocina
 
-    relayer, announcer, agent, attorney, undercover, secrecy,
+    relayer, announcer, agent, attorney, undercover, silence,
 
-    aphid, acyrtho, mindarus, rhophalo, toxoptera, tamalia;
+    comedy, entertain, partygoer, funseeker, satire, parody,
+
+    aphid, acyrtho, mindarus, rhophalo, toxoptera, neoantalus,
+
+    junior, officer, deputy, senior, enforcer, sheriff;
 
     public static void load(){
 
@@ -554,6 +558,7 @@ public class OBUnitTypes{
 
                 //doesn't spawn, but assigns the stats
                 bullet = new ContinuousBulletType(){{
+                    damage = 0.6667f;
                     damageInterval = 1f;
                     pierce = false;
                     pierceArmor = true;
@@ -572,29 +577,57 @@ public class OBUnitTypes{
 	    rotateSpeed = 1.9f;
 	    flying = true;
 	    lowAltitude = true;
-	    health = 20000;
-	    armor = 14f;
-	    engineOffset = 21;
-	    engineSize = 9.6f;
-	    hitSize = 50f;
-	    targetFlags = new BlockFlag[]{BlockFlag.reactor, BlockFlag.generator, BlockFlag.core, null};
+	    health = 21000;
+	    armor = 12f;
+	    engineOffset = 38;
+	    engineSize = 8.6f;
+	    hitSize = 58f;
+            targetFlags = new BlockFlag[]{BlockFlag.reactor, BlockFlag.generator, BlockFlag.core, null};
 	    loopSound = Sounds.loopHover;
+
+            BulletType tractorBullet = new ContinuousBulletType(){{
+                damage = 1f;
+                pierce = false;
+                pierceArmor = true;
+                maxRange = 150f;
+                status = StatusEffects.sapped;
+                statusDuration = 15f;
+            }};
 
 	    weapons.add(
             new TractorBeamWeapon(rhophalo.name + "-parallax"){{
-                x = 14f;
-                y = -7f;
+                x = 16f;
+                y = -9f;
                 shootY = 5f;
+                bullet = tractorBullet;
+            }},
+            new TractorBeamWeapon(rhophalo.name + "parallax"){{
+                x = 12f;
+                y = 6f;
+                shootY = 5f;
+                bullet = tractorBullet;
+            }},
+            new Weapon(name + "mount"){{
+                x = 8f;
+                y = -1f;
+                shootY = 7f;
 
-                //doesn't spawn, but assigns the stats
-                bullet = new ContinuousBulletType(){{
-                    damageInterval = 1f;
-                    pierce = false;
-                    pierceArmor = true;
-                    maxRange = 140f;
-                    status = StatusEffects.sapped;
-                    statusDuration = 15f;
+                shoot = new ShootAlternate(5f);
+
+                bullet = new BasicBulletType(7.5f, 40){{
+                    hitSize = 4f;
+                    width = 10f;
+                    height = 16f;
+                    shootEffect = Fx.shootBig;
+                    knockback = 0.3f;
+
+                    hitEffect = despawnEffect = Fx.hitBulletColor;
+                    hitColor = backColor = trailColor = Pal.sapBulletBack;
+                    frontColor = Pal.sapBullet;
                 }};
+                reload = 7f;
+                recoil = 3f;
+                shake = 2f;
             }}
             );
 	}};

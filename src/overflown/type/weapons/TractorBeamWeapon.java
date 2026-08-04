@@ -19,7 +19,6 @@ import static mindustry.Vars.*;
 public class TractorBeamWeapon extends Weapon{
     public float laserWidth = 0.6f;
     public float shootLength = 5f;
-    public float actualDamage = 0.67f;
     public float force = 1.7f;
     public float scaledForce = 0f;
 
@@ -88,7 +87,6 @@ public class TractorBeamWeapon extends Weapon{
             if(bullet.status != StatusEffects.none){
                 u.apply(bullet.status, bullet.statusDuration);
             }
-            //attracts the target to the weapon holder (unit) instead of the unit itself, i don't know how to fix this.
             u.impulseNet(Tmp.v1.set(unit).sub(u).limit((force + (1f - u.dst(unit) / bullet.maxRange) * scaledForce)));
         }
 
@@ -97,7 +95,7 @@ public class TractorBeamWeapon extends Weapon{
             tractor.lastY = mount.target.y();
             tractor.strength = Mathf.lerpDelta(tractor.strength, 1f, 0.1f);
 
-            if(actualDamage > 0) h.damageContinuousPierce(actualDamage * state.rules.unitDamage(unit.team));
+            if(bullet.damage > 0) h.damageContinuousPierce(bullet.damage * state.rules.unitDamage(unit.team));
             tractor.any = true;
         }else{
             tractor.strength = Mathf.lerpDelta(tractor.strength, 0f, 0.1f);
@@ -126,12 +124,6 @@ public class TractorBeamWeapon extends Weapon{
             Draw.mixcol();
             Draw.z(z);
        }
-    }
-
-    @Override
-    public void init(){
-        super.init();
-        bullet.damage = bullet instanceof ContinuousBulletType ? this.actualDamage : this.actualDamage * 60;
     }
 
     public static class TractorBeamMount extends WeaponMount{
