@@ -31,11 +31,11 @@ public class OBUnitTypes{
 
     relayer, announcer, agent, attorney, undercover, silence,
 
-    comedy, entertain, partygoer, funseeker, satire, parody,
+    //comedy, entertain, partygoer, funseeker, satire, parody,
 
-    aphid, acyrtho, mindarus, rhophalo, toxoptera, neoantalus,
+    aphid, acyrtho, mindarus, rhophalo, toxoptera, neoantalus;
 
-    junior, officer, deputy, senior, enforcer, sheriff;
+    //junior, officer, deputy, senior, enforcer, sheriff;
 
     public static void load(){
 
@@ -579,7 +579,7 @@ public class OBUnitTypes{
 	    lowAltitude = true;
 	    health = 21000;
 	    armor = 12f;
-	    engineOffset = 38;
+	    engineOffset = 36;
 	    engineSize = 8.6f;
 	    hitSize = 58f;
             targetFlags = new BlockFlag[]{BlockFlag.reactor, BlockFlag.generator, BlockFlag.core, null};
@@ -596,18 +596,18 @@ public class OBUnitTypes{
 
 	    weapons.add(
             new TractorBeamWeapon(rhophalo.name + "-parallax"){{
-                x = 16f;
-                y = -9f;
+                x = 19f;
+                y = -12f;
                 shootY = 5f;
                 bullet = tractorBullet;
             }},
-            new TractorBeamWeapon(rhophalo.name + "parallax"){{
+            new TractorBeamWeapon(rhophalo.name + "-parallax"){{
                 x = 12f;
                 y = 6f;
                 shootY = 5f;
                 bullet = tractorBullet;
             }},
-            new Weapon(name + "mount"){{
+            new Weapon(name + "-mount"){{
                 x = 8f;
                 y = -1f;
                 shootY = 7f;
@@ -625,7 +625,8 @@ public class OBUnitTypes{
                     hitColor = backColor = trailColor = Pal.sapBulletBack;
                     frontColor = Pal.sapBullet;
                 }};
-                reload = 7f;
+                shootSound = Sounds.shootSpectre;
+                reload = 8f;
                 recoil = 3f;
                 shake = 2f;
             }}
