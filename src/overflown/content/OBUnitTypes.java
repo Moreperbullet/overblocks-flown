@@ -599,7 +599,7 @@ public class OBUnitTypes{
             new TractorBeamWeapon(rhophalo.name + "-parallax"){{
                 x = 19f;
                 y = -16f;
-                force = 2.4f
+                force = 2.4f;
                 shootY = 5f;
                 bullet = tractorBullet;
             }},
