@@ -590,7 +590,7 @@ public class OBUnitTypes{
                 damageInterval = 1f;
                 pierce = false;
                 pierceArmor = true;
-                maxRange = 180f;
+                maxRange = 250f;
                 status = StatusEffects.sapped;
                 statusDuration = 15f;
             }};
@@ -599,12 +599,14 @@ public class OBUnitTypes{
             new TractorBeamWeapon(rhophalo.name + "-parallax"){{
                 x = 19f;
                 y = -16f;
+                force = 2.4f
                 shootY = 5f;
                 bullet = tractorBullet;
             }},
             new TractorBeamWeapon(rhophalo.name + "-parallax"){{
-                x = 19f;
-                y = 8f;
+                x = 21f;
+                y = 10f;
+                force = 2.4f;
                 shootY = 5f;
                 bullet = tractorBullet;
             }},
