@@ -586,7 +586,7 @@ public class OBUnitTypes{
 	    loopSound = Sounds.loopHover;
 
             BulletType tractorBullet = new ContinuousBulletType(){{
-                damage = 1f;
+                damage = 0.5f;
                 damageInterval = 1f;
                 pierce = false;
                 pierceArmor = true;
@@ -599,14 +599,14 @@ public class OBUnitTypes{
             new TractorBeamWeapon(rhophalo.name + "-parallax"){{
                 x = 19f;
                 y = -16f;
-                force = 2.4f;
+                force = 3f;
                 shootY = 5f;
                 bullet = tractorBullet;
             }},
             new TractorBeamWeapon(rhophalo.name + "-parallax"){{
                 x = 21f;
-                y = 10f;
-                force = 2.4f;
+                y = 12f;
+                force = 3f;
                 shootY = 5f;
                 bullet = tractorBullet;
             }},
