@@ -30,8 +30,12 @@ public class OBBlocks{
     redIceVent, ceriseVent, ceriseStoneWall, redGraphiticWall, ceriseBoulder, oreDiseaseFragments, oreAquamarine,
     //payloads
     largePayloadConveyor, payloadBuilder, payloadBreaker, payloadPropulsionTower,
+    //crafters
+    plastaniumCrusher, diseaseExtractor, diseaseMixer,
+    //storage
+    tankVault,
     //other
-    plastaniumCrusher, diseaseExtractor, diseaseMixer, surgeLink, plastaniumDeflectWall, deflectWallLarge, aquamarineWall, aquamarineWallLarge, densityProjector,
+    surgeLink, plastaniumDeflectWall, deflectWallLarge, aquamarineWall, aquamarineWallLarge, densityProjector,
     //turrets
     vampirism, devastation;
 
@@ -261,6 +265,14 @@ public class OBBlocks{
 
             consumePower(0.3f);
             consumeItem(OBItems.diseaseFragments, 6);
+        }};
+
+        tankVault = new TankVault("tank-vault"){{
+            requirements(Category.effect, with(Items.titanium, 270, Items.thorium, 130, Items.metaglass, 90));
+            size = 3;
+            liquidCapacity = 1920f;
+            itemCapacity = 1200;
+            scaledHealth = 60;
         }};
 
         surgeLink = new PowerNode("surge-link"){{
