@@ -18,6 +18,8 @@ public class TankVault extends StorageBlock{
         noUpdateDisabled = true;
         canOverdrive = false;
         outputsLiquid = true;
+        drawCached = false;
+        drawDynamic = true;
     }
 
     @Override
