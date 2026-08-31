@@ -140,12 +140,12 @@ public class OBTechTree{
 
         vanillaNode(biomassFacility, () -> {
             node(lifelessCanyon, Seq.with(
-                new Research(titanium),
+                new Research(Items.titanium),
                 new Research(thermalGenerator),
                 new SectorComplete(biomassFacility)
             ), () -> {
                 node(diseaseAmmoFactory, Seq.with(
-                    new Research(plastanium),
+                    new Research(Items.plastanium),
                     new SectorComplete(lifelessCanyon)
                 ));
             });
