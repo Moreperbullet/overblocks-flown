@@ -268,11 +268,12 @@ public class OBBlocks{
         }};
 
         tankVault = new TankVault("tank-vault"){{
-            requirements(Category.effect, with(Items.titanium, 270, Items.thorium, 130, Items.metaglass, 90));
+            requirements(Category.effect, with(Items.titanium, 210, Items.thorium, 120, Items.metaglass, 30));
             size = 3;
-            liquidCapacity = 1920f;
-            itemCapacity = 1200;
+            liquidCapacity = 1440f;
+            itemCapacity = 720;
             scaledHealth = 60;
+            fullOverride = "overflown-tank-vault-full";
         }};
 
         surgeLink = new PowerNode("surge-link"){{

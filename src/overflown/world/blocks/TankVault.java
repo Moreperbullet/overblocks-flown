@@ -46,6 +46,7 @@ public class TankVault extends StorageBlock{
             }
 
             Draw.rect(region, x, y);
+            drawTeamTop();
         }
 
         @Override

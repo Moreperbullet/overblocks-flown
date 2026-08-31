@@ -8,11 +8,9 @@ import mindustry.ctype.*;
 import mindustry.game.Objectives.*;
 import mindustry.type.*;
 
-import static mindustry.content.Items.*;
 import static mindustry.content.Blocks.*;
 import static mindustry.content.SectorPresets.*;
 import static mindustry.content.UnitTypes.*;
-import static overflown.content.OBItems.*;
 import static overflown.content.OBSectorPresets.*;
 import static overflown.content.OBBlocks.*;
 import static overflown.content.OBUnitTypes.*;
@@ -23,20 +21,24 @@ public class OBTechTree{
 
     public static void load(){
 
-        vanillaNode(pyratite, () -> {
-            node(diseaseFragments, Seq.with(
-                new Produce(diseaseFragments)
+        vanillaNode(Items.pyratite, () -> {
+            node(OBItems.diseaseFragments, Seq.with(
+                new Produce(OBItems.diseaseFragments)
             ), () -> {
-                node(diseaseVector, Seq.with(
-                    new Produce(diseaseVector)
+                node(OBItems.diseaseVector, Seq.with(
+                    new Produce(OBItems.diseaseVector)
                 ));
             });
         });
 
-        vanillaNode(thorium, () -> {
-            node(aquamarine, Seq.with(
-                new Produce(aquamarine)
+        vanillaNode(Items.thorium, () -> {
+            node(OBItems.aquamarine, Seq.with(
+                new Produce(OBItems.aquamarine)
             ));
+        });
+
+        vanillaNode(vault, () -> {
+            node(tankVault);
         });
 
         vanillaNode(surgeWall, () -> {
