@@ -28,10 +28,8 @@ public class OBUnitType extends UnitType{
     static boolean canInvisibleDraw;
 
     @SuppressWarnings("unchecked")
-    public <T extends Unit> OBUnitType(String name, Class<T> type){
+    public OBUnitType(String name){
         super(name);
-        constructor = EntityRegistry.content(name, type, n -> EntityMapping.map(this.name));
-        if (constructor == null) throw new IllegalArgumentException("Unit entity class `" + type + "` not registered.");
     }
 
     protected float fade(Invisiblec unit){

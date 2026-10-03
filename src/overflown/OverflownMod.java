@@ -38,6 +38,7 @@ public class OverflownMod extends Mod{
         OBStatusEffects.load();
         OBItems.load();
         OBUnitTypes.load();
+        EntityRegistry.registerUnits();
         OBBlocks.load();
         OBSectorPresets.load();
         loadOther();

@@ -5,6 +5,7 @@ import arc.graphics.g2d.*;
 import arc.math.*;
 import arc.math.geom.*;
 import arc.struct.*;
+import ent.anno.Annotations.*;
 import mindustry.content.*;
 import mindustry.entities.*;
 import mindustry.entities.abilities.*;
@@ -25,27 +26,29 @@ import static arc.graphics.g2d.Lines.*;
 @SuppressWarnings("unused")
 public class OBUnitTypes{
 
-    public static UnitType testUnit,
+    public static @EntityDef({Unitc.class, Phoenixc.class}) UnitType testUnit;
 
-    cyatholipid, //tyrant, capricorn, penumbra, hexadeca, livyatan, ateocina
+    public static @EntityPoint(LegsUnit.class) UnitType cyatholipid; //tyrant, capricorn, penumbra, hexadeca, livyatan, ateocina
 
-    relayer, announcer, agent, attorney, undercover, silence,
+    public static @EntityDef({Unitc.class, Mechc.class, Dodgec.class}) UnitType relayer, announcer;
+
+    public static @EntityDef({Unitc.class, Mechc.class, Invisiblec.class}) UnitType agent, attorney; //undercover, silence;
 
     //comedy, entertain, partygoer, funseeker, satire, parody,
 
-    aphid, acyrtho, mindarus, rhophalo, toxoptera, neoantalus;
+    public static @EntityPoint(UnitEntity.class) UnitType aphid, acyrtho, mindarus, rhophalo, toxoptera, neoantalus;
 
     //junior, officer, deputy, senior, enforcer, sheriff;
 
     public static void load(){
 
-        if(true) testUnit = new OBUnitType("test-unit", PhoenixUnit.class){{
+        if(true) testUnit = new OBUnitType("test-unit"){{
             health = 500;
             hidden = true;
             flying = true;
         }};
 
-        cyatholipid = new OBUnitType("cyatholipid", LegsUnit.class){{
+        cyatholipid = new OBUnitType("cyatholipid"){{
             drag = 0.1f;
             speed = 0.4f;
             hitSize = 26f;
@@ -106,7 +109,8 @@ public class OBUnitTypes{
                     toColor = Pal.sapBulletBack;
                     shootEffect = smokeEffect = Fx.sparkShoot;
                 }};
-            }});
+            }}
+            );
 
             weapons.add(new Weapon("overflown-ultra-mount"){{
                 y = -2f;
@@ -144,7 +148,7 @@ public class OBUnitTypes{
         }};
 
         //region ground spook
-        relayer = new OBUnitType("relayer", DodgeMechUnit.class){{
+        relayer = new OBUnitType("relayer"){{
             dodge = 0.5f;
             speed = 0.5f;
             hitSize = 8f;
@@ -170,10 +174,11 @@ public class OBUnitTypes{
                     backColor = lightColor = hitColor = Pal.lancerLaser;
                     frontColor = Color.white;
                 }};
-            }});
+            }}
+            );
         }};
 
-        announcer = new OBUnitType("announcer", DodgeMechUnit.class){{
+        announcer = new OBUnitType("announcer"){{
             speed = 0.5f;
             hitSize = 10f;
             health = 350;
@@ -244,11 +249,12 @@ public class OBUnitTypes{
                         });
                     });
                 }};
-            }});
+            }}
+            );
         }};
 
 
-        agent = new OBUnitType("agent", InvisibleMechUnit.class){{
+        agent = new OBUnitType("agent"){{
             speed = 0.43f;
             hitSize = 13f;
             rotateSpeed = 3f;
@@ -289,7 +295,7 @@ public class OBUnitTypes{
             }});
         }};
         
-        attorney = new OBUnitType("attorney", InvisibleMechUnit.class){{
+        attorney = new OBUnitType("attorney"){{
             speed = 0.4f;
             hitSize = 20f;
             rotateSpeed = 2.1f;
@@ -351,7 +357,7 @@ public class OBUnitTypes{
         //endregion
         
         //region insectoid air
-        aphid = new OBUnitType("aphid", UnitEntity.class){{
+        aphid = new OBUnitType("aphid"){{
             speed = 3f;
             accel = 0.06f;
             drag = 0.01f;
@@ -397,7 +403,7 @@ public class OBUnitTypes{
             }});
         }};
 
-        acyrtho = new OBUnitType("acyrtho", UnitEntity.class){{
+        acyrtho = new OBUnitType("acyrtho"){{
             armor = 3f;
             speed = 2.7f;
             accel = 0.08f;
@@ -438,7 +444,7 @@ public class OBUnitTypes{
             }});
         }};
 
-        mindarus = new OBUnitType("mindarus", UnitEntity.class){{
+        mindarus = new OBUnitType("mindarus"){{
             armor = 7f;
             speed = 1.9f;
             accel = 0.09f;
@@ -452,7 +458,7 @@ public class OBUnitTypes{
             itemCapacity = 30;
     
             weapons.add(
-                new Weapon(acyrtho.name + "-weapon"){{
+            new Weapon(acyrtho.name + "-weapon"){{
                 reload = 70f;
                 x = 7f;
                 y = -2f;
@@ -480,7 +486,7 @@ public class OBUnitTypes{
                     weaveMag = 1f;
                 }};
             }},
-                new Weapon(acyrtho.name + "-weapon"){{
+            new Weapon(acyrtho.name + "-weapon"){{
                 reload = 30f;
                 x = 2f;
                 y = 2f;
@@ -511,7 +517,7 @@ public class OBUnitTypes{
             );
         }};
 
-        rhophalo = new OBUnitType("rhophalo", UnitEntity.class){{
+        rhophalo = new OBUnitType("rhophalo"){{
             speed = 0.9f;
             accel = 0.03f;
             drag = 0.03f;
@@ -570,20 +576,20 @@ public class OBUnitTypes{
             );
         }};
 
-	toxoptera = new OBUnitType("toxoptera", UnitEntity.class){{
-	    speed = 0.7f;
-	    accel = 0.03f;
-	    drag = 0.03f;
-	    rotateSpeed = 1.9f;
-	    flying = true;
-	    lowAltitude = true;
-	    health = 21000;
-	    armor = 12f;
-	    engineOffset = 36;
-	    engineSize = 8.6f;
-	    hitSize = 58f;
+        toxoptera = new OBUnitType("toxoptera"){{
+            speed = 0.7f;
+            accel = 0.03f;
+            drag = 0.03f;
+            rotateSpeed = 1.9f;
+            flying = true;
+            lowAltitude = true;
+            health = 21000;
+            armor = 13f;
+            engineOffset = 36;
+            engineSize = 8.6f;
+            hitSize = 58f;
             targetFlags = new BlockFlag[]{BlockFlag.reactor, BlockFlag.generator, BlockFlag.core, null};
-	    loopSound = Sounds.loopHover;
+            loopSound = Sounds.loopHover;
 
             BulletType tractorBullet = new ContinuousBulletType(){{
                 damage = 0.5f;
@@ -595,48 +601,49 @@ public class OBUnitTypes{
                 statusDuration = 15f;
             }};
 
-	    weapons.add(
-            new TractorBeamWeapon(rhophalo.name + "-parallax"){{
-                x = 19f;
-                y = -16f;
-                force = 3f;
-                shootY = 5f;
-                bullet = tractorBullet;
-            }},
-            new TractorBeamWeapon(rhophalo.name + "-parallax"){{
-                x = 21f;
-                y = 12f;
-                force = 3f;
-                shootY = 5f;
-                bullet = tractorBullet;
-            }},
-            new Weapon(name + "-mount"){{
-                x = 10f;
-                y = -1f;
-                shootY = 9f;
+            weapons.add(
+                new TractorBeamWeapon(rhophalo.name + "-parallax"){{
+                    x = 19f;
+                    y = -16f;
+                    force = 3f;
+                    shootY = 5f;
+                    bullet = tractorBullet;
+                }},
+                new TractorBeamWeapon(rhophalo.name + "-parallax"){{
+                    x = 21f;
+                    y = 12f;
+                    force = 3f;
+                    shootY = 5f;
+                    bullet = tractorBullet;
+                }},
+                new Weapon(name + "-mount"){{
+                    x = 10f;
+                    y = -1f;
+                    shootY = 9f;
 
-                shoot = new ShootAlternate(5f);
+                    shoot = new ShootAlternate(5f);
 
-                bullet = new BasicBulletType(7.5f, 42){{
-                    hitSize = 4f;
-                    width = 10f;
-                    height = 16f;
-                    shootEffect = Fx.shootBig;
-                    knockback = 0.3f;
+                    bullet = new BasicBulletType(7.5f, 42){{
+                        hitSize = 4f;
+                        width = 10f;
+                        height = 16f;
+                        shootEffect = Fx.shootBig;
+                        knockback = 0.3f;
 
-                    hitEffect = despawnEffect = Fx.hitBulletColor;
-                    hitColor = backColor = trailColor = Pal.sapBulletBack;
-                    frontColor = Pal.sapBullet;
-                }};
-                shootSound = Sounds.shootSpectre;
-                reload = 8f;
-                rotateSpeed = 2f;
-                rotate = true;
-                recoil = 3f;
-                shake = 2f;
-            }}
+                        hitEffect = despawnEffect = Fx.hitBulletColor;
+                        hitColor = backColor = trailColor = Pal.sapBulletBack;
+                        frontColor = Pal.sapBullet;
+                    }};
+                    shootSound = Sounds.shootSpectre;
+                    reload = 8f;
+                    rotateSpeed = 2f;
+                    rotate = true;
+                    recoil = 3f;
+                    shake = 2f;
+                }}
             );
-	}};
+        }};
         //endregion
+        EntityRegistry.registerUnits();
     }
 }
