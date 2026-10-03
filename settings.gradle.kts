@@ -3,6 +3,7 @@ pluginManagement{
         gradlePluginPortal()
 	mavenLocal()
         maven("https://raw.githubusercontent.com/GglLfr/EntityAnnoMaven/main")
+        maven("https://raw.githubusercontent.com/GglLfr/MindustryClientMaven/main")
     }
 
     plugins{
