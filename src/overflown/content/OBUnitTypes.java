@@ -36,7 +36,7 @@ public class OBUnitTypes{
 
     //comedy, entertain, partygoer, funseeker, satire, parody,
 
-    public static @EntityPoint(UnitEntity.class) UnitType aphid, acyrtho, mindarus, rhophalo, toxoptera, neoantalus;
+    public static @EntityPoint(UnitEntity.class) UnitType aphid, acyrtho, mindarus, rhophalo, toxoptera; //neoantalus;
 
     //junior, officer, deputy, senior, enforcer, sheriff;
 
