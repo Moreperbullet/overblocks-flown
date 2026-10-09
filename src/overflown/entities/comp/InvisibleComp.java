@@ -3,6 +3,7 @@ package overflown.entities.comp;
 import arc.math.*;
 import arc.util.*;
 import ent.anno.Annotations.*;
+import mindustry.entities.*;
 import mindustry.entities.abilities.*;
 import mindustry.game.*;
 import mindustry.gen.*;
@@ -28,23 +29,29 @@ abstract class InvisibleComp implements Unitc{
     public void update(){
         disabledTime = Math.max(disabledTime - Time.delta, 0f);
 
-        if(scanInterval.get(0, 5f) && invisible){
+        if(scanInterval.get(0, 5f) && invisibleA.scanBullets){
             hitbox(Tmp.r1);
             Groups.bullet.intersect(Tmp.r1.x, Tmp.r1.y, Tmp.r1.width, Tmp.r1.height, b -> {
-                if(b.team != team) disabledTime = 1.2f * 60;
+                if(b.team != team && b.type.buildingDamage(b) < 1f) disabledTime = 1.2f * 60;
             });
         }
         if(scanInterval.get(1, 30f)){
             float size = hitSize * 2.5f;
-            Tmp.r1.setCentered(x, y, size * 2f);
-            Groups.unit.intersect(Tmp.r1.x, Tmp.r1.y, Tmp.r1.width, Tmp.r1.height, u -> {
-                if(u.team != team && Mathf.within(x, y, u.x, u.y, size)){
-                    disabledTime = 1.2f * 60;
-                }
-            });
+            if(invisibleA.scanUnits){
+                Tmp.r1.setCentered(x, y, size * 2f);
+                Groups.unit.intersect(Tmp.r1.x, Tmp.r1.y, Tmp.r1.width, Tmp.r1.height, u -> {
+                    if(u.team != team && Mathf.within(x, y, u.x, u.y, size)){
+                        disabledTime = 1.2f * 60;
+                    }
+                });
+            }
+            if(invisibleA.scanBuilds){
+                Building enemy = Units.findEnemyTile(team, x, y, size, b -> b.tile.solid());
+                if(enemy != null) disabledTime = 1.2f * 60;
+            }
         }
 
-        updateInvisibility(!isShooting && health > maxHealth / 2f && disabledTime <= 0f);
+        updateInvisibility(!isShooting && disabledTime <= 0f);
     }
 
     void updateInvisibility(boolean visible){

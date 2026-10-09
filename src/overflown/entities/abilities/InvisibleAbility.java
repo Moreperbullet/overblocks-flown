@@ -9,6 +9,7 @@ import overflown.gen.*;
 
 public class InvisibleAbility extends Ability{
     public float invisibleSpeed;
+    public boolean scanBullets = true, scanUnits = true, scanBuilds = true;
 
     public InvisibleAbility(float invisibleSpeed){
         this.invisibleSpeed = invisibleSpeed;
