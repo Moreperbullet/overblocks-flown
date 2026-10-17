@@ -300,7 +300,7 @@ public class OBUnitTypes{
             hitSize = 20f;
             rotateSpeed = 2.1f;
             health = 7900f;
-            armor = 11f;
+            armor = 19f;
             mechFrontSway = 1f;
             mechStepParticles = true;
             stepShake = 0.15f;
@@ -323,7 +323,7 @@ public class OBUnitTypes{
                 recoil = 3f;
                 shake = 2f;
                 ejectEffect = Fx.casing3;
-                shootSound = Sounds.shootDiffuse;
+                shootSound = OBSounds.shootTera;
                 shootCone = 20f;
                 inaccuracy = 0.2f;
 
@@ -525,7 +525,7 @@ public class OBUnitTypes{
             flying = true;
             lowAltitude = true;
             health = 7000;
-            armor = 8f;
+            armor = 17f;
             engineOffset = 21;
             engineSize = 5.4f;
             hitSize = 38f;
@@ -584,7 +584,7 @@ public class OBUnitTypes{
             flying = true;
             lowAltitude = true;
             health = 21000;
-            armor = 13f;
+            armor = 23f;
             engineOffset = 36;
             engineSize = 8.6f;
             hitSize = 58f;

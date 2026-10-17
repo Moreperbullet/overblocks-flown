@@ -9,10 +9,17 @@ import overflown.gen.*;
 
 public class InvisibleAbility extends Ability{
     public float invisibleSpeed;
-    public boolean scanBullets = true, scanUnits = true, scanBuilds = true;
+    public boolean scanBullets, scanUnits, scanBuilds;
 
     public InvisibleAbility(float invisibleSpeed){
+        this(invisibleSpeed, true, true, false);
+    }
+
+    public InvisibleAbility(float invisibleSpeed, boolean scanBullets, boolean scanUnits, boolean scanBuilds){
         this.invisibleSpeed = invisibleSpeed;
+        this.scanBullets = scanBullets;
+        this.scanUnits = scanUnits;
+        this.scanBuilds = scanBuilds;
     }
    
     @Override

@@ -31,6 +31,10 @@ public class OverflownMod extends Mod{
             assignColor(OBBlocks.ceriseStoneWall, Color.valueOf("DB959F"));
         }));
 
+        Events.on(FileTreeInitEvent.class, e -> Core.app.post(() -> {
+            if(!Vars.headless) OBSounds.load();
+        }));
+
     }
     @Override
     public void loadContent(){

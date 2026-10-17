@@ -29,7 +29,13 @@ buildscript{
         ivy{
             url = uri("https://github.com")
             patternLayout{
-                artifact(mindustrySource)
+                val path = mindustrySource.substringBeforeLast('/')
+                val name = mindustrySource
+                    .substringAfterLast('/')
+                    .removeSuffix(".jar")
+
+                artifact("$path/[classifier].jar")
+                artifact("$path/$name(-[classifier]).jar")
                 metadataSources{artifact()}
             }
             content{
@@ -61,6 +67,11 @@ allprojects{
     apply(plugin = "java")
     sourceSets["main"].java.setSrcDirs(listOf(layout.projectDirectory.dir("src")))
 
+    java{
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
     dependencies{
         registerTransform(TrimSources::class){
             from.attribute(ArtifactTypeDefinition.ARTIFACT_TYPE_ATTRIBUTE, ArtifactTypeDefinition.JAR_TYPE)
@@ -76,7 +87,7 @@ allprojects{
             }
         }
 
-    if(isCanBeResolved) attributes{
+        if(isCanBeResolved) attributes{
             attribute(ArtifactTypeDefinition.ARTIFACT_TYPE_ATTRIBUTE, "jar-stripped")
         }
     }
@@ -86,7 +97,13 @@ allprojects{
         ivy{
             url = uri("https://github.com")
             patternLayout{
-                artifact(mindustrySource)
+                val path = mindustrySource.substringBeforeLast('/')
+                val name = mindustrySource
+                    .substringAfterLast('/')
+                    .removeSuffix(".jar")
+
+                artifact("$path/[classifier].jar")
+                artifact("$path/$name(-[classifier]).jar")
                 metadataSources{artifact()}
             }
             content{
@@ -116,9 +133,6 @@ allprojects{
             isFork = false
             encoding = "UTF-8"
         }
-
-        sourceCompatibility = "17"
-        targetCompatibility = "17"
     }
 }
 
@@ -140,8 +154,8 @@ project(":"){
 
         compileOnly("Anuken:$mindustry:$mindustryVersion")
     }
-    val client = gradle.sharedServices.registerIfAbsent(MindustryClientPlugin.serviceName, MindustryClientService::class.java){}
 
+    val client = gradle.sharedServices.registerIfAbsent(MindustryClientPlugin.serviceName, MindustryClientService::class.java){}
     val jar = tasks.named<Jar>("jar"){
         archiveFileName = "${modArtifact}Desktop.jar"
         from(
@@ -159,25 +173,24 @@ project(":"){
         metaInf.from(layout.projectDirectory.file("LICENSE"))
     }
 
-    val dex = tasks.register<Jar>("dex"){
-        description = "Builds an Android-compatible JAR from the desktop-only JAR. Use this file for GitHub release."
+    val dexOutput = layout.buildDirectory.file("dex/Dex.jar")
+    val dex = tasks.register<Exec>("dex"){
+        description = "Runs `d8` against the desktop JAR to build an ART bytecode."
+        outputs.file(dexOutput).withPropertyName("output")
 
         val androidSdkVersion = providers.gradleProperty("androidSdkVersion").get()
         val androidBuildVersion = providers.gradleProperty("androidBuildVersion").get()
         val androidMinVersion = providers.gradleProperty("androidMinVersion").get()
+        val desktopJar = jar.flatMap{it.archiveFile}
+
+        inputs.property("sdkVersion", androidSdkVersion)
+        inputs.property("buildVersion", androidBuildVersion)
+        inputs.property("minVersion", androidMinVersion)
+        inputs.files(desktopJar).withPropertyName("jarOutput")
 
         val classpaths = files(configurations.compileClasspath, configurations.runtimeClasspath)
-        inputs.files(jar)
-        inputs.files(classpaths)
-        inputs.property("androidSdk", "$androidSdkVersion+$androidBuildVersion+$androidMinVersion")
+        inputs.files(classpaths).withPropertyName("artClasspaths").withNormalizer(ClasspathNormalizer::class.java)
 
-        archiveFileName = "$modArtifact.jar"
-
-        val desktopJar = jar.flatMap{it.archiveFile}
-        val dexJar = File(temporaryDir, "Dex.jar")
-        val providers = project.providers
-
-        from(zipTree(desktopJar), zipTree(dexJar))
         doFirst{
             // Find Android SDK root.
             val sdkRoot = File(
@@ -191,7 +204,7 @@ project(":"){
 
             // Initialize a release build.
             val input = desktopJar.get().asFile
-            val command = arrayListOf("$d8", "--release", "--min-api", androidMinVersion, "--output", "$dexJar", "$input")
+            val command = arrayListOf("$d8", "--release", "--min-api", androidMinVersion, "--output", "${dexOutput.get().asFile.absolutePath}", "$input")
 
             // Include all compile and runtime classpath.
             classpaths.forEach{
@@ -206,8 +219,16 @@ project(":"){
             if(OS.isWindows) command.addAll(0, arrayOf("cmd", "/c").toList())
 
             // Run `d8`.
-            providers.exec{commandLine(command)}.result.get().rethrowFailure()
+            commandLine(command)
         }
+    }
+
+    val deploy = tasks.register<Jar>("deploy"){
+        description = "Builds an Android-compatible JAR from the desktop-only JAR. Use this file for GitHub release."
+        dependsOn(dex)
+
+        archiveFileName = "$modArtifact.jar"
+        from(zipTree(jar.flatMap{it.archiveFile}), dexOutput)
     }
 
     val install = tasks.register<DefaultTask>("install"){
@@ -215,13 +236,13 @@ project(":"){
         usesService(client)
 
         val desktopJar = jar.flatMap{it.archiveFile}
-        val dexJar = dex.flatMap{it.archiveFileName}
+        val deployJarName = deploy.flatMap{it.archiveFileName}
 
-        inputs.files(desktopJar)
+        inputs.files(desktopJar).withPropertyName("desktopJar")
         doLast{
             val mods = client.get().detected.modsDirectory
             mods.mkdirs()
-            mods.resolve(dexJar.get()).delete()
+            mods.resolve(deployJarName.get()).delete()
 
             val input = desktopJar.get().asFile
             val output = mods.resolve(input.name)

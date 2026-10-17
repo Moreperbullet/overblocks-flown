@@ -32,7 +32,7 @@ abstract class InvisibleComp implements Unitc{
         if(scanInterval.get(0, 5f) && invisibleA.scanBullets){
             hitbox(Tmp.r1);
             Groups.bullet.intersect(Tmp.r1.x, Tmp.r1.y, Tmp.r1.width, Tmp.r1.height, b -> {
-                if(b.team != team && b.type.buildingDamage(b) < 1f) disabledTime = 1.2f * 60;
+                if(b.team != team && b.type.buildingDamage(b) < 1f) addDisabledTime(1.2f * 60);
             });
         }
         if(scanInterval.get(1, 30f)){
@@ -41,13 +41,13 @@ abstract class InvisibleComp implements Unitc{
                 Tmp.r1.setCentered(x, y, size * 2f);
                 Groups.unit.intersect(Tmp.r1.x, Tmp.r1.y, Tmp.r1.width, Tmp.r1.height, u -> {
                     if(u.team != team && Mathf.within(x, y, u.x, u.y, size)){
-                        disabledTime = 1.2f * 60;
+                        addDisabledTime(1.2f * 60);
                     }
                 });
             }
             if(invisibleA.scanBuilds){
                 Building enemy = Units.findEnemyTile(team, x, y, size, b -> b.tile.solid());
-                if(enemy != null) disabledTime = 1.2f * 60;
+                if(enemy != null) addDisabledTime(1.2f * 60);
             }
         }
 
@@ -57,6 +57,11 @@ abstract class InvisibleComp implements Unitc{
     void updateInvisibility(boolean visible){
         alphaLerp = Mathf.approachDelta(alphaLerp, visible ? 1f : 0f, invisibleA.invisibleSpeed);
         invisible = alphaLerp >= 0.5f;
+    }
+
+    public void addDisabledTime(float amount){
+        float clamped = Math.max(amount, disabledTime);
+        disabledTime = clamped;
     }
 
     InvisibleAbility findMyAbility(){
