@@ -30,9 +30,9 @@ public class OBUnitTypes{
 
     public static @EntityPoint(LegsUnit.class) UnitType cyatholipid; //tyrant, capricorn, penumbra, hexadeca, livyatan, ateocina
 
-    public static @EntityDef({Unitc.class, Mechc.class, Dodgec.class}) UnitType relayer, announcer;
+    public static @EntityDef({Unitc.class, Mechc.class, Dodgec.class}) UnitType relayer, announcer, magistrate;
 
-    public static @EntityDef({Unitc.class, Mechc.class, Invisiblec.class}) UnitType agent, attorney; //undercover, silence;
+    public static @EntityDef({Unitc.class, Mechc.class, Invisiblec.class}) UnitType agent, attorney; //undercover;
 
     //comedy, entertain, partygoer, funseeker, satire, parody,
 
@@ -327,7 +327,7 @@ public class OBUnitTypes{
                 shootCone = 20f;
                 inaccuracy = 0.2f;
 
-                shoot = new ShootSpread(13, 4f);
+                shoot = new ShootSpread(9, 4.5f);
                 velocityRnd = 0.17f;
 
                 bullet = new BasicBulletType(8f, 71){{
@@ -353,6 +353,61 @@ public class OBUnitTypes{
                     despawnSound = Sounds.shockBullet;
                 }};
             }});
+        }};
+
+        magistrate = new OBUnitType("magistrate"){{
+            health = 21000f;
+            dodge = 0.1f;
+            speed = 0.4f;
+            hitSize = 30f;
+            armor = 28f;
+            rotateSpeed = 1.7f;
+            mechStepParticles = true;
+            stepShake = 0.75f;
+            drownTimeMultiplier = 1.6f;
+            mechFrontSway = 1.9f;
+            mechSideSway = 0.6f;
+            stepSound = Sounds.mechStepHeavy;
+            stepSoundPitch = 0.9f;
+            stepSoundVolume = 0.45f;
+
+            weapons.add(
+            new Weapon(name + "-weapon"){{
+                top = false;
+                y = 1f;
+                x = 20f;
+                shootY = 10f;
+                shootSound = Sounds.shootNavanax;
+
+                bullet = new ArtilleryBulletType(3.1f, 300f){{
+                despawnEffect = Fx.none;
+                knockback = 3f;
+                lifetime = 130f;
+                height = 17f;
+                width = 15f;
+                splashDamageRadius = 60f;
+                splashDamage = 170f;
+                scaledSplashDamage = true;
+                backColor = hitColor = trailColor = Pal.lancerLaser;
+                frontColor = Color.white;
+                hitSound = Sounds.explosionTitan;
+
+                trailLength = 32;
+                trailWidth = 3.35f;
+                trailSinScl = 2.5f;
+                trailSinMag = 0.5f;
+                trailEffect = Fx.none;
+                despawnShake = 7f;
+
+                shootEffect = Fx.shootTitan;
+                smokeEffect = Fx.shootSmokeTitan;
+
+                trailInterp = v -> Math.max(Mathf.slope(v), 0.8f);
+                shrinkX = 0.2f;
+                shrinkY = 0.1f;
+                }};
+            }}
+            );
         }};
         //endregion
         

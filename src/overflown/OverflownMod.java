@@ -127,7 +127,8 @@ public class OverflownMod extends Mod{
         );
 
         ((Reconstructor)Blocks.tetrativeReconstructor).upgrades.add(
-            new UnitType[]{OBUnitTypes.rhophalo, OBUnitTypes.toxoptera}
+            new UnitType[]{OBUnitTypes.rhophalo, OBUnitTypes.toxoptera},
+            new UnitType[]{OBUnitTypes.attorney, OBUnitTypes.magistrate}
         );
     }
     
