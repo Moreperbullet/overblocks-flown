@@ -10,6 +10,7 @@ import mindustry.content.*;
 import mindustry.entities.*;
 import mindustry.entities.abilities.*;
 import mindustry.entities.bullet.*;
+import mindustry.entities.effect.*;
 import mindustry.entities.pattern.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
@@ -377,34 +378,36 @@ public class OBUnitTypes{
                 y = 1f;
                 x = 20f;
                 shootY = 10f;
+                reload = 65f;
                 shootSound = Sounds.shootNavanax;
 
-                bullet = new ArtilleryBulletType(3.1f, 300f){{
-                despawnEffect = Fx.none;
-                knockback = 3f;
-                lifetime = 130f;
-                height = 17f;
-                width = 15f;
-                splashDamageRadius = 60f;
-                splashDamage = 170f;
-                scaledSplashDamage = true;
-                backColor = hitColor = trailColor = Pal.lancerLaser;
-                frontColor = Color.white;
-                hitSound = Sounds.explosionTitan;
+                bullet = new ArtilleryBulletType(3.1f, 230f){{
+                    hitEffect = new MultiEffect(Fx.titanExplosion, Fx.titanSmoke);
+                    despawnEffect = Fx.none;
+                    knockback = 3f;
+                    lifetime = 130f;
+                    height = 17f;
+                    width = 15f;
+                    splashDamageRadius = 60f;
+                    splashDamage = 230f;
+                    scaledSplashDamage = true;
+                    backColor = hitColor = trailColor = Pal.lancerLaser;
+                    frontColor = Color.white;
+                    hitSound = Sounds.explosionTitan;
 
-                trailLength = 32;
-                trailWidth = 3.35f;
-                trailSinScl = 2.5f;
-                trailSinMag = 0.5f;
-                trailEffect = Fx.none;
-                despawnShake = 7f;
+                    trailLength = 32;
+                    trailWidth = 3.35f;
+                    trailSinScl = 2.5f;
+                    trailSinMag = 0.5f;
+                    trailEffect = Fx.none;
+                    despawnShake = 7f;
 
-                shootEffect = Fx.shootTitan;
-                smokeEffect = Fx.shootSmokeTitan;
+                    shootEffect = Fx.shootTitan;
+                    smokeEffect = Fx.shootSmokeTitan;
 
-                trailInterp = v -> Math.max(Mathf.slope(v), 0.8f);
-                shrinkX = 0.2f;
-                shrinkY = 0.1f;
+                    trailInterp = v -> Math.max(Mathf.slope(v), 0.8f);
+                    shrinkX = 0.2f;
+                    shrinkY = 0.1f;
                 }};
             }}
             );

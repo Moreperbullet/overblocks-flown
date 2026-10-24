@@ -116,7 +116,9 @@ public class OBTechTree{
             ), () -> {
                 node(announcer, () -> {
                     node(agent, () -> {
-                        node(attorney);
+                        node(attorney, () -> {
+                            node(magistrate);
+                        });
                     });
                 });
             });
