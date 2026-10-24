@@ -378,10 +378,10 @@ public class OBUnitTypes{
                 y = 1f;
                 x = 20f;
                 shootY = 10f;
-                reload = 65f;
+                reload = 195f;
                 shootSound = Sounds.shootNavanax;
 
-                bullet = new ArtilleryBulletType(3.1f, 230f){{
+                bullet = new ArtilleryBulletType(3.1f, 410f){{
                     hitEffect = new MultiEffect(Fx.titanExplosion, Fx.titanSmoke);
                     despawnEffect = Fx.none;
                     knockback = 3f;
@@ -389,7 +389,7 @@ public class OBUnitTypes{
                     height = 17f;
                     width = 15f;
                     splashDamageRadius = 60f;
-                    splashDamage = 230f;
+                    splashDamage = 410f;
                     scaledSplashDamage = true;
                     backColor = hitColor = trailColor = Pal.lancerLaser;
                     frontColor = Color.white;
