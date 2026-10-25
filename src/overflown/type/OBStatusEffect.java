@@ -44,12 +44,7 @@ public class OBStatusEffect extends StatusEffect{
         Draw.blend(Blending.additive);
         float rand = Mathf.random() / 2;
         Draw.color(color, rand);
-        TextureRegion oReg = unit.type.outlineRegion;
-        if(Core.atlas.isFound(oReg)) Draw.rect(oReg, unit.x, unit.y, unit.rotation - 90);
-        Draw.rect(unit.type.region, unit.x, unit.y, unit.rotation - 90);
-        for(WeaponMount mount : unit.mounts){
-            mount.weapon.draw(unit, mount);
-        }
+        Draw.rect(unit.type.fullIcon, unit.x, unit.y, unit.rotation - 90);
         Draw.blend();
         Draw.color();
     }
