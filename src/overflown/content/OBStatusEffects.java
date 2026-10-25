@@ -4,13 +4,14 @@ import arc.graphics.*;
 import arc.math.*;
 import mindustry.content.*;
 import mindustry.game.*;
+import mindustry.graphics.*;
 import mindustry.type.*;
 import overflown.graphics.*;
 import overflown.type.*;
 
 public class OBStatusEffects{
 
-    public static StatusEffect dreadRust, hellburnt, giga;
+    public static StatusEffect dreadRust, hellburnt, interfered, giga;
 
     public static void load(){
 
@@ -23,7 +24,6 @@ public class OBStatusEffects{
             speedMultiplier = 0.75f;
 
             effect = OBFx.dreadRusting;
-            transitionDamage = 8f;
         }};
 
         hellburnt = new OBStatusEffect("hellburnt"){{
@@ -34,9 +34,21 @@ public class OBStatusEffects{
 
             init(() -> affinity(StatusEffects.tarred, (unit, result, time) -> {
                 unit.damagePierce(transitionDamage);
-                Fx.burning.at(unit.x + Mathf.range(unit.bounds() / 2f), unit.y + Mathf.range(unit.bounds() / 2f));
+                OBFx.hellburnt.at(unit.x + Mathf.range(unit.bounds() / 2f), unit.y + Mathf.range(unit.bounds() / 2f));
                 result.set(hellburnt, Math.min(time + result.time, 300f));
             }));
+        }};
+
+        interfered = new OBStatusEffect("interfered"){{
+            color = Pal.techBlue;
+            interferedFlag = true;
+            reloadMultiplier = 0.6f;
+            speedMultiplier = 0.6f;
+            buildSpeedMultiplier = 0.6f;
+
+            init(() -> {
+                affinity(StatusEffects.electrified, (unit, result, time) -> result.set(interfered, time + result.time));
+            });
         }};
 
         giga = new OBStatusEffect("giga"){{

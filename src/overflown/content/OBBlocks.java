@@ -168,6 +168,8 @@ public class OBBlocks{
         largePayloadConveyor = new PayloadConveyor("large-payload-conveyor"){{
             requirements(Category.units, with(Items.graphite, 30, Items.copper, 30, Items.titanium, 12));
             canOverdrive = false;
+            moveTime = 75f;
+            payloadLimit = 4.5f;
             size = 5;
         }};
 
