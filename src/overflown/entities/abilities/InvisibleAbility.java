@@ -21,7 +21,16 @@ public class InvisibleAbility extends Ability{
         this.scanUnits = scanUnits;
         this.scanBuilds = scanBuilds;
     }
-   
+ 
+    @Override
+    public void addStats(Table t){
+        super.addStats(t);
+        if(invisibleSpeed < 0.00001f) return;
+        t.add(abilityStat("invisibletime",
+            Strings.autoFixed(1f / (invisibleSpeed * 60f), 2)
+        ));
+    }
+
     @Override
     public void created(Unit unit){
         if(unit instanceof Invisiblec n){
