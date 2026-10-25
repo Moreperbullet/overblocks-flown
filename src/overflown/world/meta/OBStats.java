@@ -10,6 +10,8 @@ public class OBStats {
 
     healPercent = new Stat("overflown-heal-percent", StatCat.function),
 
+    blocksInvisibility = new Stat("overflown-blocks-invisibility", StatCat.function),
+
     special = new Stat("overflown-special", StatCat.function),
 
     reflectModNum = new Stat("overflown-reflect-modifier", StatCat.function),

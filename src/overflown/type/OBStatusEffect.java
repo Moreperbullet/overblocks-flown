@@ -1,12 +1,15 @@
 package overflown.type;
 
+import arc.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
+import arc.util.*;
 import mindustry.entities.units.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
+import overflown.gen.*;
 import overflown.graphics.*;
 import overflown.world.meta.*;
 
@@ -17,6 +20,8 @@ public class OBStatusEffect extends StatusEffect{
     /** Flag for interfered visual effect.*/
     public boolean interferedFlag;
 
+    public boolean blocksInvisibility;
+
     public OBStatusEffect(String name) {
         super(name);
     }
@@ -26,6 +31,7 @@ public class OBStatusEffect extends StatusEffect{
         super.setStats();
         if(damagePercentage > 0) stats.addPercent(OBStats.damagePercent, damagePercentage);
         if(damagePercentage < 0) stats.addPercent(OBStats.healPercent, -damagePercentage);
+        if(blocksInvisibility) stats.add(OBStats.blocksInvisibility, blocksInvisibility);
     }
 
     @Override
@@ -38,7 +44,12 @@ public class OBStatusEffect extends StatusEffect{
         Draw.blend(Blending.additive);
         float rand = Mathf.random() / 2;
         Draw.color(color, rand);
-        Draw.rect(unit.icon(), unit.x, unit.y, unit.rotation - 90);
+        TextureRegion oReg = unit.type.outlineRegion;
+        if(Core.atlas.isFound(oReg)) Draw.rect(oReg, unit.x, unit.y, unit.rotation - 90);
+        Draw.rect(unit.type.region, unit.x, unit.y, unit.rotation - 90);
+        for(WeaponMount mount : unit.mounts){
+            mount.weapon.draw(unit, mount);
+        }
         Draw.blend();
         Draw.color();
     }
@@ -46,8 +57,12 @@ public class OBStatusEffect extends StatusEffect{
     @Override
     public void update(Unit unit, StatusEntry entry){
         super.update(unit, entry);
-        if(damagePercentage > 0) {
+        if(damagePercentage > 0){
             unit.damageContinuousPierce(unit.maxHealth * damagePercentage / 100);
+        }else if(damagePercentage < 0){
+            unit.heal(unit.maxHealth * (-1f * damagePercentage) / 100 * Time.delta);
         }
+
+        if(unit instanceof Invisiblec i && blocksInvisibility) i.addDisabledTime(30f);
     }
 }

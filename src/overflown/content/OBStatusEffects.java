@@ -45,6 +45,7 @@ public class OBStatusEffects{
             reloadMultiplier = 0.6f;
             speedMultiplier = 0.6f;
             buildSpeedMultiplier = 0.6f;
+            blocksInvisibility = true;
 
             init(() -> {
                 affinity(StatusEffects.electrified, (unit, result, time) -> result.set(interfered, time + result.time));
