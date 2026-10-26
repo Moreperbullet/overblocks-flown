@@ -42,11 +42,16 @@ public class OBStatusEffect extends StatusEffect{
     public void drawInterfered(Unit unit){
         Draw.z(Layer.flyingUnit + 0.1f);
         Draw.blend(Blending.additive);
-        float rand = Mathf.random() / 2;
-        Draw.color(color, rand);
-        Draw.rect(unit.type.fullIcon, unit.x, unit.y, unit.rotation - 90);
+        float rand = Mathf.random() / 2, a = Draw.getColorAlpha();
+        Draw.mixcol(color, 1f);
+        Draw.alpha(rand);
+        Draw.rect(unit.type.region, unit.x, unit.y, unit.rotation - 90);
+        for(WeaponMount mount : unit.mounts){
+            mount.weapon.drawOutline(unit, mount);
+        }
         Draw.blend();
-        Draw.color();
+        Draw.mixcol();
+        Draw.alpha(a);
     }
 
     @Override
